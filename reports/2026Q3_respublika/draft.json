@@ -1,0 +1,110 @@
+{
+  "makro": {
+    "slots": {
+      "stavka": "Markaziy bank chorak davomida asosiy stavkani yillik 14% darajasida saqlab qoldi [n03][n02]. Sentabrda yillik inflyatsiya 6.4%ni tashkil etdi, oylik inflyatsiya esa 0.7% boʻldi [n14]. Shu bilan chorak oxirida real stavka (asosiy stavka va inflyatsiya farqi) 7.6 foiz punktni tashkil etdi (2-rasm). Bir yil avval inflyatsiya 8.0% edi (2-jadval), demak pul-kredit sharoitlari real ifodada qatʼiyligicha qolmoqda. Aholining kelgusi bir yilga inflyatsion kutilmasi 9.8% boʻlib, yangi minimumga tushgan [n38].",
+      "valyuta": "Chorak oxirida AQSH dollari kursi 11 821.18 soʻmni tashkil etdi, soʻm chorak davomida dollarga nisbatan 2.0% mustahkamlandi (3-rasm). Eʼlonlar asosan dollarda joylashtirilgani uchun bu soʻmdagi narxlarni pasaytiruvchi omil boʻldi: eʼlonlar soniga koʻra tortilgan oʻzgarish ikkilamchi bozorda -2.1%, birlamchi bozorda -0.1%ni tashkil etdi. Yanvar–iyun oylarida chetdan kelgan pul oʻtkazmalari 9.3 mlrd dollarga yetgani valyuta taklifini qoʻllab-quvvatlagan [n01]."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "ipoteka": {
+    "slots": {
+      "matn": "2025-yilda uy-joy oldi-sotdi bitimlari soni 295 400 taga yetdi, ulardan 23.8% ipoteka hisobiga toʻgʻri keldi (4-rasm); 2020-yilda bu ulush 35.7% boʻlgan. Uy-joy qurilishi 2025-yilda 106.5 ming donani tashkil etdi, 2026-yilga 140 ming dona reja qilingan (5-rasm). 2025-yilda ipoteka kreditlarining asosiy qismi birlamchi bozorga yoʻnaltirildi: 15 376.9 mlrd soʻm, ikkilamchi bozorga esa 5 838.2 mlrd soʻm (6-rasm). Joriy yilning birinchi yarmida 42 575 fuqaroga 13.1 trln soʻm ipoteka ajratilgan, bu oʻtgan yilgi 9.5 trln soʻmdan qariyb 38% koʻp; mablagʻning 75% birlamchi bozorga toʻgʻri kelgan [n42]. II chorakning oʻzida 7.4 trln soʻm ajratilib, oʻsish 48%ni tashkil etgan [n44]. Banklardagi ipoteka kreditlarining oʻrtacha stavkasi sentabr oxirida 21.8% boʻldi [n09]. Shu bilan birga, II chorakda oldi-sotdi bitimlari soni 74.4 mingtani tashkil etib, oʻtgan yil darajasida qoldi (+0.1%) [n51]."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "birlamchi": {
+    "slots": {
+      "hududlar": "2026-yil 3-choragida birlamchi bozorda 6 ta hududda narx oshdi, 3 tasida pasaydi (7-rasm). Hududlarning oddiy oʻrtacha oʻzgarishi +3.9% boʻlsa-da, eʼlonlar soniga koʻra tortilgan oʻzgarish -0.1%ni tashkil etdi: eʼlonlarning asosiy qismi joylashgan Toshkent shahrida narx deyarli oʻzgarmadi (-0.4%). Eng yuqori oʻsish Xorazm (+15.0%), Qashqadaryo (+5.7%) va Andijon (+5.5%) hududlarida, pasayish esa Buxoro (-1.0%) va Navoiy (-0.2%) hududlarida qayd etildi. Bir yillik oʻsish boʻyicha Xorazm (+19.3%), Fargʻona (+15.5%) va Samarqand (+15.3%) yetakchilik qilmoqda; Samarqand va Qashqadaryoda narx 4 chorak ketma-ket oshdi (3-jadval). Jizzax, Namangan, Sirdaryo va Surxondaryoda eʼlonlar soni kam, Qoraqalpogʻiston boʻyicha maʼlumot yetarli emas.",
+      "toshkent": "Toshkent shahrida birlamchi uy-joy 1 m² narxi 18.75 mln soʻmni tashkil etdi. Tumanlarning 9 tasida narx oshdi, 2 tasida pasaydi. Eng qimmat tumanlar Shayxontohur (25.52 mln soʻm/m²) va Mirobod (24.00 mln soʻm/m²), eng arzonlari esa Bektemir (12.04 mln soʻm/m²) va Sergeli (12.52 mln soʻm/m²) boʻlib qolmoqda (8-rasm). Chorak davomida Shayxontohur (+12.9%) va Mirzo Ulugʻbek (+5.1%) tumanlarida narx oshgan, Yunusobod (-6.4%) va Mirobod (-4.3%) tumanlarida esa pasaygan (9-rasm). Bektemirda narx 5 chorak ketma-ket oshib kelmoqda."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "ikkilamchi": {
+    "slots": {
+      "hududlar": "Ikkilamchi bozorda narxlar 7 ta hududda oshdi, 5 tasida pasaydi (10-rasm). Eʼlonlar soniga koʻra tortilgan oʻzgarish -2.1%ni tashkil etib, bir xil eʼlonlar koʻrsatkichiga (-2.4%) yaqin boʻldi; demak, bu bozorda soʻmdagi pasayish asosan kurs bilan bogʻliq. Eng yuqori oʻsish Xorazm (+11.7%), Jizzax (+10.5%) va Andijon (+7.0%) hududlarida, eng katta pasayish Namangan (-6.5%), Toshkent shahri (-2.6%) va Fargʻona (-1.8%) hududlarida qayd etildi. Xorazmda narx 8 chorak ketma-ket oshmoqda, Buxoro va Qashqadaryoda 5 chorak, Samarqandda 4 chorak davomida oʻsish kuzatilmoqda. Namanganda pasayish ketma-ket 2 chorak davom etdi. Yillik hisobda Xorazm (+20.4%), Jizzax (+20.2%) va Samarqand (+20.1%) yetakchilik qilmoqda (4-jadval).",
+      "toshkent": "Toshkent shahrida ikkilamchi bozor narxi 15.20 mln soʻm/m²gacha pasaydi (-2.6%), lekin bir yil avvalgiga nisbatan 7.2% yuqori. Tumanlarning 9 tasida narx pasaydi (11-rasm): eng katta pasayish Yakkasaroy (-5.3%), Shayxontohur (-2.8%) va Yunusobod (-2.8%) tumanlarida boʻldi. Narx faqat Sergeli (+1.3%) va Uchtepa (+0.6%) tumanlarida oshdi (12-rasm). Mirobod eng qimmat tuman boʻlib qolmoqda (19.14 mln soʻm/m²), biroq bu yerda va Yashnobodda narx 2 chorak ketma-ket pasaydi."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "premium": {
+    "slots": {
+      "matn": "Yangi uylar ustamasi — birlamchi bozor narxining ikkilamchi bozordan farqi — hududlar oʻrtasida keskin farq qiladi (13-rasm). Eng yuqori ustama Toshkent viloyati (24.7%), Toshkent shahri (23.4%) va Qashqadaryo (14.1%) hududlarida kuzatildi. Navoiyda yangi uylar ikkilamchidan arzonroq (-8.1%), Xorazm (2.5%) va Samarqandda (4.2%) esa farq kichik. Bir yil ichida ustama Fargʻona (7.8 foiz punkt) va Andijonda (6.5 foiz punkt) eng koʻp oshdi, Samarqandda esa qisqardi (-4.4 foiz punkt). Poytaxt tumanlari ichida ustama Shayxontohurda (64.4%) eng yuqori, Uchtepada (0.0%) esa farq yoʻq: bu yangi loyihalarning joylashuvi va toifasi bilan izohlanishi mumkin. 14-rasmda ikkala bozor narxlarining soʻnggi uch yillik dinamikasi keltirilgan."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "ijara": {
+    "slots": {
+      "hududlar": "Eng yuqori ijara narxlari Toshkent shahri (113.7 ming soʻm/m²), Toshkent viloyati (71.3 ming soʻm/m²) va Samarqand (68.7 ming soʻm/m²) hududlarida, eng pastlari esa Qashqadaryo (47.3 ming soʻm/m²), Fargʻona (49.8 ming soʻm/m²) va Jizzaxda (51.6 ming soʻm/m²) qayd etildi (15-rasm). Jadvalga koʻra, ijara 12 ta hududda oshgan, eng katta oʻsish Navoiy (+33.9%), Buxoro (+22.5%) va Xorazmda (+17.4%) boʻldi (5-jadval). Biroq eʼlonlar soniga koʻra tortilgan oʻzgarish +4.8%ni, bir xil eʼlonlar boʻyicha oʻzgarish esa -1.3%ni tashkil etdi: hududlardagi yuqori oʻsish asosan saytdagi arzon eʼlonlar kamaygani bilan bogʻliq boʻlishi mumkin. Markaziy bank maʼlumotiga koʻra, iyun oyida ijara narxlari bir yilda 7.1% oshgan [n46].",
+      "toshkent": "Poytaxtda eng qimmat ijara Mirobod (131.6 ming soʻm/m²), Yakkasaroy (128.1 ming soʻm/m²) va Shayxontohurda (124.4 ming soʻm/m²), eng arzoni Bektemir (83.0 ming soʻm/m²) va Sergelida (86.7 ming soʻm/m²) kuzatildi (16-rasm). Chorak davomida eng katta oʻsish Uchtepa (+7.0%) va Bektemirda (+6.8%) qayd etildi; Bektemirda ijara 4 chorak ketma-ket oshmoqda. Faqat Mirobodda narx biroz pasaydi (-0.3%). Kichik kvartiralarda 1 m² ijarasi qimmatroq: masalan, Mirobodda 1 xonali uylarda 155.5 ming soʻm/m², 4 va undan ortiq xonali uylarda esa 107.5 ming soʻm/m² (17-rasm)."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "rentabellik": {
+    "slots": {
+      "matn": "Ijara rentabelligi yillik ijara daromadining uy sotuv narxiga nisbati boʻlib, soliq va xarajatlar hisobga olinmagan yalpi koʻrsatkichdir. 3-chorakda hududlar oʻrtasidagi farq 2.9 foiz punktni tashkil etdi (18-rasm). Eng yuqori rentabellik Toshkent viloyati (9.7%), Andijon (9.3%), Namangan (9.1%) va Sirdaryoda (8.9%), eng past koʻrsatkich esa Samarqand (6.8%), Xorazm (8.0%) va Qashqadaryoda (8.0%) kuzatildi. Toshkent shahrida rentabellik 8.2%ni tashkil etib, bir yilda 0.3 foiz punktga pasaydi (20-rasm). Poytaxt tumanlari ichida Olmazor va Sergeli (8.6%) yuqori, Mirobod (7.4%) va Yakkasaroy (7.6%) past rentabellikka ega. Barcha hududlarda rentabellik asosiy stavkadan (14%) past."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "indeks": {
+    "slots": {
+      "matn": "2026-yil 3-choragida uy-joy narxlari indeksi (UNI) 132.7 ga yetdi: chorak davomida +3.5%, bir yilda +13.4% oshdi, 2023-yil 2-choragiga nisbatan oʻsish 32.7%ni tashkil etdi (21-rasm). Indeks AQSH dollarida hisoblanadi; ikkala chorakda ham mavjud boʻlgan bir xil eʼlonlarning dollardagi narxi esa -0.4% oʻzgardi, shu sababli choraklik oʻsishning bir qismi eʼlonlar tarkibi bilan bogʻliq boʻlishi mumkin. Eng yuqori hududiy indekslar Xorazm (160.5), Jizzax (154.9) va Buxoroda (151.9), eng pastlari Andijon (108.5), Namangan (109.8) va Navoiyda (112.7) qayd etildi (22-rasm). Toshkent shahrida indeks 115.6 ni tashkil etdi."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "bozor_sharhi": {
+    "slots": {
+      "band1_sarlavha": "Narxlar va valyuta taʼsiri",
+      "band1": "Hududlar boʻyicha oddiy oʻrtacha narxlar oʻsishda davom etgan boʻlsa-da, eʼlonlar soniga koʻra tortilgan oʻzgarish birlamchi bozorda -0.1%, ikkilamchi bozorda -2.1%ni tashkil etdi. Soʻmning 2.0% mustahkamlanishi soʻmdagi narxlarni pasaytirdi, dollardagi UNI esa 132.7 ga yetdi.",
+      "band2_sarlavha": "Moliyalashtirish sharoitlari",
+      "band2": "Asosiy stavka 14% darajasida qoldi, real stavka 7.6 foiz punktni tashkil etmoqda [n02]. Ipoteka hajmi yuqori surʼatda oʻsmoqda: II chorakda 7.4 trln soʻm ajratilgan [n44]. Tijorat banklari ipotekasi yillik 20–32% stavkada taklif etilmoqda [n48], davlat dasturi boʻyicha stavka 17% atrofida [n24].",
+      "band3_sarlavha": "Taklif va tartibga solish",
+      "band3": "Yilning birinchi yarmida 7.7 mln m² uy-joy foydalanishga topshirildi, bu 7.2% koʻp [n52]. Toshkentda 600 mingdan ortiq xonadon ommaviy baholandi: baholangan qiymat kadastr qiymatidan qariyb 7.4 baravar yuqori, natijalar jamoatchilik muhokamasida [n49]. Ulushli qurilish toʻgʻrisidagi qonun loyihasi birinchi oʻqishda qabul qilindi: xaridor toʻlovi bankdagi eskrou hisobvaraqqa tushadi [n47].",
+      "xulosa": "3-chorakda bozor barqaror, lekin bir xil boʻlmagan manzarani koʻrsatdi: poytaxtda soʻmdagi narxlar biroz pasaydi, hududlarda esa, ayniqsa Xorazm, Samarqand va Buxoroda, oʻsish davom etdi. Jadvaldagi oʻsishning katta qismi eʼlonlar tarkibi va valyuta kursi bilan izohlanadi. Ipoteka hajmining oʻsishi talabni qoʻllab-quvvatlamoqda, asosiy stavka esa oʻzgarmadi [n02][n44].",
+      "istiqbol": "Markaziy bankning navbatdagi stavka yigʻilishi oktabr oxirida rejalashtirilgan [n29]. Yil oxirigacha Yangi Toshkentda 20 ming xonadonni foydalanishga topshirish kutilmoqda, bu poytaxt atrofida taklifni kengaytirishi mumkin [n15]. Ommaviy baholash natijalari va ulushli qurilish qonunining qabul qilinishi bozor shaffofligiga taʼsir koʻrsatishi mumkin [n49][n47].",
+      "xatarlar": "Soʻm kursining yoʻnalishi soʻmdagi narxlarni har ikki tomonga oʻzgartirishi mumkin: oktabr oʻrtasida dollar kursi ketma-ket kunlar davomida oshgan [n16]. Inflyatsiya sentabrda yil boshidan beri eng yuqori oylik surʼatga chiqdi [n14]. Eʼlonlar tarkibidagi oʻzgarishlar (ayniqsa ijara bozorida) median narxlarni haqiqiy bozor harakatidan uzoqlashtirishi mumkin."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  },
+  "asosiy_xulosalar": {
+    "slots": {
+      "lead": "3-chorakda soʻmdagi uy-joy narxlari respublika boʻyicha deyarli oʻzgarmadi: eʼlonlar soniga koʻra tortilgan oʻzgarish birlamchi bozorda -0.1%, ikkilamchi bozorda -2.1% boʻldi. Soʻm 2.0% mustahkamlandi, dollardagi UNI esa 132.7 ga yetdi (+3.5%). Hududlarda, ayniqsa Xorazm va Samarqandda, oʻsish davom etmoqda.",
+      "x1": "**Birlamchi bozor.** Toshkent shahrida 1 m² narxi 18.75 mln soʻm (-0.4%), bir yilda +10.0%. Eng tez oʻsish Xorazmda (+15.0%), Samarqand va Qashqadaryoda narx 4 chorak ketma-ket oshmoqda.",
+      "x2": "**Ikkilamchi bozor.** Toshkent shahrida narx 15.20 mln soʻm/m²gacha pasaydi (-2.6%). Xorazmda narx 8 chorak ketma-ket oshmoqda (+11.7%), Namanganda esa pasaydi (-6.5%).",
+      "x3": "**Ijara.** Poytaxtda ijara 113.7 ming soʻm/m² (+3.7%). Rentabellik Toshkent viloyatida eng yuqori (9.7%), Samarqandda eng past (6.8%); Toshkent shahrida 8.2%.",
+      "x4": "**Uy-joy indeksi.** UNI chorakda +3.5%, bir yilda +13.4% oshdi; eng yuqori hududiy indeks Xorazmda (160.5).",
+      "x5": "**Moliyalashtirish.** Asosiy stavka 14% darajasida saqlandi [n02]. Birinchi yarim yillikda 13.1 trln soʻm ipoteka ajratilgan, uning 75% birlamchi bozorga toʻgʻri keldi [n42].",
+      "tarkib": "Median narx ikki sababga koʻra oʻzgaradi: eʼlonlardagi narxlar oʻzgaradi yoki saytdagi eʼlonlar tarkibi oʻzgaradi. Hududlar oddiy oʻrtachasi kam eʼlonli hududlarga ham Toshkent bilan teng vazn beradi, shuning uchun 1-rasmda eʼlonlar soniga koʻra tortilgan oʻzgarish va bir xil eʼlonlar narxi ham keltirilgan. Ijarada tortilgan oʻzgarish +4.8%, bir xil eʼlonlar esa -1.3%: farq (6.1 foiz punkt) asosan tarkib taʼsiridir (1-jadval)."
+    },
+    "numbers_used": [],
+    "notes": "hand-written for the 2026-Q3 layout",
+    "attempt": 1,
+    "issues": []
+  }
+}

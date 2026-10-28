@@ -1,0 +1,15 @@
+quarter,base_rate_pct,inflation_yoy_pct,base_rate_source,inflation_source
+2023Q2,14.0,9.0,https://www.thestar.com.my/news/world/2023/03/17/uzbekistan039s-central-bank-cuts-key-interest-rate-to-14-pct-from-15-pct,https://kun.uz/en/news/2023/07/03/inflation-fell-to-9-for-the-first-time-since-august-2016
+2023Q3,14.0,9.2,https://daryo.uz/en/2023/10/26/uzbekistans-central-bank-keeps-key-interest-rate-steady-at-14-amidst-inflationary-challenges,https://daryo.uz/en/2023/10/02/uzbekistans-annual-inflation-hits-92-in-september-2023/
+2023Q4,14.0,8.8,https://daryo.uz/en/2023/10/26/uzbekistans-central-bank-keeps-key-interest-rate-steady-at-14-amidst-inflationary-challenges,https://kun.uz/en/news/2024/01/03/inflation-in-uzbekistan-fell-to-88
+2024Q1,14.0,8.0,https://gazeta.uz/en/2024/04/25/rate,https://daryo.uz/en/2024/04/01/uzbekistans-annual-inflation-drops-to-798-in-march-2024
+2024Q2,14.0,10.6,https://ru.themoscowtimes.com/2024/06/13/update-1-tsb-uzbekistana-sokhranil-ofitsialnuyu-stavku-na-urovne-140-a133837,https://daryo.uz/en/2024/07/01/uzbekistan-reports-02-deflation-in-june-amid-stable-annual-inflation-at-106
+2024Q3,13.5,10.5,https://economist.kg/dengi/2024/07/27/v-uzbiekistanie-vpiervyie-za-siem-liet-snizil-osnovnuiu-stavku-nizhie-14/,https://daryo.uz/en/2024/10/02/uzbekistans-annual-inflation-stands-at-1046-in-september-driven-by-rising-food-and-service-costs
+2024Q4,13.5,9.8,https://daryo.uz/en/2025/01/23/central-bank-of-uzbekistan-maintains-policy-rate-at-13-5-1208469/,https://gazeta.uz/en/2025/01/03/inflation
+2025Q1,14.0,10.3,https://kun.uz/en/news/2025/03/20/central-bank-raises-key-rate-to-14-amid-inflation-concerns,https://kun.uz/en/news/2025/04/01/annual-inflation-hits-103-in-march
+2025Q2,14.0,8.7,https://daryo.uz/en/2025/06/12/uzbekistan-holds-policy-rate-at-14%25-to-curb-inflation,https://www.uzdaily.uz/en/inflation-in-uzbekistan-reaches-87-in-june-2025/
+2025Q3,14.0,8.0,https://daryo.uz/en/2025/10/24/uzbekistan-keeps-policy-rate-unchanged-at-14/,https://daryo.uz/en/2025/10/02/uzbekistans-annual-inflation-eases-to-8-in-september/
+2025Q4,14.0,7.3,https://kun.uz/en/news/2026/01/28/central-bank-keeps-key-rate-unchanged-at-14-amid-persistent-inflation-risks,https://kun.uz/en/news/2026/01/01/inflation-in-uzbekistan-slows-to-73-percent-in-2025
+2026Q1,14.0,7.1,https://kun.uz/en/news/2026/01/28/central-bank-keeps-key-rate-unchanged-at-14-amid-persistent-inflation-risks,https://daryo.uz/en/2026/04/06/uzbekistan-annual-inflation-slows-to-71-in-march-2026/
+2026Q2,14.0,6.4,https://daryo.uz/en/2026/07/29/uzbekistan-holds-key-rate-at-14-maintains-growth-forecast/,https://www.uzdaily.uz/en/inflation-in-uzbekistan-accelerates-to-64-in-june-in-annual-terms/
+2026Q3,14.0,6.4,https://cbu.uz/ru/,https://www.spot.uz/oz/2026/10/06/inflation-september

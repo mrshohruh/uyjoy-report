@@ -1,0 +1,35 @@
+# Figures and tables of the Respublika report, in reading order. The renderer numbers them in this
+# order ("3-rasm", "2-jadval"), and the writer sees the same numbers so the text can point to them.
+# `section` is the text section whose prompt lists the figure.
+respublika:
+  figures:
+    - {key: decomp,        section: asosiy_xulosalar, title: "Median narx oʻzgarishi va bir xil eʼlonlar narxi, Δ chorak"}
+    - {key: rates,         section: makro,      title: "Asosiy stavka va yillik inflyatsiya"}
+    - {key: fx,            section: makro,      title: "AQSH dollari kursi, chorak oxirida"}
+    - {key: deals,         section: ipoteka,    title: "Uy-joy oldi-sotdi bitimlari va ipoteka kreditlari"}
+    - {key: build,         section: ipoteka,    title: "Uy-joy qurilishi"}
+    - {key: mortgage,      section: ipoteka,    title: "Ipoteka kreditlari hajmi bozorlar boʻyicha"}
+    - {key: prim_map,      section: birlamchi,  title: "Birlamchi bozor: hududlar boʻyicha Δ chorak"}
+    - {key: prim_tsh_map,  section: birlamchi,  title: "Toshkent shahri tumanlarida birlamchi uy-joy narxi"}
+    - {key: prim_dumbbell, section: birlamchi,  title: "Toshkent tumanlari: birlamchi narx, oldingi va joriy chorak"}
+    - {key: sec_map,       section: ikkilamchi, title: "Ikkilamchi bozor: hududlar boʻyicha Δ chorak"}
+    - {key: sec_tsh_map,   section: ikkilamchi, title: "Toshkent shahri tumanlarida ikkilamchi narx, Δ chorak"}
+    - {key: sec_dumbbell,  section: ikkilamchi, title: "Toshkent tumanlari: ikkilamchi narx, oldingi va joriy chorak"}
+    - {key: premium,       section: premium,    title: "Birlamchi bozor ustamasi (birlamchi ÷ ikkilamchi − 1)"}
+    - {key: multiples,     section: premium,    title: "Hududlar boʻyicha birlamchi va ikkilamchi narx dinamikasi"}
+    - {key: rent_map,      section: ijara,      title: "Ijara narxlari darajasi hududlar boʻyicha"}
+    - {key: rent_tsh_map,  section: ijara,      title: "Toshkent shahri tumanlarida ijara narxi"}
+    - {key: rent_rooms,    section: ijara,      title: "Toshkent tumanlari: xonalar soni boʻyicha ijara narxi"}
+    - {key: yield_map,     section: rentabellik, title: "Yillik ijara rentabelligi hududlar boʻyicha"}
+    - {key: yield_scatter, section: rentabellik, title: "Sotuv narxi va ijara narxi: rentabellik chiziqlari"}
+    - {key: yield_trend,   section: rentabellik, title: "Ijara rentabelligi dinamikasi"}
+    - {key: index_lines,   section: indeks,     title: "Uy-joy narxlari indeksi (UNI)"}
+    - {key: index_regions, section: indeks,     title: "Hududiy indekslar, joriy chorak"}
+    - {key: index_heat,    section: indeks,     title: "Ikkilamchi bozor: hududlar boʻyicha Δ chorak, soʻnggi 8 chorak"}
+  tables:
+    - {key: summary,  section: asosiy_xulosalar, title: "Bozorlar boʻyicha asosiy koʻrsatkichlar"}
+    - {key: macro,    section: makro,      title: "Makroiqtisodiy koʻrsatkichlar, chorak oxirida"}
+    - {key: prim,     section: birlamchi,  title: "Hududlar boʻyicha birlamchi uy-joy narxlari"}
+    - {key: sec,      section: ikkilamchi, title: "Hududlar boʻyicha ikkilamchi uy-joy narxlari"}
+    - {key: rent,     section: ijara,      title: "Hududlar boʻyicha ijara narxlari, oyiga"}
+    - {key: annex,    section: ilova,      title: "Toshkent shahri tumanlari: barcha koʻrsatkichlar"}

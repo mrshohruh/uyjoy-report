@@ -29,6 +29,14 @@
 - Ekspert, mutaxassis yoki tashkilot nomidan iqtibos oʻylab topilmaydi.
 - "Keskin", "rekord", "inqiroz" kabi kuchli soʻzlar faqat raqam buni koʻrsatsa.
 
+## Rasmlar va takrorlash
+- Har bir boʻlimda rasm va jadvallar bor. Matn ularni takrorlab sanamaydi: 2-3 asosiy raqamni keltiradi va
+  «(7-rasm)», «2-jadvalda koʻrinib turibdiki» kabi ishora qiladi.
+- Eʼlonlar tarkibi (median narx va bir xil eʼlonlar farqi) faqat «Asosiy tahliliy xulosalar» boʻlimida bir marta
+  batafsil tushuntiriladi. Boshqa boʻlimlarda kerak boʻlsa bitta qisqa gap bilan eslatiladi.
+- Respublika boʻyicha umumiy oʻzgarish uchun avval eʼlonlar soniga koʻra tortilgan koʻrsatkich (`respublika.*.weighted_qoq_pct`)
+  ishlatiladi; hududlar oddiy oʻrtachasi (`avg_qoq_pct`) faqat u bilan solishtirish uchun.
+
 ## Atamalar
 | Atama | Maʼnosi |
 | --- | --- |
@@ -41,3 +49,7 @@
 | oldi-sotdi shartnomasi | uy-joy savdo bitimi |
 | ipoteka bilan toʻyinganlik | bitimlarda ipoteka ulushi |
 | asosiy stavka | Markaziy bankning asosiy foiz stavkasi |
+| real stavka | asosiy stavka minus yillik inflyatsiya, foiz punktda |
+| tortilgan oʻzgarish | hududlar oʻzgarishining eʼlonlar soniga koʻra tortilgan oʻrtachasi |
+| tarkib taʼsiri | tortilgan oʻzgarish bilan bir xil eʼlonlar oʻzgarishi farqi |
+| yangi uy ustamasi | birlamchi narxning ikkilamchi narxdan foizdagi farqi |

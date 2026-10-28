@@ -78,6 +78,44 @@ def run(raw_dir: Path, out_dir: Path, period: str, scope: str, cfg: Config,
     return run_dir
 
 
+TABLE_SHEETS = ("regions", "districts", "rooms", "yield_hudud", "yield_tuman", "index_regional", "index",
+                "lfl_qoq", "lfl_yoy")
+
+
+def load_tables(path: Path) -> dict:
+    """Read a run's tables.xlsx back into the same structure `compute` returns.
+
+    This lets a report be rebuilt (new facts, new layout) from a finished run without the parquet files,
+    with exactly the numbers that run produced.
+    """
+    xl = pd.read_excel(path, sheet_name=None, dtype={"rooms": str, "quarter": str, "from": str, "to": str})
+    tables = {}
+    for name in TABLE_SHEETS:
+        df = xl.get(name[:31], pd.DataFrame())
+        tables[name] = df
+    if not tables["index"].empty and "missing" in tables["index"]:
+        tables["index"]["missing"] = tables["index"]["missing"].map(
+            lambda v: [] if v is None or (isinstance(v, float) and pd.isna(v)) else
+            (json.loads(v.replace("'", '"')) if isinstance(v, str) else list(v)))
+    inv = xl.get("files", pd.DataFrame(columns=["family", "month", "quarter"]))
+    log = xl.get("cleaning_log", pd.DataFrame(columns=["family", "quarter", "rows", "rule"]))
+    return {"tables": tables, "inventory": inv, "clean_log": log}
+
+
+def rebuild(tables_xlsx: Path, out_dir: Path, period: str, scope: str, cfg: Config) -> Path:
+    """facts.json for `period` from a saved tables.xlsx (see load_tables); tables.xlsx itself is left as it is."""
+    res = load_tables(tables_xlsx)
+    facts = facts_mod.build(period, scope, cfg, res["tables"], res["inventory"], res["clean_log"])
+    facts["report"]["incomplete"] = []
+    run_dir = out_dir / f"{period}_{scope}"
+    run_dir.mkdir(parents=True, exist_ok=True)
+    (run_dir / "facts.json").write_text(json.dumps(facts, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    if tables_xlsx.resolve() != (run_dir / "tables.xlsx").resolve():
+        import shutil  # noqa: PLC0415
+        shutil.copyfile(tables_xlsx, run_dir / "tables.xlsx")
+    return run_dir
+
+
 def export_tables(res: dict, path: Path) -> None:
     t = res["tables"]
     with pd.ExcelWriter(path) as xw:

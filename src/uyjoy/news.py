@@ -217,3 +217,21 @@ def load(path: Path, period: str) -> list[dict]:
     cfg = yaml.safe_load((CONFIG_DIR / "news_queries.yaml").read_text(encoding="utf-8"))
     start, end = window(period, cfg["after_days"])
     return clean_items(json.loads(path.read_text(encoding="utf-8")), start, end, cfg)
+
+
+def add(existing: Path, extra: Path, period: str) -> list[dict]:
+    """Append hand-collected items to an existing news.json.
+
+    Items already there keep their ids (the text may cite them); new items pass the same filters and get the
+    next free ids. An item whose url and claim are already present is skipped.
+    """
+    cfg = yaml.safe_load((CONFIG_DIR / "news_queries.yaml").read_text(encoding="utf-8"))
+    start, end = window(period, cfg["after_days"])
+    old = json.loads(existing.read_text(encoding="utf-8")) if existing.exists() else []
+    seen = {(_norm_url(n["url"]), n["claim_uz"].strip().lower()) for n in old}
+    new = [it for it in clean_items(json.loads(extra.read_text(encoding="utf-8")), start, end, cfg)
+           if (_norm_url(it["url"]), it["claim_uz"].strip().lower()) not in seen]
+    nxt = max([int(n["id"][1:]) for n in old] or [0]) + 1
+    for i, it in enumerate(new):
+        it["id"] = f"n{nxt + i:02d}"
+    return old + new

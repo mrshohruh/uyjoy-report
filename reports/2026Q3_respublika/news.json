@@ -1,0 +1,1220 @@
+[
+  {
+    "topic": "valyuta",
+    "geography": "respublika",
+    "date": "2026-08-14",
+    "outlet": "cbu.uz",
+    "url": "https://cbu.uz/uz/press_center/releases/4359622/",
+    "title": "O‘zbekiston Respublikasi Markaziy banki 2026-yilning birinchi yarim yilligi uchun jismoniy shaxslarning valyuta operatsiyalari tahliliy sharhini e’lon qildi",
+    "claim_uz": "Markaziy bank yanvar–iyun oylarida chet eldan kelgan pul o‘tkazmalari hajmi 13 foizga o‘sib, 9,3 mlrd dollarga yetganini ma’lum qildi.",
+    "numbers": [
+      {
+        "value": 9.3,
+        "unit": "mlrd dollar",
+        "what": "yanvar–iyun 2026 kelib tushgan pul o‘tkazmalari"
+      },
+      {
+        "value": 13.0,
+        "unit": "%",
+        "what": "o‘tgan yilning mos davriga nisbatan o‘sish"
+      }
+    ],
+    "official": true,
+    "relevance": 5,
+    "id": "n01"
+  },
+  {
+    "topic": "stavka",
+    "geography": "respublika",
+    "date": "2026-09-16",
+    "outlet": "cbu.uz",
+    "url": "https://cbu.uz/ru/",
+    "title": "Правление ЦБ 16 сентября 2026 года: основная ставка 14%",
+    "claim_uz": "Markaziy bank boshqaruvi 16-sentabr yig'ilishida asosiy stavkani yillik 14 foizda saqlab qoldi, inflyatsiya bo'yicha maqsadli ko'rsatkich esa 5 foiz etib belgilangan.",
+    "numbers": [
+      {
+        "value": 14.0,
+        "unit": "%",
+        "what": "asosiy stavka (16.09.2026 dan)"
+      },
+      {
+        "value": 5.0,
+        "unit": "%",
+        "what": "inflyatsiya bo'yicha target"
+      }
+    ],
+    "official": true,
+    "relevance": 5,
+    "id": "n02"
+  },
+  {
+    "topic": "stavka",
+    "geography": "respublika",
+    "date": "2026-07-29",
+    "outlet": "cbu.uz",
+    "url": "https://cbu.uz/upload/iblock/619/q13hzi6kfs23g2bp1z8fx84t2f3m8jm2/Matbuot-anjumani_taqdimot_29.07.2026.pdf",
+    "title": "Matbuot anjumani 29-iyul 2026-yil Markaziy bank asosiy stavkasi",
+    "claim_uz": "Markaziy bank 29-iyul kuni asosiy stavkani yillik 14 foizda o'zgarishsiz qoldirdi va 2026-yil yakuni uchun inflyatsiya prognozini 6,5 foiz atrofida saqladi.",
+    "numbers": [
+      {
+        "value": 14.0,
+        "unit": "%",
+        "what": "asosiy stavka"
+      },
+      {
+        "value": 6.5,
+        "unit": "%",
+        "what": "2026-yil yakuni uchun umumiy inflyatsiya prognozi"
+      }
+    ],
+    "official": true,
+    "relevance": 4,
+    "id": "n03"
+  },
+  {
+    "topic": "narx",
+    "geography": "respublika",
+    "date": "2026-07-15",
+    "outlet": "stat.uz",
+    "url": "https://stat.uz/img/news/press-reliz-rppi-2026-lotin_p64634.pdf",
+    "title": "O‘zbekiston Respublikasi Milliy statistika qo‘mitasi E’lon qilish sanasi:",
+    "claim_uz": "Milliy statistika qo‘mitasi 2026-yilning II choragidan uy-joy narx indekslarini gedonik regressiya usuli bilan hisoblashga o‘tgan.",
+    "numbers": [],
+    "official": true,
+    "relevance": 3,
+    "id": "n04"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-07-01",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/07/01/deposit",
+    "title": "Endi ipoteka subsidiyasini ham bankka qo‘yib, omonat jamg‘arish mumkin. Bu qanday ishlaydi?",
+    "claim_uz": "Maqsadli ipoteka omonati mexanizmi 1-iyuldan tajriba-sinov tariqasida ishga tushgan bo‘lib, 2026-yil 31-dekabrgacha amal qiladi.",
+    "numbers": [
+      {
+        "value": 4.0,
+        "unit": "oy",
+        "what": "subsidiya xabarnomasining amal qilish muddati (omonat ochish uchun)"
+      },
+      {
+        "value": 12.0,
+        "unit": "oy",
+        "what": "omonat muddatining yuqori chegarasi"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n05"
+  },
+  {
+    "topic": "tartibga_solish",
+    "geography": "respublika",
+    "date": "2026-07-16",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/07/16/housing-registration",
+    "title": "Ko‘chmas mulkni kech ro‘yxatdan o‘tkazganlardan jarima o‘rniga oshirilgan to‘lov undiriladi",
+    "claim_uz": "Ko‘chmas mulk huquqini o‘z vaqtida ro‘yxatdan o‘tkazmagan fuqarolarga ma’muriy javobgarlik qo‘llanmaydi, o‘rniga kechikkan muddatdan kelib chiqib to‘lov undiriladi.",
+    "numbers": [],
+    "official": false,
+    "relevance": 5,
+    "id": "n06"
+  },
+  {
+    "topic": "narx",
+    "geography": "respublika",
+    "date": "2026-07-17",
+    "outlet": "andstat.uz",
+    "url": "https://andstat.uz/uz/matbuot-markazi/qo-mita-yangiliklar/13661-o-zbekistonda-uy-joy-narxlari-bir-yilda-4-foizga-oshdi",
+    "title": "O‘zbekistonda uy-joy narxlari bir yilda 4 foizga oshdi.",
+    "claim_uz": "Statistika qo‘mitasi ma’lumotiga ko‘ra, 2026-yil II choragida turar joy narxi o‘tgan chorakka nisbatan 1,3 foizga, bir yil oldingiga nisbatan 4 foizga ko‘tarilgan.",
+    "numbers": [
+      {
+        "value": 1.3,
+        "unit": "%",
+        "what": "turar joy narxi, II chorak (I chorakka nisbatan)"
+      },
+      {
+        "value": 4.0,
+        "unit": "%",
+        "what": "turar joy narxi, yillik o‘sish (2025 II chorakka nisbatan)"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n07"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-08-08",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/08/08/morgtage-loans",
+    "title": "Banklardagi ipoteka kreditlari. 2026-yil avgust oyi bo‘yicha",
+    "claim_uz": "Avgust oyi holatiga ko‘ra, 34 ta bankdan 24 tasi ipoteka kreditini bermoqda va ularning o‘rtacha stavkasi 24% atrofida.",
+    "numbers": [
+      {
+        "value": 24.0,
+        "unit": "%",
+        "what": "24 ta bankdagi o‘rtacha ipoteka stavkasi"
+      },
+      {
+        "value": 34.0,
+        "unit": "ta bank",
+        "what": "jami tekshirilgan banklar soni"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n08"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-09-30",
+    "outlet": "anhor.uz",
+    "url": "https://anhor.uz/uzl/iqtisodiyot/avtokredit-ipoteka-mikroqarz-foiz-stavkalari",
+    "title": "Avtokredit, ipoteka va mikroqarz: banklarda foiz stavkalari qancha?",
+    "claim_uz": "Markaziy bankning 28-sentabr holatiga oid ma’lumotiga ko‘ra, banklardagi ipoteka kreditlarining o‘rtacha foiz stavkasi 21,8 foizga teng bo‘ldi.",
+    "numbers": [
+      {
+        "value": 21.8,
+        "unit": "%",
+        "what": "ipoteka kreditlari bo‘yicha o‘rtacha foiz stavkasi (28.09.2026 holatiga)"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n09"
+  },
+  {
+    "topic": "ijara",
+    "geography": "Toshkent",
+    "date": "2026-09-30",
+    "outlet": "gazeta.uz",
+    "url": "https://www.gazeta.uz/oz/2026/09/30/rent/",
+    "title": "O‘zbekistonda uy-joy ijarasi narxi o‘sishi tezlashdi — Markaziy bank",
+    "claim_uz": "MHTI hisob-kitobiga ko‘ra, mayda Toshkentda uy-joy ijarasining umumiy mediani 550 dollar bo‘lgan.",
+    "numbers": [
+      {
+        "value": 550.0,
+        "unit": "USD",
+        "what": "Toshkentda uy-joy ijarasining umumiy median narxi (may 2026)"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n10"
+  },
+  {
+    "topic": "ijara",
+    "geography": "Toshkent",
+    "date": "2026-09-30",
+    "outlet": "daryo.uz",
+    "url": "https://daryo.uz/2026/09/30/ozbekistonda-uylar-va-ijara-narxlari-bir-yilda-13-foizgacha-qimmatlashdi/",
+    "title": "Oʻzbekistonda uylar va ijara narxlari bir yilda 13 foizgacha qimmatlashdi",
+    "claim_uz": "Iyunda poytaxtda bir kvadrat metr ijara taklifi oyiga 9,5 dollarga yetgan, deb Markaziy bank hisobladi.",
+    "numbers": [
+      {
+        "value": 9.5,
+        "unit": "USD/m²/oy",
+        "what": "Toshkentda ijaraning o‘rtacha taklif narxi (iyun 2026)"
+      },
+      {
+        "value": 114000.0,
+        "unit": "so‘m",
+        "what": "Toshkentda 1 m² ijara taklif narxi (iyun 2026)"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n11"
+  },
+  {
+    "topic": "ijara",
+    "geography": "respublika",
+    "date": "2026-09-30",
+    "outlet": "daryo.uz",
+    "url": "https://daryo.uz/2026/09/30/ozbekistonda-uylar-va-ijara-narxlari-bir-yilda-13-foizgacha-qimmatlashdi/",
+    "title": "Oʻzbekistonda uylar va ijara narxlari bir yilda 13 foizgacha qimmatlashdi",
+    "claim_uz": "Iyunda ko‘p qavatli uylardagi xonadonlar ijarasi bir yil oldingiga nisbatan so‘mda 7,1 foizga, dollarda 13 foizga qimmatlashgan.",
+    "numbers": [
+      {
+        "value": 7.1,
+        "unit": "%",
+        "what": "ko‘p qavatli uylardagi xonadonlar ijarasi, yillik o‘sish, so‘mda (iyun 2026)"
+      },
+      {
+        "value": 13.0,
+        "unit": "%",
+        "what": "ko‘p qavatli uylardagi xonadonlar ijarasi, yillik o‘sish, dollarda (iyun 2026)"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n12"
+  },
+  {
+    "topic": "qurilish",
+    "geography": "toshkent",
+    "date": "2026-10-02",
+    "outlet": "kun.uz",
+    "url": "https://kun.uz/news/2026/10/02/tamirtalab-uylardan-qulay-xonadonlarga-toshkentda-renovatsiyaning-ilk-bosqichi-amalga-oshmoqda",
+    "title": "Taʼmirtalab uylardan qulay xonadonlarga: Toshkentda renovatsiyaning ilk bosqichi amalga oshmoqda — Kun.uz",
+    "claim_uz": "Toshkent shahar hokimi Shavkat Umrzoqovning aytishicha, Yashnobod tumanida birinchi bosqichda 40 ta xonadon egalariga uy topshirilmoqda.",
+    "numbers": [
+      {
+        "value": 40.0,
+        "unit": "ta xonadon",
+        "what": "Yashnobod tumanida birinchi bosqichda egalariga topshirilayotgan xonadonlar"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n13"
+  },
+  {
+    "topic": "stavka",
+    "geography": "respublika",
+    "date": "2026-10-06",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/10/06/inflation-september",
+    "title": "Sentabrda narxlar o‘sishi yil boshidan beri eng yuqori darajagacha tezlashdi",
+    "claim_uz": "Milliy statistika qo'mitasi ma'lumotiga ko'ra, sentabrda yillik inflyatsiya avgustdagi 6,2 foizdan 6,4 foizgacha tezlashdi, oylik inflyatsiya esa 0,7 foiz bo'ldi.",
+    "numbers": [
+      {
+        "value": 6.4,
+        "unit": "%",
+        "what": "sentabr oyida yillik inflyatsiya"
+      },
+      {
+        "value": 0.7,
+        "unit": "%",
+        "what": "sentabr oyida oylik inflyatsiya"
+      },
+      {
+        "value": 4.2,
+        "unit": "%",
+        "what": "yanvar-sentabr davrida narxlar o'sishi"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n14"
+  },
+  {
+    "topic": "qurilish",
+    "geography": "toshkent",
+    "date": "2026-10-12",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/10/12/new-tashkent",
+    "title": "Yangi Toshkentda yil oxirigacha 20 ming xonadonni foydalanishga topshirish rejalashtirilmoqda",
+    "claim_uz": "Yil oxirigacha Yangi Toshkentda 20 ming xonadon foydalanishga berilishi kutilayotgani uchrashuvda ma'lum qilindi.",
+    "numbers": [
+      {
+        "value": 20000.0,
+        "unit": "xonadon",
+        "what": "2026-yil oxirigacha Yangi Toshkentda foydalanishga topshiriladigan uy-joy"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n15"
+  },
+  {
+    "topic": "valyuta",
+    "geography": "respublika",
+    "date": "2026-10-13",
+    "outlet": "daryo.uz",
+    "url": "https://daryo.uz/2026/10/13/ozbekistonda-dollar-kursi-ketma-ket-yettinchi-kun-oshdi/",
+    "title": "O'zbekistonda dollar kursi ketma-ket yettinchi kun oshdi",
+    "claim_uz": "Markaziy bank 14-oktyabrda amal qiladigan dollar kursini 11 913,35 so‘mga belgilab, uni avvalgi kunga nisbatan 14,26 so‘mga oshirdi.",
+    "numbers": [
+      {
+        "value": 11913.35,
+        "unit": "so‘m",
+        "what": "AQSH dollarining rasmiy kursi, 14-oktyabr 2026"
+      },
+      {
+        "value": 14.26,
+        "unit": "so‘m",
+        "what": "dollar kursidagi o‘zgarish"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n16"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-07-02",
+    "outlet": "uzmrc.uz",
+    "url": "https://uzmrc.uz/",
+    "title": "Fitch Ratings Kompaniyaga \"BB\" reytingini va \"Positive\" prognozini e'lon qildi",
+    "claim_uz": "Fitch Ratings 2-iyulda O‘zbekiston ipotekani qayta moliyalashtirish kompaniyasiga uzoq muddatli defolt reytingi va ijobiy prognoz berdi.",
+    "numbers": [],
+    "official": false,
+    "relevance": 4,
+    "id": "n17"
+  },
+  {
+    "topic": "ijara",
+    "geography": "Toshkent",
+    "date": "2026-07-10",
+    "outlet": "gazeta.uz",
+    "url": "https://www.gazeta.uz/ru/2026/07/10/real-estate/",
+    "title": "Квартиры немного подорожали, ипотека растёт. Что происходит на рынке жилья Узбекистана",
+    "claim_uz": "Yanvar–mart davrida poytaxtda ijara narxi AQSh dollarida 6,9 foiz, so‘mda esa atigi 0,6 foiz oshgan.",
+    "numbers": [
+      {
+        "value": 6.9,
+        "unit": "%",
+        "what": "Toshkentda ijara narxi o‘sishi, dollarda (I chorak 2026)"
+      },
+      {
+        "value": 0.6,
+        "unit": "%",
+        "what": "Toshkentda ijara narxi o‘sishi, so‘mda (I chorak 2026)"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n18"
+  },
+  {
+    "topic": "tartibga_solish",
+    "geography": "respublika",
+    "date": "2026-07-16",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/07/16/housing-registration",
+    "title": "Ko‘chmas mulkni kech ro‘yxatdan o‘tkazganlardan jarima o‘rniga oshirilgan to‘lov undiriladi",
+    "claim_uz": "Meros yoki yaqin qarindoshdan hadya qilingan uy-joyni sotishda daromad solig‘idan ozod etish muddatini endi yangi egasi emas, meros qoldiruvchi yoki hadya qiluvchi belgilaydi.",
+    "numbers": [],
+    "official": false,
+    "relevance": 4,
+    "id": "n19"
+  },
+  {
+    "topic": "narx",
+    "geography": "toshkent",
+    "date": "2026-07-17",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/07/17/house-price",
+    "title": "Milliy statistika qo‘mitasi uy-joy narxlarini yangi usulda hisoblay boshladi",
+    "claim_uz": "Poytaxtda kvartiralar narxi bir yil ichida 3,9 foizga qimmatlagan, bu ko‘rsatkich respublikaning qolgan hududlari bilan solishtirilganda past.",
+    "numbers": [
+      {
+        "value": 3.9,
+        "unit": "%",
+        "what": "Toshkentda kvartira narxi, bir yillik o‘sish"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n20"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-07-19",
+    "outlet": "anhor.uz",
+    "url": "https://anhor.uz/uzl/news/ipoteka-krediti-boyicha-soliq-imtiyozini-olish-tartibi-ozgaradi/",
+    "title": "Ipoteka krediti bo‘yicha soliq imtiyozini olish tartibi o‘zgaradi",
+    "claim_uz": "2027-yil 1-yanvardan ipoteka kreditlarini to‘lashga yo‘naltirilgan daromadlar bo‘yicha soliq imtiyozlari avtomatik tartibda taqdim etiladi.",
+    "numbers": [
+      {
+        "value": 2027.0,
+        "unit": "yil 1-yanvar",
+        "what": "avtomatik soliq imtiyozi tartibining boshlanish sanasi"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n21"
+  },
+  {
+    "topic": "valyuta",
+    "geography": "respublika",
+    "date": "2026-07-26",
+    "outlet": "gazeta.uz",
+    "url": "https://www.gazeta.uz/oz/2026/07/26/money-transfers/",
+    "title": "Yarim yilda O‘zbekistonga pul o‘tkazmalari 9,3 mlrd dollargacha o‘sdi",
+    "claim_uz": "Yanvar–iyun oylarida O‘zbekistondan xorijga yuborilgan pul o‘tkazmalari 1,33 mlrd dollarga yetib, bir yil oldingiga nisbatan 8,1 foizga ko‘paygan.",
+    "numbers": [
+      {
+        "value": 1.33,
+        "unit": "mlrd dollar",
+        "what": "yanvar–iyun 2026 O‘zbekistondan chiqqan pul o‘tkazmalari"
+      },
+      {
+        "value": 8.1,
+        "unit": "%",
+        "what": "o‘tgan yilning shu davriga nisbatan o‘sish"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n22"
+  },
+  {
+    "topic": "narx",
+    "geography": "respublika",
+    "date": "2026-08-02",
+    "outlet": "uz.kursiv.media",
+    "url": "https://uz.kursiv.media/2026-08-02/prodazhi-zhilya-v-uzbekistane-vzleteli-na-253-za-god-czeir/",
+    "title": "Рынок недвижимости Узбекистана вырос на 25,3% за год",
+    "claim_uz": "ЦЭИР ma’lumotiga ko‘ra, yanvar–iyun oylarida ko‘chmas mulk bitimlari soni 25,3 foizga oshib, 171 mingtaga yetgan.",
+    "numbers": [
+      {
+        "value": 25.3,
+        "unit": "%",
+        "what": "ko‘chmas mulk bitimlari soni, yanvar–iyun (yillik o‘sish)"
+      },
+      {
+        "value": 171.0,
+        "unit": "ming bitim",
+        "what": "ko‘chmas mulk bitimlari soni, yanvar–iyun 2026"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n23"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-08-08",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/08/08/morgtage-loans",
+    "title": "Banklardagi ipoteka kreditlari. 2026-yil avgust oyi bo‘yicha",
+    "claim_uz": "Spot yozishicha, davlat dasturi bo‘yicha ipoteka kreditining o‘rtacha stavkasi yiliga taxminan 17% ni tashkil etadi.",
+    "numbers": [
+      {
+        "value": 17.0,
+        "unit": "%",
+        "what": "davlat dasturi bo‘yicha o‘rtacha yillik stavka (taxminiy)"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n24"
+  },
+  {
+    "topic": "valyuta",
+    "geography": "respublika",
+    "date": "2026-08-11",
+    "outlet": "zamin.uz",
+    "url": "https://zamin.uz/uz/iqtisodiyot/217215-11-avgust-uchun-valyuta-kurslari-e-lon-qilindi.html",
+    "title": "11 avgust uchun valyuta kurslari e’lon qilindi",
+    "claim_uz": "Markaziy bank 11-avgust uchun dollar kursini 11 934,61 so‘mga tushirib, 17,49 so‘mga arzonlashganini e’lon qildi.",
+    "numbers": [
+      {
+        "value": 11934.61,
+        "unit": "so‘m",
+        "what": "AQSH dollarining rasmiy kursi, 11-avgust 2026"
+      },
+      {
+        "value": 17.49,
+        "unit": "so‘m",
+        "what": "dollar kursining pasayishi"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n25"
+  },
+  {
+    "topic": "qurilish",
+    "geography": "respublika",
+    "date": "2026-08-13",
+    "outlet": "yuz.uz",
+    "url": "https://yuz.uz/ru/news/v-uzbekistane-za-pervoe-polugodie-vveli-v-ekspluatatsiyu-77-mln-kvadratnx-metrov-jilya",
+    "title": "В Узбекистане за первое полугодие ввели в эксплуатацию 7,7 млн квадратных метров жилья",
+    "claim_uz": "Milliy statistika qo'mitasi ma'lumotiga ko'ra, 2026-yilning yanvar-iyun oylarida respublikada 7,7 mln kv.metr individual uy-joy foydalanishga topshirilgan.",
+    "numbers": [
+      {
+        "value": 7.7,
+        "unit": "mln kv.metr",
+        "what": "2026-yil yanvar-iyun oylarida foydalanishga topshirilgan individual uy-joy hajmi"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n26"
+  },
+  {
+    "topic": "valyuta",
+    "geography": "respublika",
+    "date": "2026-08-14",
+    "outlet": "uzdaily.uz",
+    "url": "https://www.uzdaily.uz/uz/ozbekistonga-yarim-yildagi-pul-otkazmalari-13-osdi/",
+    "title": "O‘zbekistonga yarim yildagi pul o‘tkazmalari 13% o‘sdi",
+    "claim_uz": "Yanvar–iyun oylarida kelgan pul o‘tkazmalarining 51,7 foizi, ya’ni 4,8 mlrd dollari, P2P tizimi orqali bank kartalariga to‘g‘ridan-to‘g‘ri tushgan.",
+    "numbers": [
+      {
+        "value": 4.8,
+        "unit": "mlrd dollar",
+        "what": "P2P orqali bank kartalariga kelib tushgan mablag‘"
+      },
+      {
+        "value": 51.7,
+        "unit": "%",
+        "what": "P2P ulushi umumiy pul o‘tkazmalarida"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n27"
+  },
+  {
+    "topic": "qurilish",
+    "geography": "toshkent",
+    "date": "2026-08-28",
+    "outlet": "gazeta.uz",
+    "url": "https://www.gazeta.uz/oz/2026/08/28/renovation/",
+    "title": "Toshkentda uchta tumanda turar joylarni renovatsiya qilish boshlanadi. Hokim uni amalga oshirish tartibini belgiladi",
+    "claim_uz": "Tiklanish va taraqqiyot jamg'armasi kompleks qurilish hududlarida ishlaydigan har bir investitsiya kompaniyasiga 5 yilga yillik 5 foiz stavkada qarz ajratishi belgilandi.",
+    "numbers": [
+      {
+        "value": 5.0,
+        "unit": "%",
+        "what": "kompleks qurilish kompaniyalariga ajratiladigan qarzning yillik stavkasi"
+      },
+      {
+        "value": 20.0,
+        "unit": "mln AQSH dollari",
+        "what": "har bir investitsiya kompaniyasiga ajratiladigan qarz miqdori"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n28"
+  },
+  {
+    "topic": "stavka",
+    "geography": "respublika",
+    "date": "2026-09-16",
+    "outlet": "kun.uz",
+    "url": "https://kun.uz/news/2026/09/16/markaziy-bank-asosiy-stavkani-14-foiz-darajada-ozgarishsiz-qoldirdi",
+    "title": "Markaziy bank asosiy stavkani 14 foiz darajada oʻzgarishsiz qoldirdi",
+    "claim_uz": "Avgust oyida yillik inflyatsiya 6,2 foizgacha pasayib, bazaviy inflyatsiya 5,5 foiz atrofida shakllandi, keyingi stavka yig'ilishi esa 28-oktabrga belgilandi.",
+    "numbers": [
+      {
+        "value": 6.2,
+        "unit": "%",
+        "what": "avgust oyida yillik umumiy inflyatsiya"
+      },
+      {
+        "value": 5.5,
+        "unit": "%",
+        "what": "avgust oyida bazaviy inflyatsiya"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n29"
+  },
+  {
+    "topic": "tartibga_solish",
+    "geography": "respublika",
+    "date": "2026-09-17",
+    "outlet": "uza.uz",
+    "url": "https://uza.uz/en/posts/2026-yilda-iqtisodiyotda-davlat-ishtirokini-qisqartirish-hamda-xususiylashtirish-dasturining-maqsadli-korsatkichlari-belgilandi_909872",
+    "title": "2026-yilda iqtisodiyotda davlat ishtirokini qisqartirish hamda xususiylashtirish dasturining maqsadli ko‘rsatkichlari belgilandi",
+    "claim_uz": "Farmonga ko‘ra, 2026–2027-yillarda davlat va davlat ishtirokidagi korxonalarga tegishli 1 242 ta ko‘chmas mulk obyekti ommaviy savdoga chiqariladi.",
+    "numbers": [
+      {
+        "value": 1242.0,
+        "unit": "ta",
+        "what": "2026–2027-yillarda ommaviy savdoga chiqariladigan ko‘chmas mulk obyektlari soni"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n30"
+  },
+  {
+    "topic": "narx",
+    "geography": "toshkent",
+    "date": "2026-09-30",
+    "outlet": "gazeta.uz",
+    "url": "https://www.gazeta.uz/oz/2026/09/30/rent/",
+    "title": "O‘zbekistonda uy-joy ijarasi narxi o‘sishi tezlashdi — Markaziy bank",
+    "claim_uz": "Markaziy bank ma’lumotlariga ko‘ra, iyun oyida Toshkentda ijaraning o‘rtacha taklif narxi kvadrat metr uchun oyiga 9,5 dollar bo‘lgan.",
+    "numbers": [
+      {
+        "value": 9.5,
+        "unit": "dollar/m²/oy",
+        "what": "Toshkentda ijaraning o‘rtacha taklif narxi, iyun 2026"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n31"
+  },
+  {
+    "topic": "ijara",
+    "geography": "Toshkent",
+    "date": "2026-09-30",
+    "outlet": "gazeta.uz",
+    "url": "https://www.gazeta.uz/oz/2026/09/30/rent/",
+    "title": "O‘zbekistonda uy-joy ijarasi narxi o‘sishi tezlashdi — Markaziy bank",
+    "claim_uz": "Bir xonali kvartiraning ijara mediani 400 dollar sifatida qayd etilgan.",
+    "numbers": [
+      {
+        "value": 400.0,
+        "unit": "USD",
+        "what": "bir xonali kvartira ijarasining median narxi (may 2026, Toshkent)"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n32"
+  },
+  {
+    "topic": "tartibga_solish",
+    "geography": "respublika",
+    "date": "2026-10-10",
+    "outlet": "yuz.uz",
+    "url": "https://yuz.uz/uz/news/2027-iilda-qaisi-maallalardagi-uzzatsiz-ui-zoilar-xatlovda",
+    "title": "2027-yilda qaysi mahallalardagi hujjatsiz uy-joylar xatlovdan o‘tkaziladi?",
+    "claim_uz": "Kadastr agentligi 2027-yilda hujjatsiz ko‘chmas mulk obyektlari xatlovi o‘tkaziladigan mahallalar reja-jadvalini tasdiqladi.",
+    "numbers": [],
+    "official": false,
+    "relevance": 4,
+    "id": "n33"
+  },
+  {
+    "topic": "qurilish",
+    "geography": "toshkent",
+    "date": "2026-10-12",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/10/12/yangi-toshkent",
+    "title": "Yangi Toshkent faqat yangi uy-joy quriladigan hudud emas — prezident",
+    "claim_uz": "Uch yil avval boshlangan loyiha doirasida Yangi Toshkentga 2 mlrd dollardan ortiq investitsiya kiritilgani xabar qilindi.",
+    "numbers": [
+      {
+        "value": 2.0,
+        "unit": "mlrd AQSH dollari",
+        "what": "Yangi Toshkentga kiritilgan investitsiya hajmi"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n34"
+  },
+  {
+    "topic": "qurilish",
+    "geography": "toshkent",
+    "date": "2026-10-12",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/10/12/new-tashkent-projects",
+    "title": "Yangi Toshkentda $1 mlrdlik 7 ta obyekt ishga tushirilib, yana $2,5 mlrdlik loyihalar qurilishi boshlandi",
+    "claim_uz": "Yangi Toshkentda umumiy qiymati 1 mlrd dollar bo'lgan yettita obyekt ishga tushirilgani haqida xabar berildi.",
+    "numbers": [
+      {
+        "value": 1.0,
+        "unit": "mlrd AQSH dollari",
+        "what": "ishga tushirilgan yettita obyektning umumiy qiymati"
+      },
+      {
+        "value": 7.0,
+        "unit": "ta",
+        "what": "ishga tushirilgan obyektlar soni"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n35"
+  },
+  {
+    "topic": "valyuta",
+    "geography": "respublika",
+    "date": "2026-07-27",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/currency/",
+    "title": "O‘zbekistonda bugungi valyutalar kursi",
+    "claim_uz": "Markaziy bank 27-iyul uchun AQSH dollari kursini 12 019,08 so‘mga belgilab, oldingi kunga nisbatan 82,76 so‘mga pasaytirgan.",
+    "numbers": [
+      {
+        "value": 12019.08,
+        "unit": "so‘m",
+        "what": "AQSH dollarining rasmiy kursi, 27-iyul 2026"
+      },
+      {
+        "value": 82.76,
+        "unit": "so‘m",
+        "what": "dollar kursidagi o‘zgarish"
+      }
+    ],
+    "official": false,
+    "relevance": 3,
+    "id": "n36"
+  },
+  {
+    "topic": "narx",
+    "geography": "toshkent",
+    "date": "2026-08-14",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/08/14/property-valuation",
+    "title": "Toshkentda ko‘chmas mulk ommaviy baholandi — uylar narxi kadastrdagidan 7,4 baravar yuqori",
+    "claim_uz": "Dastlabki natijalarga ko‘ra, Toshkentdagi 600 mingdan ortiq kvartiraning kadastr bo‘yicha qiymati 57,7 trln so‘mdan 426,7 trln so‘mga yetgan.",
+    "numbers": [
+      {
+        "value": 57.7,
+        "unit": "trln so‘m",
+        "what": "600 mingdan ortiq kvartiraning amaldagi kadastr qiymati"
+      },
+      {
+        "value": 426.7,
+        "unit": "trln so‘m",
+        "what": "ommaviy baholashdan keyingi qiymat"
+      }
+    ],
+    "official": false,
+    "relevance": 3,
+    "id": "n37"
+  },
+  {
+    "topic": "stavka",
+    "geography": "respublika",
+    "date": "2026-09-21",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/09/21/inflation-expectations/",
+    "title": "O‘zbekistonda inflyatsion kutilmalar yangi minimumga tushdi — Markaziy bank",
+    "claim_uz": "Markaziy bank xabariga ko'ra, avgust oyi so'rovida aholining kelgusi 12 oy uchun o'rtacha inflyatsion kutilmasi 9,8 foizni tashkil etdi.",
+    "numbers": [
+      {
+        "value": 9.8,
+        "unit": "%",
+        "what": "kelgusi 12 oy uchun o'rtacha inflyatsion kutilma (avgust so'rovi)"
+      }
+    ],
+    "official": false,
+    "relevance": 3,
+    "id": "n38"
+  },
+  {
+    "topic": "ijara",
+    "geography": "respublika",
+    "date": "2026-09-30",
+    "outlet": "daryo.uz",
+    "url": "https://daryo.uz/2026/09/30/ozbekistonda-uylar-va-ijara-narxlari-bir-yilda-13-foizgacha-qimmatlashdi/",
+    "title": "Oʻzbekistonda uylar va ijara narxlari bir yilda 13 foizgacha qimmatlashdi",
+    "claim_uz": "Hududlarda kvartira ijarasi narxlarining o‘sish sur’ati poytaxtdagidan yuqoriroq ekani Markaziy bank sharhida qayd etilgan.",
+    "numbers": [],
+    "official": false,
+    "relevance": 3,
+    "id": "n39"
+  },
+  {
+    "topic": "tartibga_solish",
+    "geography": "respublika",
+    "date": "2026-10-10",
+    "outlet": "yuz.uz",
+    "url": "https://yuz.uz/uz/news/2027-iilda-qaisi-maallalardagi-uzzatsiz-ui-zoilar-xatlovda",
+    "title": "2027-yilda qaysi mahallalardagi hujjatsiz uy-joylar xatlovdan o‘tkaziladi?",
+    "claim_uz": "Kadastr agentligi ma’lumotiga ko‘ra, 2026-yil 8-oktyabr holatida uy-joyi yoki yeriga huquqni tasdiqlovchi hujjati bo‘lmagan 218 850 nafar fuqaro qayd etilgan.",
+    "numbers": [
+      {
+        "value": 218850.0,
+        "unit": "nafar fuqaro",
+        "what": "2026-yil 8-oktyabr holatida huquqni tasdiqlovchi hujjati bo‘lmagan fuqarolar soni"
+      }
+    ],
+    "official": false,
+    "relevance": 3,
+    "id": "n40"
+  },
+  {
+    "topic": "stavka",
+    "geography": "respublika",
+    "date": "2026-10-13",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/10/13/imf-outlook",
+    "title": "XVJ O‘zbekiston iqtisodiyotining 2026−2027-yillardagi o‘sish prognozini sezilarli yaxshiladi",
+    "claim_uz": "XVJ 2026-yil uchun O'zbekiston inflyatsiya prognozini 6,8 foizdan 6,9 foizga oshirdi.",
+    "numbers": [
+      {
+        "value": 6.8,
+        "unit": "%",
+        "what": "XVJ oldingi 2026-yil inflyatsiya prognozi"
+      },
+      {
+        "value": 6.9,
+        "unit": "%",
+        "what": "XVJ yangilangan 2026-yil inflyatsiya prognozi"
+      }
+    ],
+    "official": false,
+    "relevance": 3,
+    "id": "n41"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-07-27",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/07/27/mortgage",
+    "title": "O‘zbekistonda yarim yilda 13,1 trln so‘mlik ipoteka krediti ajratildi",
+    "claim_uz": "Markaziy bank maʼlumotiga koʻra, 2026-yilning birinchi yarmida 42 575 fuqaroga 13,1 trln soʻm ipoteka krediti ajratilgan, bu oʻtgan yilning mos davridagi 9,5 trln soʻmdan qariyb 38 foiz koʻp; mablagʻning 75 foizi birlamchi bozorga yoʻnaltirilgan.",
+    "numbers": [
+      {
+        "value": 13.1,
+        "unit": "trln so'm",
+        "what": "ipoteka, 2026 I yarim yillik"
+      },
+      {
+        "value": 42575.0,
+        "unit": "fuqaro",
+        "what": "qarz oluvchilar"
+      },
+      {
+        "value": 9.5,
+        "unit": "trln so'm",
+        "what": "ipoteka, 2025 I yarim yillik"
+      },
+      {
+        "value": 38.0,
+        "unit": "%",
+        "what": "yillik o'sish"
+      },
+      {
+        "value": 75.0,
+        "unit": "%",
+        "what": "birlamchi bozor ulushi"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n42"
+  },
+  {
+    "topic": "stavka",
+    "geography": "respublika",
+    "date": "2026-09-16",
+    "outlet": "kun.uz",
+    "url": "https://kun.uz/news/2026/09/16/markaziy-bank-asosiy-stavkani-14-foiz-darajada-ozgarishsiz-qoldirdi",
+    "title": "Markaziy bank asosiy stavkani 14 foiz darajada oʻzgarishsiz qoldirdi",
+    "claim_uz": "Markaziy bank 16-sentabrda asosiy stavkani yillik 14 foiz darajasida saqlab qoldi; avgustda yillik inflyatsiya 6,2 foizgacha, bazaviy inflyatsiya 5,5 foizgacha pasaygan.",
+    "numbers": [
+      {
+        "value": 14.0,
+        "unit": "%",
+        "what": "asosiy stavka"
+      },
+      {
+        "value": 6.2,
+        "unit": "%",
+        "what": "yillik inflyatsiya, avgust"
+      },
+      {
+        "value": 5.5,
+        "unit": "%",
+        "what": "bazaviy inflyatsiya, avgust"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n43"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-09-29",
+    "outlet": "uz.kursiv.media",
+    "url": "https://uz.kursiv.media/uz/2026-09-29/ozbekistonda-uy-joy-narxlari-qimmatlashdi/",
+    "title": "O‘zbekistonda uy-joy narxlari qimmatlashdi",
+    "claim_uz": "Markaziy bankning koʻchmas mulk bozori tahliliga koʻra, 2026-yilning II choragida 7,4 trln soʻm ipoteka krediti ajratilgan, bu oʻtgan yilning mos davriga nisbatan 48 foiz koʻp.",
+    "numbers": [
+      {
+        "value": 7.4,
+        "unit": "trln so'm",
+        "what": "ipoteka, 2026 II chorak"
+      },
+      {
+        "value": 48.0,
+        "unit": "%",
+        "what": "yillik o'sish"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n44"
+  },
+  {
+    "topic": "narx",
+    "geography": "respublika",
+    "date": "2026-09-29",
+    "outlet": "uz.kursiv.media",
+    "url": "https://uz.kursiv.media/uz/2026-09-29/ozbekistonda-uy-joy-narxlari-qimmatlashdi/",
+    "title": "O‘zbekistonda uy-joy narxlari qimmatlashdi",
+    "claim_uz": "Markaziy bank maʼlumotiga koʻra, 2026-yil iyun holatiga kvartira narxlari bir yilda birlamchi bozorda 6,2 foiz, ikkilamchi bozorda 6,3 foiz oshgan; AQSH dollarida oʻsish mos ravishda 12 va 12,2 foizni tashkil etgan.",
+    "numbers": [
+      {
+        "value": 6.2,
+        "unit": "%",
+        "what": "birlamchi, yillik, so'mda"
+      },
+      {
+        "value": 6.3,
+        "unit": "%",
+        "what": "ikkilamchi, yillik, so'mda"
+      },
+      {
+        "value": 12.0,
+        "unit": "%",
+        "what": "birlamchi, yillik, dollarda"
+      },
+      {
+        "value": 12.2,
+        "unit": "%",
+        "what": "ikkilamchi, yillik, dollarda"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n45"
+  },
+  {
+    "topic": "ijara",
+    "geography": "respublika",
+    "date": "2026-09-29",
+    "outlet": "uz.kursiv.media",
+    "url": "https://uz.kursiv.media/uz/2026-09-29/ozbekistonda-uy-joy-narxlari-qimmatlashdi/",
+    "title": "O‘zbekistonda uy-joy narxlari qimmatlashdi",
+    "claim_uz": "Markaziy bank maʼlumotiga koʻra, 2026-yil iyun holatiga kvartira ijarasi narxlari bir yilda 7,1 foiz oshgan; Toshkentda oʻrtacha taklif narxi 1 m² uchun oyiga taxminan 114 ming soʻmni tashkil etib, 5,8 foiz oshgan.",
+    "numbers": [
+      {
+        "value": 7.1,
+        "unit": "%",
+        "what": "ijara, yillik, respublika"
+      },
+      {
+        "value": 114.0,
+        "unit": "ming so'm/m²",
+        "what": "Toshkent ijara"
+      },
+      {
+        "value": 5.8,
+        "unit": "%",
+        "what": "Toshkent ijara, yillik"
+      }
+    ],
+    "official": false,
+    "relevance": 5,
+    "id": "n46"
+  },
+  {
+    "topic": "tartibga_solish",
+    "geography": "respublika",
+    "date": "2026-07-28",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/07/28/equity-construction",
+    "title": "Qonunchilik palatasi ulushli qurilish bo‘yicha qonun loyihasini birinchi o‘qishda qabul qildi",
+    "claim_uz": "Qonunchilik palatasi ulush kiritish asosida koʻp kvartirali uylar qurish toʻgʻrisidagi qonun loyihasini birinchi oʻqishda qabul qildi; loyihaga koʻra, xaridorlar toʻlovi quruvchiga emas, bankdagi eskrou hisobvaraqqa tushadi.",
+    "numbers": [],
+    "official": false,
+    "relevance": 4,
+    "id": "n47"
+  },
+  {
+    "topic": "ipoteka",
+    "geography": "respublika",
+    "date": "2026-08-08",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/08/08/morgtage-loans",
+    "title": "Banklardagi ipoteka kreditlari. 2026-yil avgust oyi bo‘yicha",
+    "claim_uz": "2026-yil avgust holatiga banklarning oʻz mablagʻlari hisobidan beriladigan tijorat ipotekasi yillik 20–32 foiz stavkada, 5 yildan 20 yilgacha muddatga taklif etilmoqda.",
+    "numbers": [
+      {
+        "value": 20.0,
+        "unit": "%",
+        "what": "eng past stavka"
+      },
+      {
+        "value": 32.0,
+        "unit": "%",
+        "what": "eng yuqori stavka"
+      },
+      {
+        "value": 5.0,
+        "unit": "yil",
+        "what": "eng qisqa muddat"
+      },
+      {
+        "value": 20.0,
+        "unit": "yil",
+        "what": "eng uzoq muddat"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n48"
+  },
+  {
+    "topic": "tartibga_solish",
+    "geography": "toshkent",
+    "date": "2026-08-14",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/08/14/property-valuation",
+    "title": "Toshkentda ko‘chmas mulk ommaviy baholandi — uylar narxi kadastrdagidan 7,4 baravar yuqori",
+    "claim_uz": "Iqtisodiyot va moliya vazirligi Toshkentdagi 600 mingdan ortiq xonadonni ommaviy baholash natijalarini eʼlon qildi: ularning qiymati 426,7 trln soʻm boʻlib, kadastr qiymatidan (57,7 trln soʻm) qariyb 7,4 baravar yuqori; natijalar 60 kun davomida jamoatchilik muhokamasida.",
+    "numbers": [
+      {
+        "value": 600.0,
+        "unit": "ming xonadon",
+        "what": "baholangan kvartiralar"
+      },
+      {
+        "value": 426.7,
+        "unit": "trln so'm",
+        "what": "baholangan qiymat"
+      },
+      {
+        "value": 57.7,
+        "unit": "trln so'm",
+        "what": "kadastr qiymati"
+      },
+      {
+        "value": 7.4,
+        "unit": "baravar",
+        "what": "farq"
+      },
+      {
+        "value": 60.0,
+        "unit": "kun",
+        "what": "muhokama muddati"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n49"
+  },
+  {
+    "topic": "narx",
+    "geography": "respublika",
+    "date": "2026-09-16",
+    "outlet": "gazeta.uz",
+    "url": "https://www.gazeta.uz/oz/2026/09/16/real-estate-prices-uzb/",
+    "title": "O‘zbekistonda eng qimmat va eng arzon uy-joy qayerda — 35 ta shahar va tuman bo‘yicha ma’lumotlar",
+    "claim_uz": "Urbanizatsiya va uy-joy bozorini barqaror rivojlantirish milliy qoʻmitasining 1-sentabr holatidagi monitoringiga koʻra, kvartiralar 1 m² narxi eng yuqori Toshkentning Shayxontohur tumanida (25,3 mln soʻm), eng past Quvasoyda (4,5 mln soʻm).",
+    "numbers": [
+      {
+        "value": 25.3,
+        "unit": "mln so'm/m²",
+        "what": "Shayxontohur"
+      },
+      {
+        "value": 4.5,
+        "unit": "mln so'm/m²",
+        "what": "Quvasoy"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n50"
+  },
+  {
+    "topic": "narx",
+    "geography": "respublika",
+    "date": "2026-09-29",
+    "outlet": "uz.kursiv.media",
+    "url": "https://uz.kursiv.media/uz/2026-09-29/ozbekistonda-uy-joy-narxlari-qimmatlashdi/",
+    "title": "O‘zbekistonda uy-joy narxlari qimmatlashdi",
+    "claim_uz": "Markaziy bank maʼlumotiga koʻra, 2026-yilning II choragida 74,4 ming oldi-sotdi bitimi tuzilgan, bu oʻtgan yilgi darajada (+0,1 foiz); Xorazmda bitimlar 17,8 foiz, Toshkent shahrida 2 foiz oshgan.",
+    "numbers": [
+      {
+        "value": 74.4,
+        "unit": "ming",
+        "what": "oldi-sotdi bitimlari, II chorak"
+      },
+      {
+        "value": 0.1,
+        "unit": "%",
+        "what": "yillik o'zgarish"
+      },
+      {
+        "value": 17.8,
+        "unit": "%",
+        "what": "Xorazm"
+      },
+      {
+        "value": 2.0,
+        "unit": "%",
+        "what": "Toshkent shahri"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n51"
+  },
+  {
+    "topic": "qurilish",
+    "geography": "respublika",
+    "date": "2026-09-29",
+    "outlet": "uz.kursiv.media",
+    "url": "https://uz.kursiv.media/uz/2026-09-29/ozbekistonda-uy-joy-narxlari-qimmatlashdi/",
+    "title": "O‘zbekistonda uy-joy narxlari qimmatlashdi",
+    "claim_uz": "2026-yilning birinchi yarmida 7,7 mln m² uy-joy foydalanishga topshirilgan, bu 7,2 foiz koʻp; uy-joy qurilishiga 27,3 trln soʻm investitsiya yoʻnaltirilgan.",
+    "numbers": [
+      {
+        "value": 7.7,
+        "unit": "mln m²",
+        "what": "foydalanishga topshirilgan uy-joy"
+      },
+      {
+        "value": 7.2,
+        "unit": "%",
+        "what": "yillik o'sish"
+      },
+      {
+        "value": 27.3,
+        "unit": "trln so'm",
+        "what": "uy-joy qurilishiga investitsiya"
+      }
+    ],
+    "official": false,
+    "relevance": 4,
+    "id": "n52"
+  },
+  {
+    "topic": "tartibga_solish",
+    "geography": "respublika",
+    "date": "2026-07-16",
+    "outlet": "buxgalter.uz",
+    "url": "https://buxgalter.uz/oz/publish/doc/text216197_pq-265-son_qarorga_muvofiq_kimlar_uy-joyni_sotishda_soliq_tulamasligi_mumkin",
+    "title": "Uy-joy sotishda kimlar soliq toʻlamasligi mumkin: 15.07.2026 y. PQ-265-son sharhi",
+    "claim_uz": "Prezidentning 2026-yil 15-iyuldagi PQ-265-son qaroriga koʻra, yaqin qarindoshdan sovgʻa yoki meros sifatida olingan uy-joyni sotishda egalik muddati asl egasining roʻyxatdan oʻtgan sanasidan hisoblanadi; norma 2027-yil 1-yanvardan amal qiladi.",
+    "numbers": [],
+    "official": false,
+    "relevance": 3,
+    "id": "n53"
+  },
+  {
+    "topic": "valyuta",
+    "geography": "respublika",
+    "date": "2026-08-17",
+    "outlet": "spot.uz",
+    "url": "https://www.spot.uz/oz/2026/08/17/remittances/",
+    "title": "Pul o'tkazmalari, 2026-yil birinchi yarmi",
+    "claim_uz": "Markaziy bank maʼlumotiga koʻra, 2026-yilning birinchi yarmida Oʻzbekistonga 9,3 mlrd dollar pul oʻtkazmasi kelgan, bu oʻtgan yilning mos davriga nisbatan 13 foiz koʻp.",
+    "numbers": [
+      {
+        "value": 9.3,
+        "unit": "mlrd dollar",
+        "what": "pul o'tkazmalari, I yarim yillik"
+      },
+      {
+        "value": 13.0,
+        "unit": "%",
+        "what": "yillik o'sish"
+      }
+    ],
+    "official": false,
+    "relevance": 3,
+    "id": "n54"
+  }
+]

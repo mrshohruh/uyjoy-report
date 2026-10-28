@@ -2,77 +2,100 @@
 # (dotted paths allowed); `must_mention` lists facts paths whose names must appear.
 # Word limits follow the published reports' text boxes.
 respublika:
+  - key: makro
+    title: MAKROIQTISODIY FON
+    facts: [report, makro.base_rate_pct, makro.inflation_yoy_pct, makro.real_rate_pp, makro.inflation_change_pp, makro.series, respublika]
+    news_topics: [stavka, valyuta]
+    slots:
+      stavka: {words: [45, 90], about: "Asosiy stavka (makro.base_rate_pct), chorak oxiridagi yillik inflyatsiya (makro.inflation_yoy_pct) va real stavka (real_rate_pp, foiz punkt); MB qarorlari va inflyatsiya kutilmalari (yangiliklardan). Grafikka ishora qiling."}
+      valyuta: {words: [40, 80], about: "Soʻm kursi (report.som_vs_usd_pct, usd_uzs_end) va uning soʻmdagi narxlarga taʼsiri: eʼlonlar dollarda, shuning uchun soʻm mustahkamlansa soʻmdagi narx pasayadi. respublika.*.weighted_qoq_pct bilan bogʻlang."}
+    must_mention: []
+  - key: ipoteka
+    title: IPOTEKA, BITIMLAR VA QURILISH
+    facts: [report, makro.annual]
+    news_topics: [ipoteka, narx, qurilish]
+    slots:
+      matn: {words: [80, 140], about: "Yillik bitimlar va ipoteka ulushi (makro.annual), uy-joy qurilishi va 2026-yil rejasi, ipoteka hajmi birlamchi/ikkilamchi; joriy yil yangiliklari: ipoteka hajmi, qarz oluvchilar, birlamchi ulushi, stavkalar, bitimlar soni (manba belgisi bilan)."}
+    must_mention: []
   - key: birlamchi
     title: BIRLAMCHI UY-JOY BOZORI
-    facts: [report, birlamchi, toshkent_tumanlari.birlamchi, solishtirma.qoq.birlamchi]
+    facts: [report, birlamchi, toshkent_tumanlari.birlamchi, solishtirma.qoq.birlamchi, respublika.birlamchi]
     note_break: true
     news_topics: [narx, valyuta]
     slots:
-      hududlar: {words: [60, 110], about: "Hududlar kesimida: umumiy yoʻnalish, eng koʻp oʻsgan va pasaygan 2-3 hudud foizlari bilan, yillik taqqoslash."}
-      toshkent: {words: [40, 90], about: "Toshkent shahri tumanlari: eng qimmat va eng arzon tumanlar; maʼlumot faqat qisman boʻlsa buni ayting."}
-      izoh: {words: [50, 110], about: "Sabablar: valyuta kursi (som_vs_usd_pct), tabiiy korreksiya, hududlar orasidagi narx farqi, yangiliklar."}
+      hududlar: {words: [70, 120], about: "Xarita va jadvalga tayangan holda: umumiy yoʻnalish (tortilgan va oddiy oʻrtacha farqi bir gapda), eng koʻp oʻsgan va pasaygan 2-3 hudud, yillik oʻsish yetakchilari, ketma-ket oʻsish (streaks), kam eʼlonli hududlar."}
+      toshkent: {words: [55, 100], about: "Toshkent tumanlari: eng qimmat va arzon tumanlar, oʻsgan va pasaygan tumanlar, yillik oʻzgarish; rasmga ishora."}
     must_mention: [birlamchi.top_up, birlamchi.top_down]
   - key: ikkilamchi
     title: IKKILAMCHI UY-JOY BOZORI
-    facts: [report, ikkilamchi, toshkent_tumanlari.ikkilamchi, solishtirma.qoq.ikkilamchi]
+    facts: [report, ikkilamchi, toshkent_tumanlari.ikkilamchi, solishtirma.qoq.ikkilamchi, respublika.ikkilamchi]
     note_break: true
     news_topics: [narx]
     slots:
-      hududlar: {words: [60, 110], about: "Hududlar kesimida: umumiy yoʻnalish, yetakchi oʻsish va pasayish, uzoq davom etayotgan tendensiyalar (streaks)."}
-      toshkent: {words: [40, 90], about: "Toshkent shahri tumanlari ikkilamchi bozorda."}
-      izoh: {words: [50, 110], about: "Taklif va talab omillari, yillik oʻzgarishlar."}
+      hududlar: {words: [70, 120], about: "Hududlar: umumiy yoʻnalish, yetakchi oʻsish va pasayish, uzoq davom etayotgan tendensiyalar (streaks), yillik oʻsish; kam eʼlonli hududlarni ajrating."}
+      toshkent: {words: [55, 100], about: "Toshkent tumanlari ikkilamchi bozorda: qaysi tumanlarda pasaydi/oshdi, eng qimmat tuman, ketma-ket pasayish."}
     must_mention: [ikkilamchi.top_up, ikkilamchi.top_down]
+  - key: premium
+    title: BIRLAMCHI VA IKKILAMCHI BOZOR TAQQOSI
+    facts: [report, premium, premium_tumanlar]
+    news_topics: []
+    slots:
+      matn: {words: [60, 110], about: "Yangi uylar ustamasi (premium.rows.value): eng yuqori va eng past hududlar, manfiy ustama (premium.negative), bir yil oldingiga nisbatan oʻzgarish (change_pp); Toshkent tumanlaridagi ustama (premium_tumanlar). Kichik grafiklarga ishora."}
+    must_mention: [premium.highest]
   - key: ijara
     title: IJARA BOZORI
-    facts: [report, ijara, toshkent_tumanlari.ijara, solishtirma.qoq.ijara]
+    facts: [report, ijara, toshkent_tumanlari.ijara, solishtirma.qoq.ijara, respublika.ijara, xonalar_toshkent.ijara, xonalar_toshkent.rooms]
     note_break: true
     news_topics: [ijara]
     slots:
-      hududlar: {words: [50, 100], about: "Ijara narxlari darajasi: eng yuqori va eng past hududlar; oʻzgarish maʼlumoti boʻlmasa buni ayting."}
-      toshkent: {words: [40, 90], about: "Toshkent tumanlari ijara narxlari."}
-      izoh: {words: [40, 90], about: "Yangiliklardagi ijara tendensiyasi (manba bilan)."}
+      hududlar: {words: [70, 120], about: "Ijara darajasi: eng yuqori/past hududlar; jadvaldagi oʻzgarish, tortilgan oʻzgarish (respublika.ijara) va bir xil eʼlonlar farqi — tarkib taʼsiri; Markaziy bank sharhi (yangiliklardan)."}
+      toshkent: {words: [55, 100], about: "Toshkent tumanlari ijarasi: eng qimmat/arzon, eng koʻp oʻsgan, xonalar soni boʻyicha farq (1 xonali uylarda 1 m² narxi yuqori)."}
     must_mention: []
   - key: rentabellik
     title: IJARA RENTABELLIGI (YILLIK)
-    facts: [report, ijara_rentabelligi]
+    facts: [report, ijara_rentabelligi, rentabellik_tarix, rentabellik_tumanlar, makro.base_rate_pct]
     news_topics: []
     slots:
-      matn: {words: [50, 90], about: "Eng yuqori va eng past rentabellik hududlari, farq (spread_pp), Toshkent shahri. Taʼrif: yillik ijara / sotuv narxi."}
+      matn: {words: [60, 110], about: "Eng yuqori va eng past rentabellik hududlari, farq (spread_pp), Toshkent shahri va uning bir yillik oʻzgarishi (change_pp_yoy), tumanlar ichida eng yuqori/past. Taʼrif: yillik ijara / sotuv narxi; yalpi daromad ekanini eslating."}
     must_mention: [ijara_rentabelligi.highest, ijara_rentabelligi.lowest]
   - key: indeks
     title: UY-JOY INDEKSI
-    facts: [report, uy_joy_indeksi, solishtirma.qoq.ikkilamchi]
+    facts: [report, uy_joy_indeksi, indeks_hududlar.rows, solishtirma.qoq.ikkilamchi]
     note_break: true
     news_topics: []
     slots:
-      matn: {words: [60, 110], about: "Indeks darajasi, chorak va yillik oʻzgarish, bazaga nisbatan oʻsish, yetakchi va orqada qolgan hududlar; indeks AQSH dollarida va qaysi hududlar kirmagani."}
+      matn: {words: [60, 110], about: "Indeks darajasi, chorak va yillik oʻzgarish, bazaga nisbatan oʻsish, yetakchi va orqada qolgan hududlar (kam eʼlonli hududlarni belgilang), dollardagi bir xil eʼlonlar koʻrsatkichi bilan taqqos; indeks AQSH dollarida."}
     must_mention: []
   - key: bozor_sharhi
     title: BOZOR SHARHI
     note_break: true
-    facts: [report, uy_joy_indeksi, solishtirma.qoq.birlamchi, solishtirma.qoq.ikkilamchi, solishtirma.qoq.ijara, birlamchi.avg_qoq_pct, birlamchi.avg_yoy_pct, ikkilamchi.avg_qoq_pct, ikkilamchi.avg_yoy_pct, birlamchi.rising_count, birlamchi.falling_count, ikkilamchi.rising_count, ikkilamchi.falling_count]
+    facts: [report, uy_joy_indeksi, respublika, makro.base_rate_pct, makro.inflation_yoy_pct, makro.real_rate_pp, solishtirma.qoq.birlamchi, solishtirma.qoq.ikkilamchi, solishtirma.qoq.ijara, birlamchi.avg_qoq_pct, ikkilamchi.avg_qoq_pct, ijara.avg_qoq_pct]
     news_topics: [stavka, ipoteka, qurilish, tartibga_solish, valyuta]
     slots:
       band1_sarlavha: {words: [2, 6], about: "1-band sarlavhasi"}
-      band1: {words: [35, 70], about: "Narxlar dinamikasi va valyuta taʼsiri."}
+      band1: {words: [35, 70], about: "Narxlar dinamikasi va valyuta taʼsiri (tortilgan oʻzgarish, bir xil eʼlonlar)."}
       band2_sarlavha: {words: [2, 6], about: "2-band sarlavhasi"}
-      band2: {words: [35, 70], about: "Moliyalashtirish sharoitlari: asosiy stavka, ipoteka (yangiliklardan)."}
+      band2: {words: [35, 70], about: "Moliyalashtirish sharoitlari: asosiy stavka, ipoteka stavkalari va hajmi (yangiliklardan)."}
       band3_sarlavha: {words: [2, 6], about: "3-band sarlavhasi"}
-      band3: {words: [35, 70], about: "Taklif va tartibga solish: qurilish, ommaviy baholash, ulushli qurilish (yangiliklardan)."}
+      band3: {words: [35, 75], about: "Taklif va tartibga solish: qurilish, ommaviy baholash, ulushli qurilish, soliq qoidalari (yangiliklardan)."}
       xulosa: {words: [40, 80], about: "Umumiy xulosa."}
+      istiqbol: {words: [35, 75], about: "Kelgusi chorakda kuzatiladigan omillar (MB yigʻilishi sanasi, Yangi Toshkentdagi topshirishlar va h.k., yangiliklardan). Bashorat raqamlarini oʻylab topmang."}
+      xatarlar: {words: [35, 75], about: "Xatarlar: kurs, inflyatsiya, ommaviy baholash natijalari, eʼlonlar tarkibi; taxminiy ifodalar bilan."}
     must_mention: []
   - key: asosiy_xulosalar
     title: ASOSIY TAHLILIY XULOSALAR
     after_sections: true     # gets the finished text of all sections above
-    facts: [report, uy_joy_indeksi, birlamchi, ikkilamchi, ijara, ijara_rentabelligi, solishtirma.qoq.birlamchi, solishtirma.qoq.ikkilamchi, solishtirma.qoq.ijara]
+    facts: [report, uy_joy_indeksi, respublika, birlamchi, ikkilamchi, ijara, ijara_rentabelligi, premium, makro.base_rate_pct, makro.inflation_yoy_pct, makro.real_rate_pp, solishtirma.qoq.birlamchi, solishtirma.qoq.ikkilamchi, solishtirma.qoq.ijara]
     note_break: true
     news_topics: [ipoteka, stavka]
     slots:
-      x1: {words: [20, 55], about: "Birlamchi bozor"}
-      x2: {words: [20, 55], about: "Ikkilamchi bozor"}
-      x3: {words: [20, 55], about: "Ijara va rentabellik"}
-      x4: {words: [20, 55], about: "Uy-joy indeksi"}
-      x5: {words: [20, 55], about: "Ipoteka va moliyalashtirish (yangiliklardan)"}
+      lead: {words: [35, 65], about: "Muqova uchun chorakning bitta asosiy xulosasi (2-3 gap)."}
+      x1: {words: [20, 45], about: "Birlamchi bozor (tortilgan oʻzgarish, Toshkent shahri)."}
+      x2: {words: [20, 45], about: "Ikkilamchi bozor."}
+      x3: {words: [20, 45], about: "Ijara va rentabellik."}
+      x4: {words: [20, 45], about: "Uy-joy indeksi."}
+      x5: {words: [20, 45], about: "Pul-kredit sharoitlari va ipoteka (yangiliklardan)."}
+      tarkib: {words: [40, 80], about: "Eʼlonlar tarkibi taʼsirini BIR MARTA tushuntiring: oddiy oʻrtacha, tortilgan oʻzgarish va bir xil eʼlonlar farqi (1-rasm, 1-jadval). Boshqa xulosalarda buni takrorlamang."}
     must_mention: []
 
 toshkent:

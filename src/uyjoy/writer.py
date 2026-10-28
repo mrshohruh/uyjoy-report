@@ -60,7 +60,22 @@ def system_prompt() -> str:
             + (PROMPTS / "style_guide_uz.md").read_text(encoding="utf-8"))
 
 
+def figures_for(sec: dict) -> list[str]:
+    """Numbered figures and tables of the section, so the text can point to them ("3-rasm", "2-jadval")."""
+    f = ROOT / "templates" / "figures.yaml"
+    if not f.exists():
+        return []
+    out = []
+    for scope in yaml.safe_load(f.read_text(encoding="utf-8")).values():
+        for kind, word in (("figures", "rasm"), ("tables", "jadval")):
+            for i, x in enumerate(scope.get(kind, []), 1):
+                if x["section"] == sec["key"]:
+                    out.append(f"{i}-{word}: {x['title']}")
+    return out
+
+
 def user_prompt(sec: dict, facts: dict, news: list[dict], prior: dict | None, feedback: list[dict] | None) -> str:
+    figs = figures_for(sec)
     parts = [
         f"BOʻLIM: {sec['title']}",
         "SLOTS:\n" + "\n".join(f"- {k}: {v['words'][0]}–{v['words'][1]} soʻz. {v['about']}" for k, v in sec["slots"].items()),
@@ -68,6 +83,8 @@ def user_prompt(sec: dict, facts: dict, news: list[dict], prior: dict | None, fe
         "FACTS:\n```json\n" + json.dumps(facts_slice(facts, sec), ensure_ascii=False, indent=1) + "\n```",
         "NEWS:\n```json\n" + json.dumps(news_slice(news, sec), ensure_ascii=False, indent=1) + "\n```",
         "NAMUNA:\n" + (examples(sec) or "—"),
+        "RASMLAR VA JADVALLAR (matnda ishora qiling, masalan «(3-rasm)»; raqamlarini takrorlab sanamang):\n"
+        + ("\n".join(figs) or "—"),
     ]
     if prior:
         parts.append("OLDINGI BOʻLIMLAR MATNI (xulosalar shulardan olinadi, yangi raqam qoʻshilmaydi):\n"

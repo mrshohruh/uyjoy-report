@@ -10,7 +10,7 @@ import math
 import numpy as np
 import pandas as pd
 
-from . import breaks
+from . import breaks, history
 from .config import Config
 
 UNITS = {"prim": ("mln soʻm/m²", 1e6, 2), "sec": ("mln soʻm/m²", 1e6, 2),
@@ -198,7 +198,7 @@ def build(period: str, scope: str, cfg: Config, tables: dict, inventory: pd.Data
         "removed_by_rule": log.groupby(["family", "rule"]).rows.sum().reset_index().to_dict("records")
         if not log.empty else [],
     }
-    return facts
+    return history.extras(facts, tables, period, scope, cfg)
 
 
 def lfl_block(tables: dict, scope: str, g: dict, cfg: Config) -> dict:

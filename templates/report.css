@@ -1,0 +1,129 @@
+/* Print design system for the quarterly report (A4, Chromium PDF). */
+:root {
+  --ink: #17202c; --ink2: #4d5868; --ink3: #8a93a0;
+  --grid: #e3e6ea; --axis: #c2c8d0; --band: #f3f5f8; --band2: #e9eef5;
+  --accent: #2463b4; --accent-dark: #173f78; --accent-soft: #e4ecf7;
+  --prim: #2463b4; --sec: #d68a1f; --rent: #1a8f80;
+  --up: #24589f; --down: #b4501f; --warn: #d9822b;
+}
+@page { size: A4; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: Carlito, "DejaVu Sans", sans-serif; color: var(--ink); background: #fff; font-size: 10pt;
+       line-height: 1.36; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { page-break-after: always; break-after: page; position: relative; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+p { margin: 0 0 5pt; text-align: justify; hyphens: auto; }
+b, strong { font-weight: 700; }
+
+/* section header */
+.kicker { font-size: 8pt; letter-spacing: 1.4pt; text-transform: uppercase; color: var(--accent); font-weight: 700;
+          margin-bottom: 1pt; }
+.kicker .no { display: inline-block; min-width: 16pt; color: #fff; background: var(--accent); border-radius: 2pt;
+              text-align: center; margin-right: 5pt; padding: 0 3pt; }
+h2 { font-size: 16pt; line-height: 1.15; margin: 0 0 3pt; color: var(--ink); font-weight: 700; }
+.rule { height: 2.5pt; background: linear-gradient(90deg, var(--accent) 0 34%, var(--grid) 34% 100%);
+        margin: 4pt 0 9pt; border-radius: 2pt; }
+.lede { font-size: 10.5pt; color: var(--ink2); margin: -4pt 0 8pt; }
+h3 { font-size: 10.5pt; margin: 8pt 0 3pt; color: var(--ink); }
+
+/* layout */
+.row { display: grid; gap: 12pt; align-items: start; }
+.c2 { grid-template-columns: 1fr 1fr; }
+.c-6-4 { grid-template-columns: 1.45fr 1fr; }
+.c-4-6 { grid-template-columns: 1fr 1.45fr; }
+.c-5-5 { grid-template-columns: 1fr 1fr; }
+.c3 { grid-template-columns: 1fr 1fr 1fr; }
+.mt { margin-top: 10pt; } .mt2 { margin-top: 16pt; }
+
+/* figures */
+figure { margin: 0; break-inside: avoid; }
+figcaption { font-size: 9pt; font-weight: 700; color: var(--ink); margin-bottom: 3pt; }
+figcaption .fno { color: var(--accent); margin-right: 3pt; }
+figcaption .unit { font-weight: 400; color: var(--ink2); }
+.src { font-size: 7.5pt; color: var(--ink2); margin-top: 2pt; line-height: 1.3; }
+.chart { width: 100%; height: auto; display: block; }
+.spark { width: 58pt; height: 15pt; display: block; }
+.ref { color: var(--accent-dark); font-weight: 700; white-space: nowrap; }
+
+/* text column */
+.text p { font-size: 10pt; }
+.text p.first::first-line { font-weight: 700; }
+
+/* tables */
+table { border-collapse: collapse; width: 100%; font-size: 8.8pt; font-variant-numeric: tabular-nums; }
+caption { text-align: left; font-weight: 700; font-size: 9pt; margin-bottom: 3pt; caption-side: top; }
+caption .fno { color: var(--accent); margin-right: 3pt; }
+caption .unit { font-weight: 400; color: var(--ink2); }
+th { text-align: right; font-weight: 700; color: var(--ink2); border-bottom: 1.2pt solid var(--ink); padding: 3pt 5pt;
+     font-size: 8pt; line-height: 1.15; vertical-align: bottom; }
+th:first-child, td:first-child { text-align: left; }
+td { text-align: right; padding: 2.1pt 5pt; border-bottom: .5pt solid var(--grid); vertical-align: middle; }
+tr.city td { font-weight: 700; background: var(--band); }
+tr.dim td { color: var(--ink3); }
+td.n { color: var(--ink2); }
+td.chip span { display: inline-block; min-width: 38pt; padding: .6pt 4pt; border-radius: 2pt; text-align: right; }
+td.lfl { color: var(--accent-dark); font-weight: 700; }
+td.sp { width: 62pt; padding-top: 0; padding-bottom: 0; }
+td.up { color: var(--up); } td.down { color: var(--down); }
+.tnote { font-size: 7.5pt; color: var(--ink2); margin-top: 3pt; }
+
+/* boxes */
+.box { background: var(--band); border-radius: 3pt; padding: 8pt 10pt; margin: 8pt 0; font-size: 9pt; break-inside: avoid; }
+.box p { font-size: 9pt; margin-bottom: 3pt; }
+.box.key { background: var(--accent-soft); border-left: 3pt solid var(--accent); }
+.box.warn { background: #fdf3e1; border-left: 3pt solid var(--warn); }
+.box h4 { margin: 0 0 3pt; font-size: 9.5pt; color: var(--accent-dark); }
+
+/* cover */
+.cover-band { background: var(--accent-dark); color: #fff; margin: -2mm -2mm 12pt; padding: 22pt 22pt 20pt;
+              border-radius: 4pt; position: relative; overflow: hidden; }
+.cover-band .eyebrow { font-size: 8.5pt; letter-spacing: 2pt; text-transform: uppercase; opacity: .8; }
+.cover-band h1 { font-size: 27pt; line-height: 1.05; margin: 6pt 0 6pt; font-weight: 700; }
+.cover-band .when { font-size: 13pt; opacity: .95; }
+.cover-band .draft { display: inline-block; border: 1pt solid #ffb4a8; color: #ffd6cf; font-size: 8pt; padding: 1pt 6pt;
+                     border-radius: 3pt; margin-left: 8pt; vertical-align: middle; letter-spacing: 1pt; }
+.cover-band svg.deco { position: absolute; right: -10pt; top: -6pt; width: 230pt; opacity: .22; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8pt; margin-bottom: 12pt; }
+.kpi { border: .8pt solid var(--grid); border-top: 3pt solid var(--accent); border-radius: 3pt; padding: 7pt 9pt 6pt; }
+.kpi.prim { border-top-color: var(--prim); } .kpi.sec { border-top-color: var(--sec); } .kpi.rent { border-top-color: var(--rent); }
+.kpi.idx { border-top-color: var(--ink); } .kpi.rate { border-top-color: var(--accent-dark); } .kpi.fx { border-top-color: var(--ink2); }
+.kpi .l { font-size: 8.5pt; font-weight: 700; }
+.kpi .s { font-size: 7.5pt; color: var(--ink2); }
+.kpi .v { font-size: 21pt; font-weight: 700; line-height: 1.1; margin-top: 3pt; font-variant-numeric: tabular-nums; }
+.kpi .u { font-size: 8pt; color: var(--ink2); font-weight: 400; margin-left: 2pt; }
+.kpi .d { font-size: 8.5pt; margin-top: 2pt; display: flex; gap: 8pt; }
+.kpi .d .up { color: var(--up); font-weight: 700; } .kpi .d .down { color: var(--down); font-weight: 700; }
+.kpi .d .lab { color: var(--ink2); font-weight: 400; }
+.kpi .spark { width: 100%; height: 22pt; margin-top: 3pt; }
+.toc { columns: 2; column-gap: 18pt; font-size: 9pt; margin: 0; padding: 0; list-style: none; }
+.toc li { display: flex; justify-content: space-between; border-bottom: .5pt dotted var(--axis); padding: 2.5pt 0; break-inside: avoid; }
+.toc li span.no { color: var(--accent); font-weight: 700; margin-right: 5pt; }
+
+/* findings */
+ol.findings { list-style: none; padding: 0; margin: 0; counter-reset: f; }
+ol.findings li { counter-increment: f; position: relative; padding: 5pt 0 6pt 26pt; border-bottom: .5pt solid var(--grid);
+                 font-size: 10pt; }
+ol.findings li::before { content: counter(f); position: absolute; left: 0; top: 5pt; width: 18pt; height: 18pt; border-radius: 50%;
+                         background: var(--accent); color: #fff; font-weight: 700; text-align: center; line-height: 18pt; font-size: 9.5pt; }
+ol.findings li b.t { color: var(--accent-dark); }
+
+/* market review bands */
+.band { display: grid; grid-template-columns: 110pt 1fr; gap: 10pt; padding: 7pt 0; border-bottom: .5pt solid var(--grid); }
+.band .bt { font-weight: 700; color: var(--accent-dark); font-size: 10pt; }
+.outlook { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; }
+
+sup.cite { color: var(--accent-dark); font-size: 6.5pt; margin-left: .5pt; font-weight: 700; }
+.sources { padding-left: 16pt; margin: 0; } .sources li { margin-bottom: 3pt; font-size: 8.3pt; }
+.sources a { color: var(--accent-dark); word-break: break-all; text-decoration: none; }
+.sources .u { color: var(--ink2); font-size: 7.5pt; }
+dl.abbr { display: grid; grid-template-columns: 82pt 1fr; gap: 2pt 8pt; font-size: 8.8pt; margin: 0; }
+dl.abbr dt { font-weight: 700; } dl.abbr dd { margin: 0; }
+.annex th, .annex td { padding: 2.2pt 3.5pt; font-size: 8.2pt; }
+.annex th.grp { text-align: center; border-bottom: .8pt solid var(--axis); }
+.annex th.grp.prim { color: var(--prim); } .annex th.grp.sec { color: var(--sec); } .annex th.grp.rent { color: var(--rent); }
+.small { font-size: 8.5pt; }
+.cols2 { column-count: 2; column-gap: 14pt; }
+.cols2 p { margin: 0; }
+figure.map .chart { width: 100%; }
+figure.map .chart { width: 76%; margin: 0 auto; }

@@ -17,7 +17,7 @@ class FakeLLM:
     def __init__(self, draft):
         self.draft, self.calls = draft, []
 
-    def call(self, role, system, messages, tools=None, max_tokens=None):
+    def call(self, role, system, messages, tools=None, max_tokens=None, **kw):
         user = messages[-1]["content"]
         self.calls.append(role)
         if role == "editor":

@@ -74,6 +74,18 @@ The Tashkent (`toshkent`) PDF layout is not built yet; that scope runs up to the
 
 Single steps are still available: `build`, `news` (or `news --from-file items.json`), `write`, `check`, `render`.
 
+Two more steps help when a run already exists:
+
+```bash
+python -m uyjoy rebuild --period 2026Q3 --scope respublika            # facts.json again from the run's tables.xlsx
+python -m uyjoy rebuild --period 2026Q3 --scope respublika --tables path/to/tables.xlsx
+python -m uyjoy news --period 2026Q3 --scope respublika --add extra_items.json   # add hand-collected news, ids kept
+```
+
+`rebuild` needs no parquet files: it reads the medians, yields, index and like-for-like tables a run saved
+and writes a facts pack with exactly that run's numbers (plus the blocks a newer version adds). Use it after a
+code update to re-render an old quarter in the current layout.
+
 How the text stays honest:
 
 - The writer sees only the facts pack and dated, cited news items. It is asked for one section at a time, as JSON.
@@ -102,6 +114,39 @@ Each build writes `runs/<period>_<scope>/`:
   inventory and the cleaning log.
 
 A build refuses an incomplete quarter unless you pass `--allow-partial`.
+
+## Report layout (Respublika)
+
+`templates/respublika.html` + `templates/report.css`, charts in `src/uyjoy/charts.py` (hand-built SVG, no
+plotting library), all values from facts.json. Figures and tables are numbered in the order of
+`templates/figures.yaml`; the writer gets the same numbers so the text can say «(7-rasm)».
+
+| Page | Content |
+| --- | --- |
+| Cover | 6 KPI cards with sparklines (Tashkent primary / secondary / rent, UNI, policy rate, USD/UZS), lead finding, contents |
+| 01 Asosiy xulosalar | 5 findings; median vs listing-weighted vs same-listings change (grouped bars); summary table |
+| 02 Makroiqtisodiy fon | policy rate vs inflation (real-rate band), USD/UZS line, macro table |
+| 03 Ipoteka, bitimlar, qurilish | deals and mortgage share, housing completions (plan hatched), mortgage volume by market |
+| 04–05 Birlamchi / Ikkilamchi | country choropleth of Δ quarter with callouts for the small eastern regions; region table with 12-quarter sparklines and colour-coded Δ cells; Tashkent district map, dumbbell (previous → current), district table |
+| 06 Taqqos | new-build premium bars; small multiples primary vs secondary for every region |
+| 07 Ijara | rent-level map; region table; Tashkent district map; district × rooms heatmap |
+| 08 Rentabellik | yield map; sale price vs rent scatter with iso-yield lines; yield trend Tashkent vs regions median |
+| 09 UNI | index lines (national, Tashkent, top/bottom regions); regional index bars; 8-quarter Δ heatmap |
+| 10 Bozor sharhi | three themed bands, conclusion, outlook and risks boxes |
+| 11–12 Ilova, manbalar | all Tashkent district indicators, method, abbreviations, cited news, chart data sources |
+
+Design rules: each market keeps one colour (primary blue, secondary amber, rent teal); changes use one
+fixed diverging scale (orange = fall, blue = rise; −5/−2/−0.5/+0.5/+2/+5 %) on every map, table cell and
+heatmap; levels use a quantile blue scale; cells with 10–29 listings are hatched, fewer than 10 dotted grey.
+
+New facts blocks (`src/uyjoy/history.py`): `tarix` / `tarix_tumanlar` (12 / 8 quarters of values and changes),
+`respublika` (listing-weighted change and the composition gap against same-listings), `premium` /
+`premium_tumanlar`, `rentabellik_tarix`, `rentabellik_tumanlar`, `indeks_hududlar`, `xonalar_toshkent`, and
+`makro` from `config/macro/` (policy rate, inflation, deals, mortgages, construction — every value with a
+source; see `config/macro/README.md`; add a row each quarter).
+
+Maps: `assets/geo/uz_regions.json` (regions) and `assets/geo/tashkent_districts.json` (11 districts; built by
+`tools/build_geo_tashkent.py` from geoBoundaries, Yangihayot inside Sergeli as in the data).
 
 ## Method v1 (config/method.yaml)
 

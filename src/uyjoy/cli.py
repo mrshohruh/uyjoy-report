@@ -36,6 +36,11 @@ def main(argv: list[str] | None = None) -> int:
     p_b.add_argument("--out", type=Path, default=ROOT / "runs")
     p_b.add_argument("--allow-partial", action="store_true")
     p_b.add_argument("--no-index", action="store_true")
+    p_rb = sub.add_parser("rebuild", help="facts.json from a finished run's tables.xlsx (no parquet files needed)")
+    p_rb.add_argument("--period", required=True)
+    p_rb.add_argument("--scope", required=True, choices=["respublika", "toshkent"])
+    p_rb.add_argument("--tables", type=Path, help="tables.xlsx to read (default: the run folder's own)")
+    p_rb.add_argument("--out", type=Path, default=ROOT / "runs")
     for name in ("news", "write", "check", "render", "report"):
         p = sub.add_parser(name)
         p.add_argument("--period", required=True)
@@ -43,6 +48,8 @@ def main(argv: list[str] | None = None) -> int:
         p.add_argument("--out", type=Path, default=ROOT / "runs")
         if name == "news":
             p.add_argument("--from-file", type=Path, help="load hand-collected items instead of searching")
+            p.add_argument("--add", type=Path,
+                           help="add hand-collected items to the existing news.json (ids already used are kept)")
         if name == "report":
             p.add_argument("--allow-partial", action="store_true")
             p.add_argument("--no-ai", action="store_true",
@@ -84,6 +91,13 @@ def main(argv: list[str] | None = None) -> int:
         new = rates.update_csv(config.CONFIG_DIR / "usd_uzs_quarter_end.csv",
                                sorted(inv.quarter.unique()), overwrite=a.overwrite)
         print(new.to_string(index=False) if not new.empty else "all quarters already have a rate")
+        return 0
+    if a.cmd == "rebuild":
+        cfg = config.load()
+        period = a.period.upper()
+        src = a.tables or (a.out / f"{period}_{a.scope}" / "tables.xlsx")
+        d = pipeline.rebuild(src, a.out, period, a.scope, cfg)
+        print(f"wrote {d / 'facts.json'} from {src}")
         return 0
     if a.cmd == "build":
         cfg = config.load()
@@ -221,7 +235,10 @@ def _report_cmds(a) -> int:
     if a.cmd == "report":
         return _report(a, run_dir, period)
     if a.cmd == "news":
-        if a.from_file:
+        if a.add:
+            items = news.add(run_dir / "news.json", a.add, period)
+            (run_dir / "news.json").write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
+        elif a.from_file:
             items = news.load(a.from_file, period)
             (run_dir / "news.json").write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
         else:

@@ -100,6 +100,7 @@ def _status_names(slice_: dict, status: str) -> set[str]:
 
 def check_text(slot: str, text: str, slice_: dict, news: list[dict], words: tuple[int, int] | None) -> list[dict]:
     issues = []
+    text = text.replace("**", "")   # bold lead-ins are markup, not text
 
     def err(code, msg, level="error"):
         issues.append({"level": level, "code": code, "slot": slot, "message": msg})
@@ -133,6 +134,8 @@ def check_text(slot: str, text: str, slice_: dict, news: list[dict], words: tupl
                 continue
             if re.match(r"-?\s*(chora[kg]|xona)", after) and 1 <= abs(val) <= 5 and d == 0:
                 continue
+            if re.match(r"-(rasm|jadval)", after) and d == 0 and 1 <= abs(val) <= 40:
+                continue    # a pointer to a figure or table ("3-rasm"), not a figure from the data
             if sent[e:e + 1] == "]" and sent[max(0, s - 2):s] == "[n":
                 continue
             if abs(val) == 100 and "indeks" in sent.lower():
