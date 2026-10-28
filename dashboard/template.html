@@ -1,0 +1,735 @@
+<title>Uy-joy bozori monitori</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Serif:wght@600&display=swap">
+<style>
+/*__BASE_CSS__*/
+/* Dashboard additions: a period bar that stays on screen, trend charts. */
+.periodbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: var(--bg); padding-block: 10px; margin-block: -10px; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.pb-row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.pb-row .lbl { font-size: 0.82rem; color: var(--muted); }
+.stepper { display: inline-flex; align-items: stretch; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.stepper button { font: inherit; border: 0; background: transparent; color: var(--ink); width: 34px; cursor: pointer; font-size: 1rem; }
+.stepper button:disabled { color: var(--muted); opacity: 0.4; cursor: default; }
+.stepper select { font: inherit; font-size: 0.9rem; font-weight: 600; border: 0; border-inline: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 6px 8px; min-width: 13rem; }
+.stepper button:focus-visible, .stepper select:focus-visible, .trend-pt:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.periodname { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; }
+.tl { display: flex; gap: 2px; align-items: flex-end; overflow-x: auto; padding-bottom: 2px; }
+.tl button { flex: 1 0 auto; min-width: 16px; height: 18px; border: 0; border-radius: 2px; background: var(--line); cursor: pointer; padding: 0; position: relative; }
+.tl button.year-start { margin-left: 6px; }
+.tl button[aria-current="true"] { background: var(--accent); }
+.tl button:hover { background: var(--seq-2); }
+.tl button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.tl-years { display: flex; gap: 2px; font-size: 0.7rem; color: var(--muted); }
+.kpi .v small { font-size: 0.85rem; font-weight: 400; color: var(--ink-2); }
+.trend svg { display: block; width: 100%; }
+.trend text { font-family: var(--font-body); }
+.trend-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.trend-head select { font: inherit; font-size: 0.86rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 6px; padding: 5px 8px; }
+.keyline { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--ink-2); }
+.keyline i { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+.note { font-size: 0.82rem; color: var(--muted); }
+.pending { border: 1px dashed var(--dot-b); border-radius: 6px; padding: 8px 12px; font-size: 0.86rem; color: var(--ink-2); }
+.twocol { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 860px) { .twocol { grid-template-columns: minmax(0, 1fr); } .stepper select { min-width: 10rem; } }
+</style>
+
+<div class="wrap" id="app">
+  <header class="masthead">
+    <div class="mast-top">
+      <span class="eyebrow">Oʻzbekistonda uy-joy bozori · olx.uz eʼlonlari · uslubiyat v1</span>
+      <span class="badge">LOYIHA</span>
+    </div>
+    <h1>Uy-joy bozori monitori</h1>
+    <p class="lede">Davrni tanlang: oy, chorak yoki yil. Xarita, tumanlar va grafiklar tanlangan davr boʻyicha yangilanadi. Narx dinamikasi grafigi butun davrni koʻrsatadi.</p>
+  </header>
+
+  <div class="periodbar">
+    <div class="pb-row">
+      <div class="seg" id="kindSeg" role="group" aria-label="Davr turi"></div>
+      <div class="stepper">
+        <button type="button" id="prevBtn" aria-label="Oldingi davr">‹</button>
+        <select id="periodSel" aria-label="Davr"></select>
+        <button type="button" id="nextBtn" aria-label="Keyingi davr">›</button>
+      </div>
+      <span class="lbl">Bozor</span>
+      <div class="seg" id="marketSeg" role="group" aria-label="Bozor"></div>
+    </div>
+    <div>
+      <div class="tl" id="timeline" role="group" aria-label="Davrlar"></div>
+      <div class="tl-years" id="tlYears"></div>
+    </div>
+  </div>
+
+  <div class="pending" id="pendingNote" hidden></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section id="sec-map">
+    <div class="sec-head">
+      <h2 id="mapTitle">Hududlar xaritasi</h2>
+      <p class="lede" id="mapLede"></p>
+    </div>
+    <div class="controls">
+      <div class="seg" id="metricSeg" role="group" aria-label="Koʻrsatkich"></div>
+      <button class="linkbtn" id="mapTableBtn" type="button" aria-expanded="false">Jadval koʻrinishi</button>
+    </div>
+    <div class="mapgrid">
+      <div class="panel">
+        <div class="mapbox" id="mapbox"><div class="tip" id="tip" hidden></div></div>
+        <div class="legend" id="legend"></div>
+        <div class="attrib">Chegaralar: geoBoundaries, © OpenStreetMap ishtirokchilari (ODbL).</div>
+      </div>
+      <div class="panel">
+        <div class="rank-title"><span id="rankTitle"></span><span id="rankUnit"></span></div>
+        <ul class="rank" id="rank"></ul>
+        <div class="detail" id="detail"></div>
+      </div>
+    </div>
+    <div class="panel tablewrap" id="mapTable" hidden></div>
+  </section>
+
+  <section id="sec-trend">
+    <div class="sec-head">
+      <h2>Narx dinamikasi</h2>
+      <p class="lede" id="trendLede"></p>
+    </div>
+    <div class="panel trend" id="trendPanel">
+      <div class="trend-head">
+        <div class="key" id="trendKey"></div>
+        <label class="keyline">Taqqoslash <select id="cmpSel" aria-label="Taqqoslash uchun hudud"></select></label>
+      </div>
+      <div id="trend"></div>
+      <p class="note" id="trendNote"></p>
+    </div>
+  </section>
+
+  <section id="sec-tash">
+    <div class="sec-head">
+      <h2>Toshkent shahri tumanlari</h2>
+      <p class="lede">Tumanlar taxminiy joylashuvi boʻyicha sxematik tarzda koʻrsatilgan. Yangihayot tumani maʼlumotlari Sergeli tarkibida hisoblangan.</p>
+    </div>
+    <div class="controls">
+      <div class="seg" id="dmetricSeg" role="group" aria-label="Tuman koʻrsatkichi"></div>
+    </div>
+    <div class="tashgrid">
+      <div class="panel">
+        <div class="tilegrid" id="tiles"></div>
+        <div class="legend" id="dlegend"></div>
+      </div>
+      <div class="panel" id="ddetail"></div>
+    </div>
+  </section>
+
+  <section id="sec-same">
+    <div class="sec-head">
+      <h2>Median narx va bir xil eʼlonlar</h2>
+      <p class="lede">Median narx ikki sababga koʻra oʻzgaradi: eʼlonlardagi narxlar oʻzgaradi yoki saytdagi eʼlonlar tarkibi oʻzgaradi. Ikkalasini ajratish uchun ikkala davrda ham mavjud boʻlgan bir xil eʼlonlar narxining oʻzgarishi yonma-yon keltirilgan.</p>
+    </div>
+    <p class="callout" id="sameCallout"></p>
+    <div class="panel">
+      <div class="key" id="dbKey"></div>
+      <div class="db" id="db" style="margin-top:10px"></div>
+    </div>
+  </section>
+
+  <div class="twocol">
+    <section id="sec-yield">
+      <div class="sec-head">
+        <h2>Ijara rentabelligi va uy narxi</h2>
+        <p class="lede">Yillik ijara daromadi (median ijara narxi × 12) median sotuv narxiga nisbatan.</p>
+      </div>
+      <div class="panel scatter" id="scatter"></div>
+    </section>
+    <section id="sec-index">
+      <div class="sec-head">
+        <h2>Uy-joy narxlari indeksi</h2>
+        <p class="lede" id="indexLede"></p>
+      </div>
+      <div class="panel trend" id="indexPanel">
+        <div class="key" id="indexKey" style="margin-bottom:8px"></div>
+        <div id="indexChart"></div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Narxlar olx.uz eʼlonlari asosida hisoblangan median taklif narxlaridir va yakuniy sotuv narxidan farq qilishi mumkin. Oylik, choraklik va yillik koʻrsatkichlar bir xil uslubiyat (v1) boʻyicha hisoblangan: 4+ qavatli binolardagi 1–5 xonali, 20–140 m² kvartiralar; takroriy eʼlonlar tanlangan davr ichida olib tashlanadi; narxlar davr oxiridagi Markaziy bank kursida soʻmga oʻtkaziladi. Oʻzgarishlar soʻmda hisoblangan, dollardagi oʻzgarish izohda keltirilgan. * — eʼlonlar soni 10–29 ta; «—» — 10 tadan kam yoki taqqoslash davri uchun maʼlumot yoʻq. Hududlar boʻyicha maʼlumotlar 2023-yil apreldan boshlanadi.</p>
+    <p>Chegaralar: geoBoundaries, © OpenStreetMap ishtirokchilari (ODbL). Valyuta kursi: <a href="https://cbu.uz" target="_blank" rel="noopener">cbu.uz</a>.</p>
+  </footer>
+</div>
+
+<script type="application/json" id="dash">/*__DATA__*/</script>
+<script type="application/json" id="geo">/*__GEO__*/</script>
+<script>
+(function () {
+  "use strict";
+  const D = JSON.parse(document.getElementById("dash").textContent);
+  const G = JSON.parse(document.getElementById("geo").textContent);
+  const PENDING = /*__PENDING__*/null;
+
+  const OY = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"];
+  const OY3 = ["yan", "fev", "mar", "apr", "may", "iyn", "iyl", "avg", "sen", "okt", "noy", "dek"];
+  const KINDS = [{ id: "M", name: "Oy" }, { id: "Q", name: "Chorak" }, { id: "Y", name: "Yil" }];
+  const MARKETS = [
+    { id: "primary", name: "Birlamchi bozor", unit: "mln soʻm/m²", dec: 2 },
+    { id: "secondary", name: "Ikkilamchi bozor", unit: "mln soʻm/m²", dec: 2 },
+    { id: "rent", name: "Ijara", unit: "ming soʻm/m², oyiga", dec: 1 },
+  ];
+  const REGIONS = Object.keys(D.data.Q[D.periods.Q[0]].regions.secondary);
+  const DIV_BREAKS = [-5, -2, -0.5, 0.5, 5, 10];
+  const DIV_TOKENS = ["--div-n3", "--div-n2", "--div-n1", "--div-0", "--div-p1", "--div-p2", "--div-p3"];
+  const DIV_LABELS = ["≤ -5", "-5…-2", "-2…-0.5", "±0.5", "0.5…5", "5…10", "≥ 10"];
+  const SEQ_TOKENS = ["--seq-0", "--seq-1", "--seq-2", "--seq-3", "--seq-4", "--seq-5"];
+
+  const state = { kind: "Q", period: null, market: "secondary", metric: "dq", dmetric: "price", region: null, district: null, cmp: "", showTable: false };
+  try {
+    const s = JSON.parse(localStorage.getItem("uyjoy-monitor") || "null");
+    if (s) Object.assign(state, { kind: s.kind || "Q", market: s.market || "secondary", metric: s.metric || "dq", dmetric: s.dmetric || "price" });
+  } catch (e) {}
+  if (!D.periods[state.kind]) state.kind = "Q";
+  state.period = D.periods[state.kind][D.periods[state.kind].length - 1];
+  function persist() { try { localStorage.setItem("uyjoy-monitor", JSON.stringify({ kind: state.kind, market: state.market, metric: state.metric, dmetric: state.dmetric })); } catch (e) {} }
+
+  /* ---------- labels ---------- */
+  function pname(kind, p, short) {
+    if (kind === "M") { const [y, m] = p.split("-"); return short ? `${OY3[+m - 1]} ${y.slice(2)}` : `${y}-yil ${OY[+m - 1]}`; }
+    if (kind === "Q") { const [y, q] = p.split("Q"); return short ? `${y.slice(2)}-Ch${q}` : `${y}-yil ${q}-chorak`; }
+    if (p.includes(":")) { const [y, r] = p.split(":"); const e = +r.split("-")[1]; return short ? `${y} (${OY3[0]}–${OY3[e - 1]})` : `${y}-yil (yanvar–${OY[e - 1]})`; }
+    return short ? p : `${p}-yil`;
+  }
+  const dqName = () => ({ M: "Δ oy", Q: "Δ chorak", Y: "Δ yil" })[state.kind];
+  const dqLong = () => ({ M: "Oldingi oyga nisbatan oʻzgarish", Q: "Oldingi chorakka nisbatan oʻzgarish", Y: "Oldingi yilga nisbatan oʻzgarish" })[state.kind];
+  const prevName = () => ({ M: "oldingi oy", Q: "oldingi chorak", Y: "oʻtgan yil" })[state.kind];
+  function metrics() {
+    const m = [{ id: "price", name: "Narx", kind: "seq" }];
+    m.push({ id: "dq", name: dqName(), kind: "div", long: dqLong() });
+    if (state.kind !== "Y") m.push({ id: "dy", name: "Δ yil", kind: "div", long: "Oʻtgan yilning mos davriga nisbatan oʻzgarish" });
+    m.push({ id: "same", name: "Bir xil eʼlonlar Δ", kind: "div", long: `Ikkala davrda ham mavjud eʼlonlar narxining oʻzgarishi (${prevName()}ga nisbatan, soʻmda)` });
+    m.push({ id: "yield", name: "Rentabellik", kind: "seq", long: "Yillik ijara rentabelligi" });
+    return m;
+  }
+
+  /* ---------- helpers ---------- */
+  const css = (t) => getComputedStyle(document.documentElement).getPropertyValue(t).trim();
+  const mk = () => MARKETS.find((m) => m.id === state.market);
+  const P = () => D.data[state.kind][state.period];
+  const fmtInt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  const fmtPct = (v) => (v == null ? "—" : (v > 0 ? "+" : "") + v.toFixed(1) + "%");
+  const fmtPrice = (v, m) => (v == null ? "—" : v.toFixed(m.dec));
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const el = (tag, attrs, html) => { const e = document.createElement(tag); if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; };
+  // For yearly periods the only comparison is with the previous year: it is stored as dq.
+  const yKey = (metric) => (state.kind === "Y" && metric === "dy" ? "dq" : metric);
+
+  function regionCell(name, metric, market, period, kind) {
+    const p = D.data[kind || state.kind][period || state.period];
+    market = market || state.market;
+    if (metric === "yield") {
+      const y = p.yield[name];
+      return y && y.v != null ? { v: y.v, thin: y.s === "thin", hidden: false } : { v: null, thin: false, hidden: true };
+    }
+    const r = p.regions[market][name];
+    if (!r) return { v: null, thin: false, hidden: true, n: null, missing: true };
+    if (metric === "same") {
+      const s = p.same[market][name];
+      return s && s.uzs != null ? { v: s.uzs, thin: s.s === "thin", hidden: false, n: s.n } : { v: null, thin: false, hidden: true, n: s ? s.n : null };
+    }
+    const key = metric === "price" ? "v" : yKey(metric);
+    return { v: r[key], thin: r.s === "thin", hidden: r[key] == null, n: r.n };
+  }
+  function fmtCell(c, metric) {
+    if (c.hidden || c.v == null) return "—";
+    const s = metric === "price" ? fmtPrice(c.v, mk()) : metric === "yield" ? c.v.toFixed(1) + "%" : fmtPct(c.v);
+    return s + (c.thin && metric !== "dq" && metric !== "dy" ? "*" : "");
+  }
+  function seqBreaks(values) {
+    const v = values.slice().sort((a, b) => a - b), br = [];
+    for (let i = 1; i < 6; i++) br.push(v[Math.min(v.length - 1, Math.floor((i * v.length) / 6))]);
+    return br;
+  }
+  function scaleFor(kind, values) {
+    if (kind === "div") return { kind, token(v) { if (v > -0.5 && v < 0.5) return DIV_TOKENS[3]; let i = 0; while (i < DIV_BREAKS.length && v >= DIV_BREAKS[i]) i++; return DIV_TOKENS[i]; } };
+    const br = seqBreaks(values);
+    return { kind, br, token(v) { let i = 0; while (i < br.length && v >= br[i]) i++; return SEQ_TOKENS[i]; } };
+  }
+  function isDark() {
+    const t = document.documentElement.getAttribute("data-theme");
+    return t === "dark" || (t !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+  }
+  function inkOn(token) {
+    const s = SEQ_TOKENS.indexOf(token), d = DIV_TOKENS.indexOf(token);
+    if (!isDark()) return s >= 3 || d === 0 || d === 1 || d === 6;
+    return (s >= 0 && s <= 2) || (d >= 1 && d <= 5);
+  }
+
+  /* ---------- period bar ---------- */
+  function seg(boxId, items, key, onChange) {
+    const box = document.getElementById(boxId);
+    box.innerHTML = "";
+    items.forEach((it) => {
+      const b = el("button", { type: "button", "aria-pressed": String(state[key] === it.id) }, esc(it.name));
+      b.addEventListener("click", () => { state[key] = it.id; persist(); onChange(); });
+      box.appendChild(b);
+    });
+  }
+  function setKind() {
+    // keep the same moment in time when switching period type
+    const cur = state.period, list = D.periods[state.kind];
+    const endMonth = (k, p) => (k === "M" ? p : k === "Q" ? `${p.slice(0, 4)}-${String(+p.slice(-1) * 3).padStart(2, "0")}` : p.includes(":") ? `${p.slice(0, 4)}-${p.split("-")[1].padStart(2, "0")}` : `${p}-12`);
+    const target = state._lastEnd || D.last;
+    let pick = list[list.length - 1];
+    if (target) { const cand = list.filter((p) => endMonth(state.kind, p) >= target); if (cand.length) pick = cand[0]; }
+    state.period = pick;
+    if (state.kind === "Y" && state.metric === "dy") state.metric = "dq";
+  }
+  function renderPeriodBar() {
+    seg("kindSeg", KINDS, "kind", () => { setKind(); renderAll(); });
+    seg("marketSeg", MARKETS, "market", renderAll);
+    const list = D.periods[state.kind];
+    const sel = document.getElementById("periodSel");
+    sel.innerHTML = list.map((p) => `<option value="${p}"${p === state.period ? " selected" : ""}>${esc(pname(state.kind, p))}</option>`).join("");
+    const i = list.indexOf(state.period);
+    document.getElementById("prevBtn").disabled = i <= 0;
+    document.getElementById("nextBtn").disabled = i >= list.length - 1;
+    const tl = document.getElementById("timeline"), yrs = document.getElementById("tlYears");
+    tl.innerHTML = ""; yrs.innerHTML = "";
+    let lastY = null;
+    list.forEach((p) => {
+      const y = p.slice(0, 4);
+      const b = el("button", { type: "button", title: pname(state.kind, p), "aria-label": pname(state.kind, p), "aria-current": String(p === state.period) });
+      if (lastY !== null && y !== lastY) b.classList.add("year-start");
+      b.addEventListener("click", () => selectPeriod(p));
+      tl.appendChild(b);
+      lastY = y;
+    });
+    const years = [...new Set(list.map((p) => p.slice(0, 4)))];
+    yrs.innerHTML = years.map((y) => { const n = list.filter((p) => p.slice(0, 4) === y).length; return `<span style="flex:${n} 0 0">${y}</span>`; }).join("");
+  }
+  function selectPeriod(p) {
+    state.period = p;
+    const k = state.kind;
+    state._lastEnd = k === "M" ? p : k === "Q" ? `${p.slice(0, 4)}-${String(+p.slice(-1) * 3).padStart(2, "0")}` : (p.includes(":") ? `${p.slice(0, 4)}-${p.split("-")[1].padStart(2, "0")}` : `${p}-12`);
+    renderAll();
+  }
+  document.getElementById("periodSel").addEventListener("change", (e) => selectPeriod(e.target.value));
+  document.getElementById("prevBtn").addEventListener("click", () => { const l = D.periods[state.kind]; const i = l.indexOf(state.period); if (i > 0) selectPeriod(l[i - 1]); });
+  document.getElementById("nextBtn").addEventListener("click", () => { const l = D.periods[state.kind]; const i = l.indexOf(state.period); if (i < l.length - 1) selectPeriod(l[i + 1]); });
+
+  /* ---------- KPIs ---------- */
+  function latestIndexFor() {
+    const p = state.period, k = state.kind;
+    const endM = k === "M" ? p : k === "Q" ? `${p.slice(0, 4)}-${String(+p.slice(-1) * 3).padStart(2, "0")}` : (p.includes(":") ? `${p.slice(0, 4)}-${p.split("-")[1].padStart(2, "0")}` : `${p}-12`);
+    const [y, m] = endM.split("-").map(Number);
+    const q = `${y}Q${Math.floor((m - 1) / 3) + 1}`;
+    const full = m % 3 === 0 ? q : (Math.floor((m - 1) / 3) === 0 ? `${y - 1}Q4` : `${y}Q${Math.floor((m - 1) / 3)}`);
+    const ser = D.index.national;
+    const i = ser.findIndex((x) => x.q === full);
+    if (i < 0) return null;
+    return { q: full, v: ser[i].v, dq: ser[i].dq, dy: ser[i].dy };
+  }
+  function renderKpis() {
+    const p = P(), m = mk(), s = p.summary[state.market];
+    const city = p.regions[state.market]["Toshkent shahri"];
+    const ix = latestIndexFor();
+    const lfl = p.same[state.market].Respublika;
+    const items = [
+      { v: city && city.v != null ? `${fmtPrice(city.v, m)} <small>${m.unit.split(",")[0]}</small>` : "—", l: `Toshkent shahri · ${m.name.toLowerCase()}`, d: city ? `${dqName()} ${fmtPct(city.dq)}${state.kind !== "Y" ? " · Δ yil " + fmtPct(city.dy) : ""}` : "" },
+      { v: fmtPct(s.avg_dq), l: `Hududlar boʻyicha oʻrtacha ${dqName()}`, d: `${s.rising} ta hududda oshdi, ${s.falling} tasida pasaydi` },
+      { v: lfl && lfl.uzs != null ? fmtPct(lfl.uzs) : "—", l: "Bir xil eʼlonlar narxi, Respublika", d: lfl && lfl.uzs != null ? `${prevName()}ga nisbatan · dollarda ${fmtPct(lfl.usd)} · ${fmtInt(lfl.n)} eʼlon` : "Taqqoslash uchun maʼlumot yoʻq" },
+      { v: ix ? ix.v.toFixed(1) : "—", l: "Uy-joy narxlari indeksi (UNI)", d: ix ? `${pname("Q", ix.q, true)} holatiga · chorak ${fmtPct(ix.dq)} · yil ${fmtPct(ix.dy)}` : "" },
+    ];
+    document.getElementById("kpis").innerHTML = items.map((k) => `<div class="kpi"><span class="v num">${k.v}</span><span class="l">${k.l}</span><span class="d">${k.d}</span></div>`).join("");
+    const pn = document.getElementById("pendingNote");
+    const pend = PENDING && PENDING.some((x) => p.months.includes(x));
+    pn.hidden = !pend;
+    if (pend) pn.textContent = "Dastlabki maʼlumot: 2026-yil iyul–sentabr oylari boʻyicha Toshkent shahri va hududlardagi ijara koʻrsatkichlari hali yakuniy fayllar asosida qayta hisoblanmagan.";
+  }
+
+  /* ---------- regional map ---------- */
+  let svg, paths = {}, cityDot;
+  function buildMap() {
+    const box = document.getElementById("mapbox");
+    const [x0, y0, w, h] = G.viewBox;
+    svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", `${x0} ${y0} ${w} ${h}`);
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", "Oʻzbekiston hududlari xaritasi");
+    const defs = document.createElementNS(svg.namespaceURI, "defs");
+    defs.innerHTML = `<pattern id="nodots" patternUnits="userSpaceOnUse" width="6" height="6"><rect width="6" height="6" style="fill:var(--nodata)"/><circle cx="3" cy="3" r="1.1" style="fill:var(--nodata-dot)"/></pattern><pattern id="hatch" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="2" height="7" style="fill:var(--hatch)"/></pattern>`;
+    svg.appendChild(defs);
+    Object.keys(G.regions).filter((n) => n !== "Toshkent shahri").forEach(addRegion);
+    addRegion("Toshkent shahri");
+    const c = G.regions["Toshkent shahri"];
+    cityDot = document.createElementNS(svg.namespaceURI, "circle");
+    cityDot.setAttribute("cx", c.cx); cityDot.setAttribute("cy", c.cy); cityDot.setAttribute("r", 13); cityDot.setAttribute("class", "citymark");
+    bindHover(cityDot, "Toshkent shahri");
+    svg.appendChild(cityDot);
+    const lbl = document.createElementNS(svg.namespaceURI, "text");
+    lbl.setAttribute("x", c.cx - 18); lbl.setAttribute("y", c.cy - 20); lbl.setAttribute("text-anchor", "end"); lbl.setAttribute("class", "maplabel"); lbl.textContent = "Toshkent sh.";
+    svg.appendChild(lbl);
+    box.insertBefore(svg, box.firstChild);
+  }
+  function addRegion(n) {
+    const g = document.createElementNS(svg.namespaceURI, "g");
+    const p = document.createElementNS(svg.namespaceURI, "path");
+    p.setAttribute("d", G.regions[n].d); p.setAttribute("class", "region"); p.setAttribute("fill-rule", "evenodd");
+    const hp = document.createElementNS(svg.namespaceURI, "path");
+    hp.setAttribute("d", G.regions[n].d); hp.setAttribute("fill", "url(#hatch)"); hp.setAttribute("fill-rule", "evenodd"); hp.style.pointerEvents = "none"; hp.setAttribute("visibility", "hidden");
+    g.appendChild(p); g.appendChild(hp);
+    bindHover(p, n);
+    svg.appendChild(g);
+    paths[n] = { p, hp };
+  }
+  function bindHover(node, n) {
+    node.addEventListener("pointermove", (e) => showTip(e, n));
+    node.addEventListener("pointerleave", hideTip);
+    node.addEventListener("click", () => selectRegion(n));
+  }
+  function selectRegion(n) { state.region = state.region === n ? null : n; paintMap(); renderTrend(); renderIndex(); renderScatter(); }
+  function tipHtml(n) {
+    const m = mk(), r = P().regions[state.market][n], s = P().same[state.market][n];
+    const rows = [["Narx, " + m.unit, fmtCell(regionCell(n, "price"), "price")], [dqName(), fmtCell(regionCell(n, "dq"), "dq")]];
+    if (state.kind !== "Y") rows.push(["Δ yil", fmtCell(regionCell(n, "dy"), "dy")]);
+    if (r) rows.push([dqName() + ", dollarda", fmtPct(r.dq_usd)]);
+    rows.push(["Bir xil eʼlonlar Δ", fmtCell(regionCell(n, "same"), "same")]);
+    rows.push(["Eʼlonlar", r ? fmtInt(r.n) : "—"]);
+    if (P().yield[n]) rows.push(["Rentabellik", fmtCell(regionCell(n, "yield"), "yield")]);
+    let flag = "";
+    if (!r) flag = "Bu davr uchun maʼlumot yoʻq.";
+    else if (r.s === "hidden") flag = "Eʼlonlar 10 tadan kam — narx keltirilmaydi.";
+    else if (r.s === "thin") flag = "* Eʼlonlar soni kam (10–29 ta).";
+    else if (s && s.s === "thin") flag = "* Bir xil eʼlonlar soni kam.";
+    return `<b>${esc(n)}</b><div style="font-size:.76rem;color:var(--muted);margin-bottom:4px">${m.name} · ${esc(pname(state.kind, state.period))}</div>` +
+      rows.map(([a, b]) => `<div class="row"><span>${a}</span><span class="num">${b}</span></div>`).join("") + (flag ? `<div class="flag">${flag}</div>` : "");
+  }
+  function showTip(e, n) {
+    const tip = document.getElementById("tip"), box = document.getElementById("mapbox").getBoundingClientRect();
+    tip.innerHTML = tipHtml(n); tip.hidden = false;
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let x = e.clientX - box.left + 14, y = e.clientY - box.top + 14;
+    if (x + tw > box.width) x = e.clientX - box.left - tw - 14;
+    if (y + th > box.height) y = Math.max(0, e.clientY - box.top - th - 14);
+    tip.style.left = Math.max(0, x) + "px"; tip.style.top = y + "px";
+    highlight(n);
+  }
+  function hideTip() { document.getElementById("tip").hidden = true; highlight(null); }
+  function highlight(n) {
+    Object.entries(paths).forEach(([k, o]) => o.p.classList.toggle("dim", !!n && k !== n));
+    document.querySelectorAll("#rank button").forEach((b) => b.classList.toggle("sel", b.dataset.n === (n || state.region)));
+  }
+  function paintMap() {
+    const ms = metrics();
+    if (!ms.find((x) => x.id === state.metric)) state.metric = "dq";
+    const def = ms.find((x) => x.id === state.metric);
+    const vals = REGIONS.map((n) => ({ n, c: regionCell(n, state.metric) }));
+    const shown = vals.filter((x) => !x.c.hidden && x.c.v != null);
+    const sc = scaleFor(def.kind, shown.map((x) => x.c.v));
+    vals.forEach(({ n, c }) => {
+      const o = paths[n]; if (!o) return;
+      const none = c.hidden || c.v == null;
+      o.p.style.fill = none ? "url(#nodots)" : `var(${sc.token(c.v)})`;
+      o.hp.setAttribute("visibility", c.thin && !none ? "visible" : "hidden");
+      o.p.classList.toggle("sel", state.region === n);
+      if (n === "Toshkent shahri") { cityDot.style.fill = none ? "var(--nodata)" : `var(${sc.token(c.v)})`; cityDot.classList.toggle("sel", state.region === n); }
+    });
+    // legend
+    let h = "";
+    if (sc.kind === "div") h += `<div class="ramp">` + DIV_TOKENS.map((t, i) => `<span><i style="background:var(${t})"></i>${DIV_LABELS[i]}</span>`).join("") + `</div><span>%</span>`;
+    else {
+      const fmt = (v) => (state.metric === "yield" ? v.toFixed(1) + "%" : fmtPrice(v, mk()));
+      const lo = Math.min(...shown.map((x) => x.c.v));
+      h += `<div class="ramp">` + SEQ_TOKENS.map((t, i) => `<span><i style="background:var(${t})"></i>${fmt(i === 0 ? lo : sc.br[i - 1])}+</span>`).join("") + `</div>`;
+    }
+    h += `<span class="sw"><i class="hatch"></i>* kam eʼlon (10–29)</span><span class="sw"><i class="nodata"></i>— maʼlumot yoʻq</span>`;
+    document.getElementById("legend").innerHTML = h;
+    // text
+    const m = mk();
+    const unit = state.metric === "price" ? m.unit : state.metric === "yield" ? "foiz, barcha bozorlar uchun bir xil" : def.long;
+    document.getElementById("mapTitle").textContent = `Hududlar xaritasi · ${pname(state.kind, state.period)}`;
+    document.getElementById("mapLede").textContent = `${state.metric === "yield" ? "Ijara rentabelligi" : m.name + " · " + def.name}: ${unit}. Hudud ustiga olib boring yoki tanlang — narx dinamikasi shu hudud uchun chiziladi.`;
+    seg("metricSeg", ms, "metric", () => { paintMap(); });
+    renderRank(vals, sc, def);
+    renderDetail();
+    if (state.showTable) renderMapTable();
+  }
+  function renderRank(vals, sc, def) {
+    document.getElementById("rankTitle").textContent = def.id === "yield" ? "Rentabellik, yillik" : def.name;
+    document.getElementById("rankUnit").textContent = def.id === "price" ? mk().unit : "%";
+    const sorted = vals.slice().sort((a, b) => ((b.c.hidden || b.c.v == null) ? -Infinity : b.c.v) - ((a.c.hidden || a.c.v == null) ? -Infinity : a.c.v));
+    const nums = sorted.filter((x) => !x.c.hidden && x.c.v != null).map((x) => Math.abs(x.c.v));
+    const maxAbs = Math.max(...nums, 0.0001);
+    const ul = document.getElementById("rank"); ul.innerHTML = "";
+    let pos = 0;
+    sorted.forEach(({ n, c }) => {
+      const has = !c.hidden && c.v != null; if (has) pos++;
+      const w = has ? Math.max(2, (Math.abs(c.v) / maxAbs) * 100) : 0;
+      const li = el("li"), b = el("button", { type: "button", "data-n": n });
+      b.innerHTML = `<span class="pos num">${has ? pos : ""}</span><span class="nm">${esc(n)}</span><span><span class="bar" style="display:block;width:${w}%;background:${has ? `var(${sc.token(c.v)})` : "transparent"}"></span></span><span class="val num ${has ? "" : "na"}">${fmtCell(c, def.id)}</span>`;
+      b.classList.toggle("sel", state.region === n);
+      b.addEventListener("mouseenter", () => highlight(n)); b.addEventListener("mouseleave", () => highlight(null));
+      b.addEventListener("focus", () => highlight(n)); b.addEventListener("blur", () => highlight(null));
+      b.addEventListener("click", () => selectRegion(n));
+      li.appendChild(b); ul.appendChild(li);
+    });
+  }
+  function renderDetail() {
+    const box = document.getElementById("detail");
+    if (!state.region) { box.innerHTML = `<span class="flag">Hududni tanlang — barcha bozorlar boʻyicha koʻrsatkichlar shu yerda chiqadi.</span>`; return; }
+    const n = state.region, p = P();
+    let h = `<b>${esc(n)}</b>`;
+    MARKETS.forEach((m) => {
+      const r = p.regions[m.id][n];
+      const price = !r || r.s === "hidden" ? "—" : fmtPrice(r.v, m) + (r.s === "thin" ? "*" : "");
+      h += `<div class="row"><span>${m.name}</span><span class="num">${price} · ${fmtPct(r ? r.dq : null)} · ${r ? fmtInt(r.n) : "—"} eʼlon</span></div>`;
+    });
+    if (p.yield[n] && p.yield[n].v != null) h += `<div class="row"><span>Rentabellik</span><span class="num">${p.yield[n].v.toFixed(1)}%${p.yield[n].s === "thin" ? "*" : ""}</span></div>`;
+    h += `<span class="flag">Narx · ${dqName()} · eʼlonlar soni</span>`;
+    box.innerHTML = h;
+  }
+  function renderMapTable() {
+    const m = mk(), p = P();
+    let h = `<table><caption class="eyebrow" style="text-align:left;padding-bottom:8px">${m.name}, ${m.unit} · ${esc(pname(state.kind, state.period))}</caption><thead><tr><th>Hudud</th><th>Narx</th><th>${dqName()}</th>${state.kind !== "Y" ? "<th>Δ yil</th>" : ""}<th>${dqName()}, $</th><th>Bir xil eʼlonlar Δ</th><th>Eʼlonlar</th><th>Rentabellik</th></tr></thead><tbody>`;
+    REGIONS.forEach((n) => {
+      const r = p.regions[state.market][n];
+      h += `<tr><td>${esc(n)}</td><td>${fmtCell(regionCell(n, "price"), "price")}</td><td>${fmtCell(regionCell(n, "dq"), "dq")}</td>${state.kind !== "Y" ? `<td>${fmtCell(regionCell(n, "dy"), "dy")}</td>` : ""}<td>${fmtPct(r ? r.dq_usd : null)}</td><td>${fmtCell(regionCell(n, "same"), "same")}</td><td>${r ? fmtInt(r.n) : "—"}</td><td>${p.yield[n] ? fmtCell(regionCell(n, "yield"), "yield") : "—"}</td></tr>`;
+    });
+    document.getElementById("mapTable").innerHTML = h + "</tbody></table>";
+  }
+  document.getElementById("mapTableBtn").addEventListener("click", (e) => {
+    state.showTable = !state.showTable;
+    e.target.setAttribute("aria-expanded", String(state.showTable));
+    e.target.textContent = state.showTable ? "Jadvalni yopish" : "Jadval koʻrinishi";
+    document.getElementById("mapTable").hidden = !state.showTable;
+    if (state.showTable) renderMapTable();
+  });
+
+  /* ---------- trend over all periods ---------- */
+  function lineChart(boxId, series, opts) {
+    const box = document.getElementById(boxId);
+    const W = Math.max(300, box.clientWidth || box.parentElement.clientWidth - 32), H = opts.height || Math.round(Math.min(340, Math.max(240, W * 0.42)));
+    const pad = { l: 48, r: 22, t: 14, b: 34 };
+    const xs = opts.labels, N = xs.length;
+    const all = series.flatMap((s) => s.values.filter((v) => v != null).map((v) => v.v));
+    if (!all.length) { box.innerHTML = `<p class="note">Maʼlumot yoʻq.</p>`; return; }
+    let lo = Math.min(...all), hi = Math.max(...all);
+    const span = hi - lo || hi * 0.1 || 1; lo -= span * 0.12; hi += span * 0.12;
+    const X = (i) => pad.l + (N === 1 ? (W - pad.l - pad.r) / 2 : (i / (N - 1)) * (W - pad.l - pad.r));
+    const Y = (v) => H - pad.b - ((v - lo) / (hi - lo)) * (H - pad.t - pad.b);
+    const step = niceStep((hi - lo) / 4);
+    let g = "";
+    for (let t = Math.ceil(lo / step) * step; t <= hi; t += step) g += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(t)}" y2="${Y(t)}" style="stroke:var(--line)"/><text x="${pad.l - 8}" y="${Y(t) + 4}" text-anchor="end" font-size="11" style="fill:var(--muted)">${opts.fmtTick(t)}</text>`;
+    const every = Math.max(1, Math.ceil(N / Math.max(2, Math.floor((W - pad.l) / 58))));
+    // label every `every`-th period, always the last one, and drop a label that would collide with the last
+    xs.forEach((p, i) => {
+      const last = i === N - 1;
+      if (!(i % every === 0 || last)) return;
+      if (!last && N - 1 - i < every * 0.75) return;
+      g += `<text x="${X(i)}" y="${H - pad.b + 18}" text-anchor="${last && N > 1 ? "end" : "middle"}" font-size="11" style="fill:var(--muted)">${esc(opts.fmtX(p))}</text>`;
+    });
+    if (opts.current != null) { const i = xs.indexOf(opts.current); if (i >= 0) g += `<line x1="${X(i)}" x2="${X(i)}" y1="${pad.t}" y2="${H - pad.b}" style="stroke:var(--ink-2);stroke-dasharray:3 3"/>`; }
+    series.forEach((s) => {
+      let d = "", pen = false;
+      s.values.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? "L" : "M") + X(i).toFixed(1) + "," + Y(v.v).toFixed(1); pen = true; });
+      g += `<path d="${d}" fill="none" style="stroke:var(${s.color});stroke-width:2;stroke-linejoin:round;stroke-linecap:round"/>`;
+      s.values.forEach((v, i) => {
+        if (v == null) return;
+        const cur = xs[i] === opts.current;
+        const r = cur ? 5 : N > 20 ? 2.5 : 3.5;
+        g += `<circle cx="${X(i)}" cy="${Y(v.v)}" r="${r}" style="fill:${v.thin ? "var(--surface)" : `var(${s.color})`};stroke:var(${s.color});stroke-width:${v.thin ? 1.6 : 1}"/>`;
+      });
+    });
+    // hit columns for hover and click-to-select
+    const colW = N === 1 ? W : (W - pad.l - pad.r) / (N - 1);
+    xs.forEach((p, i) => { g += `<rect class="hitcol" data-i="${i}" x="${X(i) - colW / 2}" y="${pad.t}" width="${colW}" height="${H - pad.t - pad.b}" fill="transparent" style="cursor:${opts.onPick ? "pointer" : "default"}"/>`; });
+    box.innerHTML = `<div style="position:relative"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${esc(opts.aria)}">${g}<line class="hover-rule" x1="0" x2="0" y1="${pad.t}" y2="${H - pad.b}" style="stroke:var(--muted);visibility:hidden"/></svg><div class="tip" hidden></div></div>`;
+    const tip = box.querySelector(".tip"), rule = box.querySelector(".hover-rule");
+    box.querySelectorAll(".hitcol").forEach((c) => {
+      const i = +c.dataset.i;
+      c.addEventListener("pointerenter", () => {
+        rule.setAttribute("x1", X(i)); rule.setAttribute("x2", X(i)); rule.style.visibility = "visible";
+        tip.innerHTML = `<b>${esc(opts.fmtXLong(xs[i]))}</b>` + series.map((s) => { const v = s.values[i]; return `<div class="row"><span><i style="display:inline-block;width:10px;height:3px;background:var(${s.color});margin-right:6px;vertical-align:middle"></i>${esc(s.name)}</span><span class="num">${v == null ? "—" : opts.fmtVal(v)}</span></div>`; }).join("") + (opts.onPick ? `<div class="flag">Bosing — shu davrni tanlash</div>` : "");
+        tip.hidden = false;
+        const tw = tip.offsetWidth; let x = X(i) + 12; if (x + tw > W) x = X(i) - tw - 12;
+        tip.style.left = Math.max(0, x) + "px"; tip.style.top = "8px";
+      });
+      c.addEventListener("pointerleave", () => { tip.hidden = true; rule.style.visibility = "hidden"; });
+      if (opts.onPick) c.addEventListener("click", () => opts.onPick(xs[i]));
+    });
+  }
+  function niceStep(raw) { const p = Math.pow(10, Math.floor(Math.log10(raw))); const f = raw / p; return (f < 1.5 ? 1 : f < 3.5 ? 2 : f < 7.5 ? 5 : 10) * p; }
+
+  function renderTrend() {
+    const m = mk(), list = D.periods[state.kind];
+    const main = state.region || "Toshkent shahri";
+    const cmpSel = document.getElementById("cmpSel");
+    cmpSel.innerHTML = `<option value="">—</option>` + REGIONS.filter((n) => n !== main).map((n) => `<option value="${esc(n)}"${n === state.cmp ? " selected" : ""}>${esc(n)}</option>`).join("");
+    if (state.cmp === main) state.cmp = "";
+    const ser = (name, color) => ({ name, color, values: list.map((p) => { const r = D.data[state.kind][p].regions[state.market][name]; return r && r.v != null ? { v: r.v, thin: r.s === "thin", dq: r.dq, n: r.n } : null; }) });
+    const series = [ser(main, "--dot-a")];
+    if (state.cmp) series.push(ser(state.cmp, "--dot-b"));
+    document.getElementById("trendKey").innerHTML = series.map((s) => `<span class="keyline"><i style="background:var(${s.color})"></i>${esc(s.name)}</span>`).join("") + `<span class="keyline"><i style="background:transparent;border:1.6px solid var(--muted);width:9px;height:9px;border-radius:50%"></i>kam eʼlon</span>`;
+    document.getElementById("trendLede").textContent = `${m.name}, ${m.unit} · ${({ M: "oylar", Q: "choraklar", Y: "yillar" })[state.kind]} boʻyicha. Hududni xaritadan tanlang; grafikdagi nuqtani bossangiz, oʻsha davr tanlanadi.`;
+    lineChart("trend", series, {
+      labels: list, current: state.period, aria: `${main} narx dinamikasi`,
+      fmtX: (p) => pname(state.kind, p, true), fmtXLong: (p) => pname(state.kind, p),
+      fmtTick: (t) => t.toFixed(m.dec === 2 ? 1 : 0),
+      fmtVal: (v) => `${fmtPrice(v.v, m)}${v.thin ? "*" : ""} · ${fmtPct(v.dq)}`,
+      onPick: (p) => selectPeriod(p),
+    });
+    document.getElementById("trendNote").textContent = state.kind === "Y" ? "2026-yil boʻyicha yanvar–sentabr oylari olingan; oʻzgarish 2025-yilning shu oylariga nisbatan." : "Ochiq nuqta: eʼlonlar soni kam (10–29). Uzilish: 10 tadan kam eʼlon yoki maʼlumot yoʻq.";
+  }
+  document.getElementById("cmpSel").addEventListener("change", (e) => { state.cmp = e.target.value; renderTrend(); });
+
+  /* ---------- index (quarterly) ---------- */
+  function renderIndex() {
+    const nat = D.index.national, qs = nat.map((x) => x.q);
+    const series = [{ name: "Respublika", color: "--dot-a", values: nat.map((x) => ({ v: x.v })) }];
+    const r = state.region && D.index.regional[state.region];
+    if (r) { const map = Object.fromEntries(r.map((x) => [x.q, x.v])); series.push({ name: state.region, color: "--dot-b", values: qs.map((q) => (map[q] == null ? null : { v: map[q] })) }); }
+    const ix = latestIndexFor();
+    document.getElementById("indexLede").textContent = `Ikkilamchi bozor, xonalar tarkibiga moslashtirilgan zanjirli indeks, AQSH dollarida; ${pname("Q", D.index.base)} = 100. Indeks faqat choraklik hisoblanadi.`;
+    document.getElementById("indexKey").innerHTML = series.map((s) => `<span class="keyline"><i style="background:var(${s.color})"></i>${esc(s.name)}</span>`).join("") + (state.region ? "" : `<span class="note">Hududni tanlasangiz, uning indeksi qoʻshiladi.</span>`);
+    lineChart("indexChart", series, {
+      labels: qs, current: ix ? ix.q : null, aria: "Uy-joy narxlari indeksi", height: 260,
+      fmtX: (q) => pname("Q", q, true), fmtXLong: (q) => pname("Q", q), fmtTick: (t) => t.toFixed(0), fmtVal: (v) => v.v.toFixed(1),
+    });
+  }
+
+  /* ---------- Tashkent tiles ---------- */
+  const TILE_POS = { "Olmazor": [2, 1], "Yunusobod": [3, 1], "Mirzo Ulugʻbek": [4, 1], "Uchtepa": [1, 2], "Shayxontohur": [2, 2], "Mirobod": [3, 2], "Yashnobod": [4, 2], "Chilonzor": [1, 3], "Yakkasaroy": [2, 3], "Bektemir": [4, 3], "Sergeli": [2, 4] };
+  function dmetrics() { const m = [{ id: "price", name: "Narx", kind: "seq" }, { id: "dq", name: dqName(), kind: "div" }]; if (state.kind !== "Y") m.push({ id: "dy", name: "Δ yil", kind: "div" }); return m; }
+  function paintTiles() {
+    const ms = dmetrics(); if (!ms.find((x) => x.id === state.dmetric)) state.dmetric = "price";
+    seg("dmetricSeg", ms, "dmetric", paintTiles);
+    const metric = state.dmetric, m = mk(), Dd = P().districts[state.market];
+    const key = metric === "price" ? "v" : yKey(metric);
+    const def = ms.find((x) => x.id === metric);
+    const vals = Object.values(Dd).filter((r) => r && r[key] != null).map((r) => r[key]);
+    const sc = scaleFor(def.kind, vals);
+    const box = document.getElementById("tiles"); box.innerHTML = "";
+    Object.entries(TILE_POS).forEach(([n, [c, r]]) => {
+      const d = Dd[n], v = d ? d[key] : null, none = v == null;
+      const tok = none ? null : sc.token(v);
+      const txt = none ? "—" : metric === "price" ? fmtPrice(v, m) + (d.s === "thin" ? "*" : "") : fmtPct(v);
+      const b = el("button", { type: "button", class: "tile num " + (none ? "on-light" : inkOn(tok) ? "on-dark" : "on-light"), "aria-label": `${n}: ${txt}` });
+      b.style.gridColumn = c; b.style.gridRow = r; b.style.background = none ? "var(--nodata)" : `var(${tok})`;
+      if (none) b.style.color = "var(--ink-2)";
+      b.innerHTML = `<span class="tn">${esc(n)}${n === "Sergeli" ? " <span style='font-weight:400'>(+Yangihayot)</span>" : ""}</span><span><span class="tv">${txt}</span><br><span class="tc">${d ? fmtInt(d.n) : "—"} eʼlon</span></span>`;
+      b.classList.toggle("sel", state.district === n);
+      b.addEventListener("click", () => { state.district = state.district === n ? null : n; paintTiles(); });
+      box.appendChild(b);
+    });
+    const lg = document.getElementById("dlegend");
+    if (sc.kind === "div") lg.innerHTML = `<div class="ramp">` + DIV_TOKENS.map((t, i) => `<span><i style="background:var(${t})"></i>${DIV_LABELS[i]}</span>`).join("") + `</div><span>%</span>`;
+    else { const lo = Math.min(...vals); lg.innerHTML = `<div class="ramp">` + SEQ_TOKENS.map((t, i) => `<span><i style="background:var(${t})"></i>${fmtPrice(i === 0 ? lo : sc.br[i - 1], m)}+</span>`).join("") + `</div><span>${m.unit}</span>`; }
+    renderDistrictDetail();
+  }
+  function renderDistrictDetail() {
+    const box = document.getElementById("ddetail"), m = mk(), Dd = P().districts[state.market], city = P().regions[state.market]["Toshkent shahri"];
+    const rowH = (a, b) => `<div style="display:flex;justify-content:space-between;gap:12px;font-size:.88rem;padding:3px 0;border-bottom:1px solid var(--line)"><span style="color:var(--ink-2)">${a}</span><span class="num">${b}</span></div>`;
+    if (state.district && Dd[state.district]) {
+      const d = Dd[state.district];
+      const rows = [["Narx, " + m.unit, fmtPrice(d.v, m) + (d.s === "thin" ? "*" : "")], [dqName(), fmtPct(d.dq)]];
+      if (state.kind !== "Y") rows.push(["Δ yil", fmtPct(d.dy)]);
+      rows.push([dqName() + ", dollarda", fmtPct(d.dq_usd)], ["Eʼlonlar", fmtInt(d.n)], ["Shahar boʻyicha narx", city ? fmtPrice(city.v, m) : "—"]);
+      box.innerHTML = `<div class="eyebrow">${m.name} · ${esc(pname(state.kind, state.period))}</div><h3 style="font-family:var(--font-display);margin:4px 0 8px;font-size:1.2rem">${esc(state.district)}</h3>` + rows.map(([a, b]) => rowH(a, b)).join("") +
+        (state.district === "Sergeli" ? `<p style="font-size:.8rem;color:var(--muted);margin-top:8px">Yangihayot tumani maʼlumotlari shu yerda hisoblangan.</p>` : "");
+      return;
+    }
+    const key = state.dmetric === "price" ? "v" : yKey(state.dmetric);
+    const rows = Object.entries(Dd).filter(([, r]) => r && r[key] != null).sort((a, b) => b[1][key] - a[1][key]);
+    if (!rows.length || !city) { box.innerHTML = `<p class="note">Bu davr uchun maʼlumot yoʻq.</p>`; return; }
+    const fmtv = (r) => (state.dmetric === "price" ? fmtPrice(r.v, m) + " " + m.unit : fmtPct(r[key]));
+    const up = Object.values(Dd).filter((r) => r && r.dq > 0).length, down = Object.values(Dd).filter((r) => r && r.dq < 0).length;
+    box.innerHTML = `<div class="eyebrow">${m.name} · Toshkent shahri · ${esc(pname(state.kind, state.period))}</div>` +
+      `<p style="margin:8px 0;font-size:.95rem">Shahar boʻyicha narx <b class="num">${fmtPrice(city.v, m)}</b> ${m.unit} (${dqName()} ${fmtPct(city.dq)}). <b>${up}</b> ta tumanda narx oshdi, <b>${down}</b> tasida pasaydi.</p>` +
+      rowH("Eng yuqori", `${esc(rows[0][0])} · ${fmtv(rows[0][1])}`) + rowH("Eng past", `${esc(rows[rows.length - 1][0])} · ${fmtv(rows[rows.length - 1][1])}`) +
+      `<p style="font-size:.8rem;color:var(--muted);margin-top:10px">Tumanni tanlang — tafsilotlar shu yerda chiqadi.</p>`;
+  }
+
+  /* ---------- dumbbell ---------- */
+  function renderDumbbell() {
+    const m = mk(), p = P();
+    document.getElementById("dbKey").innerHTML = `<span><i class="a"></i>Median narx, ${dqName()}</span><span><i class="b"></i>Bir xil eʼlonlar, ${dqName()} (soʻmda)</span><span>Xira nuqta: eʼlonlar soni kam</span>`;
+    const rows = REGIONS.map((n) => [n, p.regions[state.market][n], p.same[state.market][n]]).filter(([, r]) => r && r.s !== "hidden" && r.dq != null).sort((a, b) => b[1].dq - a[1].dq);
+    const box = document.getElementById("db");
+    if (!rows.length) { box.innerHTML = `<p class="note">Bu davr uchun taqqoslash maʼlumoti yoʻq.</p>`; document.getElementById("sameCallout").textContent = ""; return; }
+    const all = rows.flatMap(([, r, s]) => [r.dq, s && s.uzs].filter((v) => v != null));
+    const lo = Math.min(-5, Math.floor(Math.min(...all) / 5) * 5), hi = Math.max(5, Math.ceil(Math.max(...all) / 5) * 5);
+    const X = (v) => ((v - lo) / (hi - lo)) * 100;
+    const narrow = box.clientWidth < 520;
+    const stepT = narrow ? (hi - lo > 20 ? 10 : 5) : (hi - lo > 30 ? 10 : 5);
+    const ticks = []; for (let t = lo; t <= hi; t += stepT) ticks.push(t);
+    const grid = ticks.map((t) => `<div class="${t === 0 ? "db-zero" : "db-grid"}" style="left:${X(t)}%"></div>`).join("");
+    let h = "";
+    rows.forEach(([n, r, s]) => {
+      const a = r.dq, b = s && s.uzs != null ? s.uzs : null, bthin = s && s.s === "thin";
+      const link = b == null ? "" : `<div class="db-link" style="left:${Math.min(X(a), X(b))}%;width:${Math.abs(X(a) - X(b))}%"></div>`;
+      h += `<div class="db-row"><span class="nm" title="${esc(n)}">${esc(n)}${r.s === "thin" ? "*" : ""}</span><div class="db-track">${grid}${link}` +
+        (b == null ? "" : `<div class="db-dot b ${bthin ? "thin" : ""}" style="left:${X(b)}%" title="Bir xil eʼlonlar: ${fmtPct(b)}"></div>`) +
+        `<div class="db-dot a ${r.s === "thin" ? "thin" : ""}" style="left:${X(a)}%" title="Median: ${fmtPct(a)}"></div></div>` +
+        `<span class="db-vals num">${fmtPct(a)} / ${b == null ? "—" : fmtPct(b) + (bthin ? "*" : "")}</span></div>`;
+    });
+    h += `<div class="db-axis"><span></span><div class="t">${ticks.map((t) => `<span style="left:${X(t)}%">${t > 0 ? "+" : ""}${t}%</span>`).join("")}</div><span style="text-align:right">median / bir xil</span></div>`;
+    box.innerHTML = h;
+    const s = p.summary[state.market], l = p.same[state.market].Respublika;
+    document.getElementById("sameCallout").innerHTML = l && l.uzs != null
+      ? `${m.name}, ${esc(pname(state.kind, state.period))}: hududlar boʻyicha oʻrtacha oʻzgarish <b class="num">${fmtPct(s.avg_dq)}</b>, bir xil eʼlonlar narxi esa <b class="num">${fmtPct(l.uzs)}</b> (soʻmda) va <b class="num">${fmtPct(l.usd)}</b> (dollarda), ${prevName()}ga nisbatan.`
+      : `${m.name}: hududlar boʻyicha oʻrtacha oʻzgarish <b class="num">${fmtPct(s.avg_dq)}</b>.`;
+  }
+
+  /* ---------- scatter ---------- */
+  function renderScatter() {
+    const box = document.getElementById("scatter"), p = P();
+    const W = Math.max(280, box.clientWidth - 32), H = Math.round(Math.min(360, Math.max(240, W * 0.62)));
+    const pad = { l: 46, r: 16, t: 16, b: 46 };
+    const pts = Object.entries(p.yield).filter(([n, y]) => y.v != null && p.regions.secondary[n] && p.regions.secondary[n].v != null).map(([n, y]) => ({ n, y: y.v, thin: y.s === "thin", x: p.regions.secondary[n].v }));
+    if (pts.length < 2) { box.innerHTML = `<p class="note">Bu davr uchun maʼlumot yetarli emas.</p>`; return; }
+    const xs = pts.map((q) => q.x), ys = pts.map((q) => q.y);
+    const x0 = Math.floor(Math.min(...xs)) - 0.5, x1 = Math.ceil(Math.max(...xs)) + 0.5, y0 = Math.floor(Math.min(...ys)) - 0.5, y1 = Math.ceil(Math.max(...ys)) + 0.5;
+    const X = (v) => pad.l + ((v - x0) / (x1 - x0)) * (W - pad.l - pad.r), Y = (v) => H - pad.b - ((v - y0) / (y1 - y0)) * (H - pad.t - pad.b);
+    let g = "";
+    const ys_ = Math.max(1, Math.round((y1 - y0) / 5));
+    for (let t = Math.ceil(y0); t <= y1; t += ys_) g += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(t)}" y2="${Y(t)}" style="stroke:var(--line)"/><text x="${pad.l - 8}" y="${Y(t) + 4}" text-anchor="end" font-size="11" style="fill:var(--muted)">${t}%</text>`;
+    const step = x1 - x0 > 8 ? 2 : 1;
+    for (let t = Math.ceil(x0); t <= x1; t += step) g += `<line x1="${X(t)}" x2="${X(t)}" y1="${pad.t}" y2="${H - pad.b}" style="stroke:var(--line)"/><text x="${X(t)}" y="${H - pad.b + 18}" text-anchor="middle" font-size="11" style="fill:var(--muted)">${t}</text>`;
+    g += `<text x="${(pad.l + W - pad.r) / 2}" y="${H - 6}" text-anchor="middle" font-size="11" style="fill:var(--ink-2)">Ikkilamchi bozor narxi, mln soʻm/m²</text>`;
+    g += `<text transform="translate(12 ${(pad.t + H - pad.b) / 2}) rotate(-90)" text-anchor="middle" font-size="11" style="fill:var(--ink-2)">Rentabellik, yillik</text>`;
+    const top = pts.slice().sort((a, b) => b.y - a.y)[0].n, low = pts.slice().sort((a, b) => a.y - b.y)[0].n;
+    const label = new Set(["Toshkent shahri", top, low, state.region].filter(Boolean));
+    pts.forEach((q) => {
+      const sel = q.n === state.region;
+      g += `<circle cx="${X(q.x)}" cy="${Y(q.y)}" r="${sel ? 7 : 5}" style="fill:${sel ? "var(--dot-b)" : "var(--dot-a)"};stroke:var(--surface);stroke-width:2;opacity:${q.thin ? 0.55 : 1}"></circle>`;
+      g += `<circle cx="${X(q.x)}" cy="${Y(q.y)}" r="14" fill="transparent" data-n="${esc(q.n)}" data-x="${q.x}" data-y="${q.y}" data-thin="${q.thin}" class="hit" style="cursor:pointer"/>`;
+      if (label.has(q.n)) { const right = X(q.x) < W - 140; g += `<text x="${X(q.x) + (right ? 10 : -10)}" y="${Y(q.y) - 8}" text-anchor="${right ? "start" : "end"}" font-size="11" style="fill:var(--ink)">${esc(q.n)}</text>`; }
+    });
+    box.innerHTML = `<div style="position:relative"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Rentabellik va ikkilamchi bozor narxi">${g}</svg><div class="tip" hidden></div></div>`;
+    const tip = box.querySelector(".tip");
+    box.querySelectorAll(".hit").forEach((c) => {
+      c.addEventListener("pointerenter", () => {
+        tip.innerHTML = `<b>${esc(c.dataset.n)}</b><div class="row"><span>Rentabellik</span><span class="num">${(+c.dataset.y).toFixed(1)}%${c.dataset.thin === "true" ? "*" : ""}</span></div><div class="row"><span>Ikkilamchi narx</span><span class="num">${(+c.dataset.x).toFixed(2)}</span></div>`;
+        tip.hidden = false;
+        const cx = +c.getAttribute("cx"), cy = +c.getAttribute("cy");
+        tip.style.left = Math.min(cx + 12, W - tip.offsetWidth) + "px"; tip.style.top = Math.max(0, cy - tip.offsetHeight - 10) + "px";
+      });
+      c.addEventListener("pointerleave", () => { tip.hidden = true; });
+      c.addEventListener("click", () => selectRegion(c.dataset.n));
+    });
+  }
+
+  /* ---------- wiring ---------- */
+  function renderAll() {
+    renderPeriodBar(); renderKpis(); paintMap(); renderTrend(); paintTiles(); renderDumbbell(); renderScatter(); renderIndex();
+  }
+  buildMap();
+  renderAll();
+  let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { renderTrend(); renderIndex(); renderScatter(); renderDumbbell(); }, 120); });
+  const repaint = () => { paintMap(); paintTiles(); };
+  const mq = matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", repaint);
+  new MutationObserver(repaint).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  window.__DASH = { state, D, selectPeriod, renderAll };
+  window.__REPORT_READY = true;
+})();
+</script>

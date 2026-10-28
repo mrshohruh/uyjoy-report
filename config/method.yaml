@@ -1,0 +1,44 @@
+# Method v1 — decided 2026-10-14. Changing any value here changes every quarter
+# the next time the pipeline runs, so bump `version` and note the reason.
+version: "v1"
+
+scope:
+  min_total_floors: 4
+  rooms: [1, 5]          # inclusive
+  area_m2: [20, 140]     # inclusive, total_area
+
+# Strictest export cap seen in any month, per file family (USD, total price).
+price_caps_usd:
+  regions_sale: 135000
+  regions_rent: 800
+  tashkent_sale: 330000
+  tashkent_rent: 2300
+
+# Drop a listing when its price per m2 is outside [low, high] x its cell median.
+outlier_ratio: [0.4, 2.5]
+
+# Columns that identify the same flat re-posted under a new id (within a quarter).
+repost_key: [geo, location_uz, number_of_rooms, total_area, floor, total_floors, price, market]
+
+# Listings per cell.
+sample:
+  publish_min: 30     # >= publish_min: normal
+  flag_min: 10        # flag_min..publish_min-1: shown with "*", never headlined
+                      # < flag_min: shown as "—"
+
+# Room-mix-adjusted index.
+index:
+  base_period: "2023Q2"   # first quarter with regional sales on file
+  market: sec
+  min_per_stratum: 5
+  strata: ["1", "2", "3", "4+"]
+
+# Months from which the source exports were cleaned differently. Comparisons that
+# span a break are flagged in facts.json, tables and text, and a like-for-like
+# change (same listings in both quarters) is shown next to them.
+series_breaks: []
+# History, July 2026: the colleague's exports switched to new cleaning rules. July-Sep 2026 were
+# re-cleaned from the uncleaned exports with the earlier rules (tools/clean_*.py), so the series is
+# consistent. The same month the website itself carried fewer listings in several regions and far
+# fewer cheap rentals (confirmed: a real change on the site, not an export change). That is market
+# composition, reported in the text with the like-for-like check, not a data break.

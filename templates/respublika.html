@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<title>Oʻzbekistonda uy-joy bozori sharhi — {{ period_uz }}</title>
+<style>
+  :root { --ink:#0b0b0b; --ink2:#52514e; --grid:#e1e0d9; --axis:#c3c2b7; --blue:#2a78d6; --blue-dark:#184f95;
+          --up:#e6f0fc; --down:#fbe4e3; --surface:#fcfcfb; --band:#f0efec; }
+  * { box-sizing: border-box; }
+  body { font-family: Carlito, "DejaVu Sans", sans-serif; color: var(--ink); background: #fff; font-size: 10.5pt; line-height: 1.38; margin: 0; }
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  h1 { font-size: 22pt; margin: 0 0 4pt; color: var(--blue-dark); letter-spacing: .2pt; }
+  h2 { font-size: 13pt; margin: 0 0 8pt; padding-bottom: 4pt; border-bottom: 2px solid var(--blue); color: var(--blue-dark); letter-spacing: .4pt; }
+  h3 { font-size: 10.5pt; margin: 12pt 0 4pt; color: var(--ink); }
+  p { margin: 0 0 6pt; text-align: justify; }
+  .sub { color: var(--ink2); font-size: 11pt; margin-bottom: 14pt; }
+  .draft { display: inline-block; border: 1px solid #e34948; color: #b8302f; font-size: 8.5pt; padding: 1pt 6pt; border-radius: 3pt; margin-left: 6pt; vertical-align: middle; }
+  .grid2 { display: grid; grid-template-columns: 1.05fr 1fr; gap: 14pt; align-items: start; }
+  table { border-collapse: collapse; width: 100%; font-size: 9pt; font-variant-numeric: tabular-nums; }
+  caption { text-align: left; font-weight: 700; font-size: 9pt; margin-bottom: 3pt; }
+  th { text-align: right; font-weight: 700; color: var(--ink2); border-bottom: 1px solid var(--axis); padding: 3pt 5pt; }
+  th:first-child, td:first-child { text-align: left; }
+  td { text-align: right; padding: 2.2pt 5pt; border-bottom: 1px solid var(--grid); }
+  td.up { background: var(--up); } td.down { background: var(--down); }
+  td.n { color: var(--ink2); }
+  .note { font-size: 8pt; color: var(--ink2); margin-top: 3pt; }
+  .box.warn { background: #fdf3e1; border-left: 3px solid #d9822b; }
+  .box.warn table { margin-top: 6pt; background: transparent; }
+  td.lfl { color: var(--blue-dark); font-weight: 700; }
+  .box { background: var(--band); border-radius: 4pt; padding: 8pt 10pt; margin: 8pt 0; font-size: 9.5pt; }
+  ol.findings { padding-left: 16pt; margin: 0; } ol.findings li { margin-bottom: 7pt; }
+  sup.cite { color: var(--blue-dark); font-size: 7pt; margin-left: 1pt; }
+  .chart { width: 100%; height: auto; }
+  .chart .tick { font-size: 11px; fill: var(--ink2); } .chart .label { font-size: 12px; fill: var(--ink); font-weight: 700; }
+  .chart .cat { font-size: 10.5px; fill: var(--ink); }
+  .band-title { font-weight: 700; color: var(--blue-dark); }
+  .sources li { margin-bottom: 4pt; font-size: 9pt; } .sources a { color: var(--blue-dark); word-break: break-all; }
+  dl.abbr { display: grid; grid-template-columns: 70pt 1fr; gap: 2pt 8pt; font-size: 9pt; } dl.abbr dt { font-weight: 700; }
+</style>
+</head>
+<body>
+
+{% macro region_table(tb, caption, first="Hudud", note="", marked=true) -%}
+{% set mk = brk and marked %}
+<table>
+  <caption>{{ caption }} ({{ tb.unit }})</caption>
+  <thead><tr><th>{{ first }}</th><th>{{ col }}</th>{% if tb.has_q %}<th>Δ chorak{% if mk and brk.qoq %}†{% endif %}</th>{% endif %}{% if tb.has_y %}<th>Δ yil{% if mk and brk.yoy %}†{% endif %}</th>{% endif %}{% if tb.has_lfl %}<th>Bir xil eʼlonlar Δ</th>{% endif %}<th>Eʼlonlar</th></tr></thead>
+  <tbody>
+  {% for r in tb.rows %}
+    <tr><td>{{ r.name }}</td><td>{{ r.value }}</td>
+      {% if tb.has_q %}<td class="{{ r.qoq_sign }}">{{ r.qoq or "—" }}</td>{% endif %}
+      {% if tb.has_y %}<td class="{{ r.yoy_sign }}">{{ r.yoy or "—" }}</td>{% endif %}
+      {% if tb.has_lfl %}<td class="lfl">{{ r.lfl or "—" }}</td>{% endif %}
+      <td class="n">{{ "{:,}".format(r.n).replace(",", " ") if r.n else "" }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% if note %}<div class="note">{{ note }}</div>{% endif %}
+{% if mk and (tb.has_q or tb.has_y) %}<div class="note">† {{ brk.note_uz }}; bu oʻzgarish oldingi davr bilan taqqoslashga taʼsir qiladi.</div>{% endif %}
+{% if tb.has_lfl %}<div class="note">«Bir xil eʼlonlar Δ» — ikkala chorakda ham mavjud eʼlonlar narxining oʻrtacha oʻzgarishi (soʻmda).</div>{% endif %}
+{%- endmacro %}
+
+{% set tsh_note = ("Faqat " ~ (partial_months.tashkent_sale | join(", ")) ~ " oyi maʼlumotlari; oʻzgarishlar keltirilmaydi.") if partial_months.tashkent_sale else "" %}
+{% set reg_note_sale = ("Toshkent shahri: faqat " ~ (partial_months.tashkent_sale | join(", ")) ~ " oyi maʼlumotlari.") if partial_months.tashkent_sale else "" %}
+{% set reg_note_rent = ("Faqat " ~ (partial_months.regions_rent | join(", ")) ~ " oyi maʼlumotlari; oldingi chorak maʼlumotlari mavjud emas.") if partial_months.regions_rent else "" %}
+<!-- 1. Title and key findings -->
+<section class="page">
+  <h1>Oʻzbekistonda uy-joy bozori sharhi</h1>
+  <div class="sub">{{ period_uz }} · Respublika boʻyicha <span class="draft">LOYIHA</span></div>
+  <h2>ASOSIY TAHLILIY XULOSALAR</h2>
+  <ol class="findings">
+    {% for k in ["x1", "x2", "x3", "x4", "x5"] %}<li>{{ text.asosiy_xulosalar[k] | safe }}</li>{% endfor %}
+  </ol>
+  {% if brk %}
+  <div class="box warn">
+    <b>Muhim: {{ brk.title_uz or "maʼlumotlar oʻzgardi" }}.</b> {{ brk.note_uz }}. Shu sababli † belgili
+    {% if brk.qoq and brk.yoy %}chorak va yillik{% elif brk.qoq %}chorak{% else %}yillik{% endif %} oʻzgarishlar tarkibi
+    har xil boʻlgan maʼlumotlarni solishtiradi va bozor harakatini toʻliq aks ettirmaydi. Iyul–sentabr maʼlumotlari avvalgi
+    oylar bilan bir xil qoidalar asosida tozalangan; Toshkent shahri maʼlumotlariga bu oʻzgarish taʼsir qilmagan. Taqqoslash uchun ikkala chorakda ham
+    mavjud boʻlgan bir xil eʼlonlar narxining oʻzgarishi keltirildi (eʼlon narxlari kam oʻzgargani uchun bu koʻrsatkich
+    bozor oʻzgarishining quyi chegarasini koʻrsatadi).
+    {% if lfl_summary %}
+    <table>
+      <thead><tr><th>Bozor</th><th>Hududlar boʻyicha oʻrtacha Δ chorak†</th><th>Bir xil eʼlonlar, soʻmda</th><th>Bir xil eʼlonlar, dollarda</th><th>Eʼlonlar</th></tr></thead>
+      <tbody>{% for r in lfl_summary %}<tr><td>{{ r.label }}</td><td>{{ r.avg }}</td><td>{{ r.som }}</td><td>{{ r.usd }}</td><td class="n">{{ "{:,}".format(r.n).replace(",", " ") }}</td></tr>{% endfor %}</tbody>
+    </table>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% if not brk and lfl_summary %}
+  <div class="box">
+    <b>Narx oʻzgarishi va eʼlonlar tarkibi.</b> Median narx ikki sababga koʻra oʻzgaradi: eʼlonlardagi narxlar oʻzgaradi
+    yoki saytdagi eʼlonlar tarkibi oʻzgaradi (masalan, arzon eʼlonlar kamayadi). Ikkalasini ajratish uchun ikkala chorakda
+    ham mavjud boʻlgan bir xil eʼlonlar narxining oʻrtacha oʻzgarishi keltirildi. Eʼlon narxlari kam oʻzgargani uchun bu
+    koʻrsatkich narx oʻzgarishining quyi chegarasini koʻrsatadi.
+    <table>
+      <thead><tr><th>Bozor</th><th>Hududlar boʻyicha oʻrtacha Δ chorak</th><th>Bir xil eʼlonlar, soʻmda</th><th>Bir xil eʼlonlar, dollarda</th><th>Eʼlonlar</th></tr></thead>
+      <tbody>{% for r in lfl_summary %}<tr><td>{{ r.label }}</td><td>{{ r.avg }}</td><td>{{ r.som }}</td><td>{{ r.usd }}</td><td class="n">{{ "{:,}".format(r.n).replace(",", " ") }}</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+  {% endif %}
+  <div class="box">
+    <b>Maʼlumotlar qamrovi.</b> Narxlar olx.uz eʼlonlari asosida hisoblangan median taklif narxlaridir va yakuniy sotuv
+    narxidan farq qilishi mumkin. Narxlar chorak oxiridagi Markaziy bank kursida soʻmga oʻtkazilgan
+    (1 AQSH dollari = {{ "{:,.2f}".format(rep.usd_uzs_end).replace(",", " ") }} soʻm).
+    {% if partial %}Ushbu chorakda quyidagi maʼlumotlar faqat qisman mavjud:
+      {% for f in partial %}{{ {"regions_rent": "hududlar ijarasi", "tashkent_rent": "Toshkent ijarasi", "tashkent_sale": "Toshkent sotuvi", "regions_sale": "hududlar sotuvi"}[f] }} ({{ rep.months_present[f] | join(", ") }}){% if not loop.last %}, {% endif %}{% endfor %}.
+    {% endif %}
+    * — eʼlonlar soni {{ method.sample.flag_min }}–{{ method.sample.publish_min - 1 }} ta; «—» — {{ method.sample.flag_min }} tadan kam (narx keltirilmaydi).
+  </div>
+</section>
+
+<!-- 2. Primary -->
+<section class="page">
+  <h2>BIRLAMCHI UY-JOY BOZORI</h2>
+  <div class="grid2">
+    <div>{{ region_table(t.birlamchi, "Hududlar boʻyicha birlamchi uy-joy narxlari", "Hudud", reg_note_sale) }}</div>
+    <div><p>{{ text.birlamchi.hududlar | safe }}</p><p>{{ text.birlamchi.izoh | safe }}</p></div>
+  </div>
+  {% if tt.birlamchi %}
+  <div class="grid2" style="margin-top:12pt">
+    <div>{{ region_table(tt.birlamchi, "Toshkent shahrida birlamchi uy-joy narxlari", "Tuman", tsh_note, brk_tash) }}</div>
+    <div><p>{{ text.birlamchi.toshkent | safe }}</p></div>
+  </div>
+  {% endif %}
+</section>
+
+<!-- 3. Secondary -->
+<section class="page">
+  <h2>IKKILAMCHI UY-JOY BOZORI</h2>
+  <div class="grid2">
+    <div>{{ region_table(t.ikkilamchi, "Hududlar boʻyicha ikkilamchi uy-joy narxlari", "Hudud", reg_note_sale) }}</div>
+    <div><p>{{ text.ikkilamchi.hududlar | safe }}</p><p>{{ text.ikkilamchi.izoh | safe }}</p></div>
+  </div>
+  {% if tt.ikkilamchi %}
+  <div class="grid2" style="margin-top:12pt">
+    <div>{{ region_table(tt.ikkilamchi, "Toshkent shahrida ikkilamchi uy-joy narxlari", "Tuman", tsh_note, brk_tash) }}</div>
+    <div><p>{{ text.ikkilamchi.toshkent | safe }}</p></div>
+  </div>
+  {% endif %}
+</section>
+
+<!-- 4. Rent and yield -->
+<section class="page">
+  <h2>IJARA BOZORI</h2>
+  <div class="grid2">
+    <div>{{ region_table(t.ijara, "Hududlar boʻyicha ijara narxlari, oyiga", "Hudud", reg_note_rent) }}</div>
+    <div><p>{{ text.ijara.hududlar | safe }}</p><p>{{ text.ijara.izoh | safe }}</p></div>
+  </div>
+  {% if tt.ijara %}
+  <div class="grid2" style="margin-top:12pt">
+    <div>{{ region_table(tt.ijara, "Toshkent shahrida ijara narxlari, oyiga", "Tuman", tsh_note, brk_tash) }}</div>
+    <div><p>{{ text.ijara.toshkent | safe }}</p></div>
+  </div>
+  {% endif %}
+</section>
+
+<section class="page">
+  <h2>IJARA RENTABELLIGI (YILLIK)</h2>
+  {{ yield_svg | safe }}
+  <div class="note">Yillik ijara daromadi (median ijara narxi × 12) ÷ median sotuv narxi (birlamchi va ikkilamchi bozor). * — eʼlonlar soni kam.</div>
+  <p style="margin-top:8pt">{{ text.rentabellik.matn | safe }}</p>
+
+</section>
+<section class="page">
+  <h2>UY-JOY INDEKSI</h2>
+  {{ index_svg | safe }}
+  <div class="note">Ikkilamchi bozor, xonalar tarkibiga moslashtirilgan zanjirli indeks, AQSH dollarida;
+      {{ index.base[:4] }}-yil {{ index.base[-1] }}-chorak = 100; hududiy indekslar aholi soniga koʻra tortilgan.
+      {% if index.regions_missing %}Hisobga kirmagan: {{ index.regions_missing | join(", ") }}.{% endif %}
+      {% if brk and brk.qoq %}Chorakdagi oʻzgarishga manba maʼlumotlari tarkibining oʻzgarishi taʼsir qilgan boʻlishi mumkin.{% endif %}</div>
+  <p style="margin-top:8pt">{{ text.indeks.matn | safe }}</p>
+  <h2 style="margin-top:18pt">BOZOR SHARHI</h2>
+  {% for b in ["band1", "band2", "band3"] %}
+    <p><span class="band-title">{{ text.bozor_sharhi[b ~ "_sarlavha"] | safe }}:</span> {{ text.bozor_sharhi[b] | safe }}</p>
+  {% endfor %}
+  <p>{{ text.bozor_sharhi.xulosa | safe }}</p>
+
+</section>
+<section class="page">
+  <h2>MANBALAR</h2>
+  <ol class="sources">
+    {% for s in sources %}<li>{{ s.outlet }}, {{ s.date }}. «{{ s.title }}». <a href="{{ s.url }}">{{ s.url }}</a></li>{% endfor %}
+  </ol>
+
+  <h2 style="margin-top:18pt">USLUBIYAT VA QISQARTMALAR</h2>
+  <p style="font-size:9pt">Narxlar olx.uz eʼlonlaridan har oy yigʻiladi. {{ method.scope.min_total_floors }}+ qavatli binolardagi
+  {{ method.scope.rooms[0] }}–{{ method.scope.rooms[1] }} xonali, {{ method.scope.area_m2[0] }}–{{ method.scope.area_m2[1] }} m² kvartiralar;
+  chorak ichida takroriy eʼlonlar olib tashlanadi; median narx chorakning barcha eʼlonlari boʻyicha hisoblanadi.
+  Oʻzgarishlar shu uslubda qayta hisoblangan oldingi choraklarga nisbatan. Uslubiyat versiyasi: {{ method.version }}.</p>
+  <dl class="abbr">
+    <dt>MB</dt><dd>Oʻzbekiston Respublikasi Markaziy banki</dd>
+    <dt>UNI</dt><dd>Uy-joy narxlari indeksi</dd>
+    <dt>Δ chorak</dt><dd>oldingi chorakka nisbatan oʻzgarish</dd>
+    <dt>Δ yil</dt><dd>oʻtgan yilning mos choragiga nisbatan oʻzgarish</dd>
+    {% if brk %}<dt>†</dt><dd>manba maʼlumotlari oʻzgargan davrni kesib oʻtuvchi taqqoslash</dd>{% endif %}
+    <dt>Bir xil eʼlonlar Δ</dt><dd>ikkala chorakda ham mavjud boʻlgan eʼlonlar narxining oʻrtacha oʻzgarishi</dd>
+  </dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Where the agent reads its parquet files. Relative paths are relative to the project folder
+# (the folder that holds config/, src/ and data/). An absolute path also works.
+# The environment variable UYJOY_DATA_DIR overrides this, and so does `--data` on the command line.
+data_dir: data/parquet

@@ -1,0 +1,53 @@
+# What the news module looks for. Window: the quarter itself plus `after_days`
+# after it ends (reports are written a few weeks later).
+after_days: 21
+max_items_per_topic: 6
+
+# Official sources first; news outlets for context. Search is not limited to
+# these, but items from them get priority and `official: true`.
+official_domains: [cbu.uz, lex.uz, gov.uz, imv.uz, stat.uz, mc.uz, uzimk.uz, president.uz]
+news_domains: [kun.uz, gazeta.uz, daryo.uz, spot.uz, uz.kursiv.media, review.uz, podrobno.uz, uzdaily.uz]
+
+topics:
+  stavka:
+    label: "Markaziy bank asosiy stavkasi va inflyatsiya"
+    queries:
+      uz: ["Markaziy bank asosiy stavka {year}", "inflyatsiya O'zbekiston {month_name_uz} {year}"]
+      ru: ["ЦБ Узбекистана ключевая ставка {year}"]
+    scope: [respublika, toshkent]
+  ipoteka:
+    label: "Ipoteka: hajm, stavkalar, yangi dasturlar va qoidalar"
+    queries:
+      uz: ["ipoteka krediti {year} yangi tartib", "ipoteka subsidiya {year}", "O'zbekiston ipotekani qayta moliyalashtirish kompaniyasi {year}"]
+      ru: ["ипотека Узбекистан {year}"]
+    scope: [respublika, toshkent]
+  narx:
+    label: "Uy-joy narxlari va bozor faolligi"
+    queries:
+      uz: ["uy-joy narxlari {year} {quarter_uz}", "kvartira narxlari Toshkent {year}", "ko'chmas mulk ommaviy baholash narx {year}"]
+      ru: ["цены на квартиры Ташкент {year}", "рынок недвижимости Узбекистан {year}"]
+    scope: [respublika, toshkent]
+  ijara:
+    label: "Ijara bozori"
+    queries:
+      uz: ["kvartira ijara narxlari {year}"]
+      ru: ["аренда квартир Ташкент {year}"]
+    scope: [respublika, toshkent]
+  qurilish:
+    label: "Uy-joy qurilishi, Yangi Toshkent, renovatsiya"
+    queries:
+      uz: ["uy-joy qurilishi {year} foydalanishga topshirildi", "Yangi Toshkent uy-joy {year}", "renovatsiya Toshkent {year}"]
+      ru: ["ввод жилья Узбекистан {year}"]
+    scope: [respublika, toshkent]
+  tartibga_solish:
+    label: "Qonunchilik: farmon, qaror, soliq, kadastr, ko'chmas mulk savdosi qoidalari"
+    queries:
+      uz: ["ko'chmas mulk farmon qaror {year}", "uy-joy soliq kadastr yangi qoida {year}"]
+      ru: ["недвижимость указ постановление Узбекистан {year}"]
+    scope: [respublika, toshkent]
+  valyuta:
+    label: "So'm kursi va pul o'tkazmalari"
+    queries:
+      uz: ["dollar kursi {quarter_uz} {year}", "pul o'tkazmalari {year} O'zbekiston"]
+      ru: []
+    scope: [respublika, toshkent]

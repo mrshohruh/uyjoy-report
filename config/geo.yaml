@@ -1,0 +1,63 @@
+# Canonical Uzbek names. Keys are the raw values found in the parquet files.
+# Report order follows the published reports.
+region_order:
+  - Andijon
+  - Buxoro
+  - Jizzax
+  - Navoiy
+  - Namangan
+  - Samarqand
+  - Sirdaryo
+  - Surxondaryo
+  - Toshkent viloyati
+  - Toshkent shahri
+  - Fargʻona
+  - Xorazm
+  - Qashqadaryo
+  - Qoraqalpogʻiston
+
+state_to_region:
+  "Andijon Viloyati": Andijon
+  "Buxoro Viloyati": Buxoro
+  "Jizzax Viloyati": Jizzax
+  "Navoiy Viloyati": Navoiy
+  "Namangan Viloyati": Namangan
+  "Samarqand Viloyati": Samarqand
+  "Sirdaryo Viloyati": Sirdaryo
+  "Surxondaryo Viloyati": Surxondaryo
+  "Toshkent Viloyati": Toshkent viloyati
+  "Toshkent shahri": Toshkent shahri
+  "Farg'ona Viloyati": Fargʻona
+  "Xorazm Viloyati": Xorazm
+  "Qashqadaryo Viloyati": Qashqadaryo
+  "Qoraqalpogʻiston Respublikasi": Qoraqalpogʻiston
+
+district_order:
+  - Bektemir
+  - Chilonzor
+  - Mirobod
+  - Mirzo Ulugʻbek
+  - Olmazor
+  - Sergeli
+  - Shayxontohur
+  - Uchtepa
+  - Yakkasaroy
+  - Yashnobod
+  - Yunusobod
+
+district_ru_to_uz:
+  "Бектемирский район": Bektemir
+  "Чиланзарский район": Chilonzor
+  "Мирабадский район": Mirobod
+  "Мирзо-Улугбекский район": Mirzo Ulugʻbek
+  "Алмазарский район": Olmazor
+  "Сергелийский район": Sergeli
+  "Шайхантахурский район": Shayxontohur
+  "Учтепинский район": Uchtepa
+  "Яккасарайский район": Yakkasaroy
+  "Яшнабадский район": Yashnobod
+  "Юнусабадский район": Yunusobod
+
+market_ru:
+  "Новостройки": prim
+  "Вторичный рынок": sec

@@ -1,0 +1,22 @@
+# Model calls. Every prompt, response, tool call and token count is logged to
+# runs/<period>_<scope>/log.jsonl.
+models:
+  news: claude-haiku-5-5      # search, triage, extraction
+  writer: claude-opus-5-5     # one call per section
+  editor: claude-opus-5-5     # grammar/orthography pass, numbers locked
+  reviewer: claude-opus-5-5   # independent read of the finished draft
+max_tokens: 8000              # longest answer allowed; billed only for what is written
+# No temperature/top_p/top_k: current Claude models and the anthropic SDK do not accept them.
+max_continuations: 3          # resume a turn the API pauses during a long web search
+web_search:
+  type: web_search_20250305
+  max_uses: 3                # web searches per topic (each $0.01 plus the pages read)
+writer:
+  max_retries: 2             # re-ask with the check failures when a section fails
+
+# USD per million tokens, for the cost line printed after each run (platform.claude.com pricing, Oct 2026).
+prices:
+  claude-opus-5-5: {input: 4.0, output: 20.0}
+  claude-sonnet-5-5: {input: 2.0, output: 10.0}
+  claude-haiku-5-5: {input: 0.10, output: 0.50, over_100k: {input: 0.50, output: 2.50}}
+web_search_per_1000: 10

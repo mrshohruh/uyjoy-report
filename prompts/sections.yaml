@@ -1,0 +1,104 @@
+# One entry per text section. `facts` lists the facts-pack keys the writer sees
+# (dotted paths allowed); `must_mention` lists facts paths whose names must appear.
+# Word limits follow the published reports' text boxes.
+respublika:
+  - key: birlamchi
+    title: BIRLAMCHI UY-JOY BOZORI
+    facts: [report, birlamchi, toshkent_tumanlari.birlamchi, solishtirma.qoq.birlamchi]
+    note_break: true
+    news_topics: [narx, valyuta]
+    slots:
+      hududlar: {words: [60, 110], about: "Hududlar kesimida: umumiy yoʻnalish, eng koʻp oʻsgan va pasaygan 2-3 hudud foizlari bilan, yillik taqqoslash."}
+      toshkent: {words: [40, 90], about: "Toshkent shahri tumanlari: eng qimmat va eng arzon tumanlar; maʼlumot faqat qisman boʻlsa buni ayting."}
+      izoh: {words: [50, 110], about: "Sabablar: valyuta kursi (som_vs_usd_pct), tabiiy korreksiya, hududlar orasidagi narx farqi, yangiliklar."}
+    must_mention: [birlamchi.top_up, birlamchi.top_down]
+  - key: ikkilamchi
+    title: IKKILAMCHI UY-JOY BOZORI
+    facts: [report, ikkilamchi, toshkent_tumanlari.ikkilamchi, solishtirma.qoq.ikkilamchi]
+    note_break: true
+    news_topics: [narx]
+    slots:
+      hududlar: {words: [60, 110], about: "Hududlar kesimida: umumiy yoʻnalish, yetakchi oʻsish va pasayish, uzoq davom etayotgan tendensiyalar (streaks)."}
+      toshkent: {words: [40, 90], about: "Toshkent shahri tumanlari ikkilamchi bozorda."}
+      izoh: {words: [50, 110], about: "Taklif va talab omillari, yillik oʻzgarishlar."}
+    must_mention: [ikkilamchi.top_up, ikkilamchi.top_down]
+  - key: ijara
+    title: IJARA BOZORI
+    facts: [report, ijara, toshkent_tumanlari.ijara, solishtirma.qoq.ijara]
+    note_break: true
+    news_topics: [ijara]
+    slots:
+      hududlar: {words: [50, 100], about: "Ijara narxlari darajasi: eng yuqori va eng past hududlar; oʻzgarish maʼlumoti boʻlmasa buni ayting."}
+      toshkent: {words: [40, 90], about: "Toshkent tumanlari ijara narxlari."}
+      izoh: {words: [40, 90], about: "Yangiliklardagi ijara tendensiyasi (manba bilan)."}
+    must_mention: []
+  - key: rentabellik
+    title: IJARA RENTABELLIGI (YILLIK)
+    facts: [report, ijara_rentabelligi]
+    news_topics: []
+    slots:
+      matn: {words: [50, 90], about: "Eng yuqori va eng past rentabellik hududlari, farq (spread_pp), Toshkent shahri. Taʼrif: yillik ijara / sotuv narxi."}
+    must_mention: [ijara_rentabelligi.highest, ijara_rentabelligi.lowest]
+  - key: indeks
+    title: UY-JOY INDEKSI
+    facts: [report, uy_joy_indeksi, solishtirma.qoq.ikkilamchi]
+    note_break: true
+    news_topics: []
+    slots:
+      matn: {words: [60, 110], about: "Indeks darajasi, chorak va yillik oʻzgarish, bazaga nisbatan oʻsish, yetakchi va orqada qolgan hududlar; indeks AQSH dollarida va qaysi hududlar kirmagani."}
+    must_mention: []
+  - key: bozor_sharhi
+    title: BOZOR SHARHI
+    note_break: true
+    facts: [report, uy_joy_indeksi, solishtirma.qoq.birlamchi, solishtirma.qoq.ikkilamchi, solishtirma.qoq.ijara, birlamchi.avg_qoq_pct, birlamchi.avg_yoy_pct, ikkilamchi.avg_qoq_pct, ikkilamchi.avg_yoy_pct, birlamchi.rising_count, birlamchi.falling_count, ikkilamchi.rising_count, ikkilamchi.falling_count]
+    news_topics: [stavka, ipoteka, qurilish, tartibga_solish, valyuta]
+    slots:
+      band1_sarlavha: {words: [2, 6], about: "1-band sarlavhasi"}
+      band1: {words: [35, 70], about: "Narxlar dinamikasi va valyuta taʼsiri."}
+      band2_sarlavha: {words: [2, 6], about: "2-band sarlavhasi"}
+      band2: {words: [35, 70], about: "Moliyalashtirish sharoitlari: asosiy stavka, ipoteka (yangiliklardan)."}
+      band3_sarlavha: {words: [2, 6], about: "3-band sarlavhasi"}
+      band3: {words: [35, 70], about: "Taklif va tartibga solish: qurilish, ommaviy baholash, ulushli qurilish (yangiliklardan)."}
+      xulosa: {words: [40, 80], about: "Umumiy xulosa."}
+    must_mention: []
+  - key: asosiy_xulosalar
+    title: ASOSIY TAHLILIY XULOSALAR
+    after_sections: true     # gets the finished text of all sections above
+    facts: [report, uy_joy_indeksi, birlamchi, ikkilamchi, ijara, ijara_rentabelligi, solishtirma.qoq.birlamchi, solishtirma.qoq.ikkilamchi, solishtirma.qoq.ijara]
+    note_break: true
+    news_topics: [ipoteka, stavka]
+    slots:
+      x1: {words: [20, 55], about: "Birlamchi bozor"}
+      x2: {words: [20, 55], about: "Ikkilamchi bozor"}
+      x3: {words: [20, 55], about: "Ijara va rentabellik"}
+      x4: {words: [20, 55], about: "Uy-joy indeksi"}
+      x5: {words: [20, 55], about: "Ipoteka va moliyalashtirish (yangiliklardan)"}
+    must_mention: []
+
+toshkent:
+  - key: birlamchi
+    title: BIRLAMCHI UY-JOY BOZORI
+    facts: [report, city_total.prim, birlamchi, xonalar_kesimida]
+    news_topics: [narx, valyuta, tartibga_solish]
+    slots:
+      shahar: {words: [40, 90], about: "Shahar boʻyicha median narx va oʻzgarish."}
+      tumanlar: {words: [60, 110], about: "Tumanlar: yetakchi oʻsish/pasayish, eng qimmat/arzon."}
+      xonalar: {words: [40, 90], about: "Xonalar soni kesimida farqlar."}
+    must_mention: [birlamchi.top_up, birlamchi.top_down]
+  - key: ikkilamchi
+    title: IKKILAMCHI UY-JOY BOZORI
+    facts: [report, city_total.sec, ikkilamchi, xonalar_kesimida]
+    news_topics: [narx]
+    slots:
+      shahar: {words: [40, 90], about: "Shahar boʻyicha."}
+      tumanlar: {words: [60, 110], about: "Tumanlar kesimida."}
+      xonalar: {words: [40, 90], about: "Xonalar soni kesimida."}
+    must_mention: [ikkilamchi.top_up, ikkilamchi.top_down]
+  - key: ijara
+    title: IJARA BOZORI
+    facts: [report, city_total.rent, ijara, ijara_rentabelligi]
+    news_topics: [ijara]
+    slots:
+      tumanlar: {words: [60, 110], about: "Ijara narxlari tumanlar kesimida."}
+      rentabellik: {words: [40, 90], about: "Tumanlar boʻyicha rentabellik."}
+    must_mention: []
